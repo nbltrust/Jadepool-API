@@ -285,6 +285,73 @@ data.type | yes | string | coin name for auditing
 data.audittime | yes | number | audit timestamp
 data.callback | no | string | callback url
 
+### Audited Orders
+
+> Request "Audited Orders" API returns JSON structured like this:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "timestamp": 1556008499840,
+    "sig": {
+        "r": "MDQ7ytbVqn2csvSRIlCK169YP+6Fw4npwCZrOyg7kR8=",
+        "s": "Z2Qf7nB45dcH6TfjpDT1hH+eaef2ep2ARYJKF0t7iss=",
+        "v": 28
+    },
+    "result": [
+        {
+            "data": {
+                "timestampHandle" : 1548316657572.0,
+                "timestampBegin" : 1548316657778.0,
+                "timestampFinish" : 1548320514245.0
+            },
+            "_id": "5c49829fdddecb563c50f389",
+            "id": "6413",
+            "coinName": "BTC",
+            "txid": "4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a",
+            "meta": "1548320257779",
+            "state": "done",
+            "bizType": "WITHDRAW",
+            "type": "BTC",
+            "from": "myKRmYjEzPUtsqSUzy6yMEmpMT491Rj6Va",
+            "to": "mfvLYmxGYgwL5NMBH7pHtBA9QzjpbapNNb",
+            "value": "0.08",
+            "confirmations": 6,
+            "create_at": 1548316656499.0,
+            "update_at": 1548320514267.0,
+            "actionArgs": [],
+            "actionResults": [],
+            "n": 0,
+            "fee": "0.00109375",
+            "fees": [],
+            "hash": "4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a",
+            "block": 1453798,
+            "extraData": "",
+            "memo": "",
+            "sendAgain": false,
+            "namespace": "BTC",
+            "sid": "j5D28yAyhO02C-_6AAAA"
+        }
+    ]
+}
+
+```
+
+This endpoint enables you to fetch orders in specified audit.
+
+*HTTP Request*
+
+`GET http://jadepool.example/api/v1/audits/:id/orders`
+
+*Query Parameters*
+
+Parameter | Description
+--------- | ------- 
+id | audit order ID
+
 ## Transaction
 
 ### Request Withdrawal
@@ -1896,6 +1963,73 @@ Parameter | Description
 --------- | -------
 id | audit order ID
 
+### Audited Orders
+
+> Request "Audited Orders" API returns JSON structured like this:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "timestamp": 1556008499840,
+    "sig": {
+        "r": "MDQ7ytbVqn2csvSRIlCK169YP+6Fw4npwCZrOyg7kR8=",
+        "s": "Z2Qf7nB45dcH6TfjpDT1hH+eaef2ep2ARYJKF0t7iss=",
+        "v": 28
+    },
+    "result": [
+        {
+            "data": {
+                "timestampHandle" : 1548316657572.0,
+                "timestampBegin" : 1548316657778.0,
+                "timestampFinish" : 1548320514245.0
+            },
+            "_id": "5c49829fdddecb563c50f389",
+            "id": "6413",
+            "coinName": "BTC",
+            "txid": "4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a",
+            "meta": "1548320257779",
+            "state": "done",
+            "bizType": "WITHDRAW",
+            "type": "BTC",
+            "from": "myKRmYjEzPUtsqSUzy6yMEmpMT491Rj6Va",
+            "to": "mfvLYmxGYgwL5NMBH7pHtBA9QzjpbapNNb",
+            "value": "0.08",
+            "confirmations": 6,
+            "create_at": 1548316656499.0,
+            "update_at": 1548320514267.0,
+            "actionArgs": [],
+            "actionResults": [],
+            "n": 0,
+            "fee": "0.00109375",
+            "fees": [],
+            "hash": "4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a",
+            "block": 1453798,
+            "extraData": "",
+            "memo": "",
+            "sendAgain": false,
+            "namespace": "BTC",
+            "sid": "j5D28yAyhO02C-_6AAAA"
+        }
+    ]
+}
+
+```
+
+This endpoint enables you to fetch orders in specified audit.
+
+*HTTP Request*
+
+`GET http://jadepool.example/api/v2/audits/:id/orders`
+
+*Query Parameters*
+
+Parameter | Description
+--------- | ------- 
+id | audit order ID
+
 ## Order
 
 ### Fetch Order
@@ -2096,13 +2230,9 @@ data.extraData | no | string | callback url
     },
     "result": {
         "type": "ETH",
-        "current": {
-            "id": "5cbecdb38d1607c10ddddb49",
-            "type": "ETH",
-            "blocknumber": 9921056,
-            "timestamp": 1546425032000
-        },
-        "last": null,
+        "id": "5cbecdb38d1607c10ddddb49",
+        "blocknumber": 9921056,
+        "timestamp": 1546425032000,
         "namespace": "ETH",
         "sid": "j5D28yAyhO02C-_6AAAA"
     }
@@ -2150,13 +2280,9 @@ data.audittime | yes | number | audit timestamp
         {
             "type": "ETH",
             "namespace": "ETH",
-            "current": {
-                "id": "5cbecdb38d1607c10ddddb49",
-                "type": "ETH",
-                "blocknumber": 9921056,
-                "timestamp": 1546425032000
-            },
-            "last": null,
+            "id": "5cbecdb38d1607c10ddddb49",
+            "blocknumber": 9921056,
+            "timestamp": 1546425032000,
             "sid": "j5D28yAyhO02C-_6AAAA"
         }
     ]
