@@ -247,6 +247,9 @@
                           <li>
                             <a href="#request-audit" class="toc-h3 toc-link" data-title="Request audit">Request audit</a>
                           </li>
+                          <li>
+                            <a href="#audited-orders" class="toc-h3 toc-link" data-title="Audited Orders">Audited Orders</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -360,6 +363,9 @@
                       <ul class="toc-list-h3">
                           <li>
                             <a href="#fetch-audit-order-2" class="toc-h3 toc-link" data-title="Fetch Audit Order">Fetch Audit Order</a>
+                          </li>
+                          <li>
+                            <a href="#audited-orders-2" class="toc-h3 toc-link" data-title="Audited Orders">Audited Orders</a>
                           </li>
                       </ul>
                   </li>
@@ -772,6 +778,78 @@ V1 for now.</p>
 <td>no</td>
 <td>string</td>
 <td>callback url</td>
+</tr>
+</tbody></table>
+<h3 id='audited-orders'>Audited Orders</h3>
+<blockquote>
+<p>Request &quot;Audited Orders&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556008499840</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ7ytbVqn2csvSRIlCK169YP+6Fw4npwCZrOyg7kR8="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z2Qf7nB45dcH6TfjpDT1hH+eaef2ep2ARYJKF0t7iss="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"timestampHandle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548316657572.0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestampBegin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548316657778.0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestampFinish"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548320514245.0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c49829fdddecb563c50f389"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6413"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1548320257779"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myKRmYjEzPUtsqSUzy6yMEmpMT491Rj6Va"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mfvLYmxGYgwL5NMBH7pHtBA9QzjpbapNNb"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mf">1548316656499.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mf">1548320514267.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00109375"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">1453798</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint enables you to fetch orders in specified audit.</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http://jadepool.example/api/v1/audits/:id/orders</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>audit order ID</td>
 </tr>
 </tbody></table>
 <h2 id='transaction'>Transaction</h2><h3 id='request-withdrawal'>Request Withdrawal</h3>
@@ -2852,6 +2930,78 @@ request will be rejected.
 <td>audit order ID</td>
 </tr>
 </tbody></table>
+<h3 id='audited-orders-2'>Audited Orders</h3>
+<blockquote>
+<p>Request &quot;Audited Orders&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556008499840</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ7ytbVqn2csvSRIlCK169YP+6Fw4npwCZrOyg7kR8="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z2Qf7nB45dcH6TfjpDT1hH+eaef2ep2ARYJKF0t7iss="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"timestampHandle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548316657572.0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestampBegin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548316657778.0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestampFinish"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548320514245.0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c49829fdddecb563c50f389"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6413"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1548320257779"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myKRmYjEzPUtsqSUzy6yMEmpMT491Rj6Va"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mfvLYmxGYgwL5NMBH7pHtBA9QzjpbapNNb"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mf">1548316656499.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mf">1548320514267.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00109375"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">1453798</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint enables you to fetch orders in specified audit.</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http://jadepool.example/api/v2/audits/:id/orders</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>audit order ID</td>
+</tr>
+</tbody></table>
 <h2 id='order'>Order</h2><h3 id='fetch-order-2'>Fetch Order</h3>
 <blockquote>
 <p>Request &quot;fetch Order&quot; API returns JSON structured like this:</p>
@@ -3099,13 +3249,9 @@ request will be rejected.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbecdb38d1607c10ddddb49"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9921056</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbecdb38d1607c10ddddb49"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9921056</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="p">,</span><span class="w">
         </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3173,13 +3319,9 @@ request will be rejected.
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbecdb38d1607c10ddddb49"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9921056</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbecdb38d1607c10ddddb49"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9921056</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="p">,</span><span class="w">
             </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
