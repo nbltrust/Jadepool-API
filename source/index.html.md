@@ -23,6 +23,114 @@ to V2 APIs along our development cycle. Check out our [releases](https://github.
 Feel free to check out our [NodeJs SDK](https://github.com/nbltrust/jadepool-sdk-nodejs) and [Java SDK](https://github.com/nbltrust/jadepool-sdk-java). SDK only supports
 V1 for now.
 
+# General Structure
+
+## POST Request
+
+> "Request withdrawal" example:
+
+```json
+{  
+   "sig":"e365e9f0d43e0dd2b2c0d6ff0fa90c473791bdc532c67fe290f60229633f6c4a4839fb10245c5d29b82a5330788ffd504aa81149a66484dac48e5b9ac8f8881c",
+   "data":{  
+      "sequence":32132,
+      "to":"mg2bfYdfii2GG13HK94jXBYPPCSWRmSiAS",
+      "type":"BTC",
+      "value":"0.01"
+   },
+   "encode":"hex",
+   "appid":"testa",
+   "hash":"sha256",
+   "timestamp":1551907163440
+}
+```
+
+This is the general request structure for POST requests.
+
+*Request Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+data | yes | object | block of core request parameters
+appid | yes | string | application ID, required since 0.11.22 version
+timestamp | yes | number | the timestamp used for signing
+sig | yes | string | ECC signature
+encode | no | string | signature encoding format, support hex and base64, default is base64
+hash | no | string | support sha3 and sha256 and md5, default value is sha3
+lang | no | string | the language of errors and messages in response. support en, cn, ja, default is cn
+
+## GET Request
+
+> "Fetch Wallet Status" example:
+
+```
+http://jadepool.example/api/v1/wallet/btc/status?appid=testa&timestamp=1548406480765&encode=hex&hash=sha256
+&sig=355776c4b127a8db996032b2b0b3e5618ac83f1b2d394bada3af6b27fa9631f036dd3b46067b274d0e985453bac0f6783da262a41f7f920d84d0514b47b58937&lang=en
+```
+
+This is the general request structure for GET requests.
+
+*Query Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+appid | yes | string | application ID, required since 0.11.22 version
+timestamp | yes | number | the timestamp used for signing
+sig | yes | string | ECC signature
+encode | no | string | signature encoding format, support hex and base64, default is base64
+hash | no | string | support sha3 and sha256 and md5, default value is sha3
+lang | no | string | the language of errors and messages in response. support en, cn, ja, default is cn
+
+## Response 
+
+> Successful Response Example:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "timestamp": 1557144244145,
+    "sig": {
+        "r": "a6pPfsRpp7NVnjtCcoqDyqp5nOS971LG34uECKDBsj4=",
+        "s": "csbcZjx+LycfCZoYPa5ba324TUnFIEmy0TzX4vNUPqI=",
+        "v": 27
+    },
+    "result": {
+        "address": "0x352c3d587080ae186c6037ccf786ea1c71ed87be",
+        "valid": true,
+        "namespace": "ETH",
+        "sid": "HcEYvElHYswB47SDAAAC"
+    }
+}
+```
+
+> Failed Response Example:
+
+```json
+{
+    "code": 20000,
+    "status": 20000,
+    "category": "invalid-parameter",
+    "message": "unsupported coin type",
+    "result": {
+        "info": "field(type) cointype - wrong"
+    }
+}
+```
+
+These are the regular fields in response body.
+
+*Response Fields*
+
+Field | Type | Description
+--------- | ------- | --------- 
+code | number | 0 if succeeds. Otherwise it shows corresponding error code in [Errors](#errors)
+status | number | 0 if succeeds. Otherwise it shows corresponding error code in [Errors](#errors)
+message | string | "OK" if succeeds. Otherwise it shows corresponding error message in [Errors](#errors)
+result | object | response contents
+
 # V1
 
 ## Address
@@ -78,9 +186,9 @@ This endpoint enables you to request multiple new addresses at once.
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.type | yes | string | coin name
 data.amount | yes | number | number of addresses, range from 1 to 500.
 data.mode | no | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
@@ -125,9 +233,9 @@ This endpoint enables you to request single new address.
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.type | yes | string | coin name
 data.mode | no | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
 data.callback | no | string | callback url
@@ -165,9 +273,9 @@ This endpoint enables you to verify if an address is valid for specified token.
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.type | yes | string | coin name
 data.address | yes | string | address to validate
 
@@ -278,9 +386,9 @@ This endpoint enables you to request audit with timestamp of your choice.
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.type | yes | string | coin name for auditing
 data.audittime | yes | number | audit timestamp
 data.callback | no | string | callback url
@@ -414,9 +522,9 @@ This endpoint enables you to request withdrawal.
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.type | yes | string | coin name for auditing
 data.to | yes | string | withdrawal address
 data.value | yes | string | value to withdraw
@@ -749,9 +857,9 @@ delegator | delegate from address
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.amount | yes | string | delegate value
 data.validator | yes | string | validator to delegate
 data.sequence | yes | number | unique sequence
@@ -829,9 +937,9 @@ delegator | delegate from address
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.amount | yes | string | delegate value
 data.sequence | yes | number | unique sequence
 data.src_validator | yes | string | original validator
@@ -909,9 +1017,9 @@ delegator | address requests undelegation
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.amount | yes | string | undelegate value
 data.sequence | yes | number | unique sequence
 data.validator | yes | string | validator undelegate from
@@ -1236,9 +1344,9 @@ delegator | delegate from address
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.sequence | no | number | unique sequence, required in V2.
 data.address | yes | string | reward address
 
@@ -1349,9 +1457,9 @@ delegator | delegate from address
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.sequence | no | number | unique sequence, required in V2.
 data.validator | yes | string | validator to claim reward from
 
@@ -1500,9 +1608,9 @@ coinName | coin name
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.amount | yes | number | number of addresses, range from 1 to 500.
 data.mode | yes | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
 
@@ -1551,9 +1659,9 @@ coinName | coin name
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.mode | yes | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
 
 ### Validate Address
@@ -1595,9 +1703,9 @@ coinName | coin name
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.address | yes | string | address to validate
 
 ### Force Free
@@ -1667,9 +1775,9 @@ coinName | coin name
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.address | yes | string | address to validate
 data.sequence | yes | number | unique request sequence
 
@@ -1740,9 +1848,9 @@ coinName | coin name
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.address | yes | string | address to validate
 data.sequence | yes | number | unique request sequence
 data.value | yes | string | force obtain value
@@ -2203,9 +2311,9 @@ coinName | coin name
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.to | yes | string | withdrawal address
 data.value | yes | string | value to withdraw
 data.sequence | yes | number | unique API nonce for each app ID
@@ -2253,9 +2361,9 @@ coinName | coin name
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.audittime | yes | number | audit timestamp
 
 ## Wallets
@@ -2297,9 +2405,9 @@ This endpoint enables you to request audit of all tokens.
 
 *Request Body Parameters*
 
-Parameter | Required | type | Description
+Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | json | request data
+data | yes | object | block of core request parameters
 data.audittime | yes | number | audit timestamp
 
 ## Delegation
