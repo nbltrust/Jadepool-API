@@ -222,6 +222,20 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#general-structure" class="toc-h1 toc-link" data-title="General Structure">General Structure</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-request" class="toc-h2 toc-link" data-title="POST Request">POST Request</a>
+                  </li>
+                  <li>
+                    <a href="#get-request" class="toc-h2 toc-link" data-title="GET Request">GET Request</a>
+                  </li>
+                  <li>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#v1" class="toc-h1 toc-link" data-title="V1">V1</a>
               <ul class="toc-list-h2">
                   <li>
@@ -423,6 +437,203 @@ to V2 APIs along our development cycle. Check out our <a href="https://github.co
 
 <p>Feel free to check out our <a href="https://github.com/nbltrust/jadepool-sdk-nodejs">NodeJs SDK</a> and <a href="https://github.com/nbltrust/jadepool-sdk-java">Java SDK</a>. SDK only supports
 V1 for now.</p>
+<h1 id='general-structure'>General Structure</h1><h2 id='post-request'>POST Request</h2>
+<blockquote>
+<p>&quot;Request withdrawal&quot; example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+   </span><span class="s2">"sig"</span><span class="p">:</span><span class="s2">"e365e9f0d43e0dd2b2c0d6ff0fa90c473791bdc532c67fe290f60229633f6c4a4839fb10245c5d29b82a5330788ffd504aa81149a66484dac48e5b9ac8f8881c"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">  
+      </span><span class="s2">"sequence"</span><span class="p">:</span><span class="mi">32132</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"mg2bfYdfii2GG13HK94jXBYPPCSWRmSiAS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"encode"</span><span class="p">:</span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"appid"</span><span class="p">:</span><span class="s2">"testa"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"hash"</span><span class="p">:</span><span class="s2">"sha256"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1551907163440</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This is the general request structure for POST requests.</p>
+
+<p><em>Request Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>yes</td>
+<td>object</td>
+<td>block of core request parameters</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>yes</td>
+<td>string</td>
+<td>application ID, required since 0.11.22 version</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>yes</td>
+<td>number</td>
+<td>the timestamp used for signing</td>
+</tr>
+<tr>
+<td>sig</td>
+<td>yes</td>
+<td>string</td>
+<td>ECC signature</td>
+</tr>
+<tr>
+<td>encode</td>
+<td>no</td>
+<td>string</td>
+<td>signature encoding format, support hex and base64, default is base64</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>no</td>
+<td>string</td>
+<td>support sha3 and sha256 and md5, default value is sha3</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>no</td>
+<td>string</td>
+<td>the language of errors and messages in response. support en, cn, ja, default is cn</td>
+</tr>
+</tbody></table>
+<h2 id='get-request'>GET Request</h2>
+<blockquote>
+<p>&quot;Fetch Wallet Status&quot; example:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>http://jadepool.example/api/v1/wallet/btc/status?appid=testa&amp;timestamp=1548406480765&amp;encode=hex&amp;hash=sha256
+&amp;sig=355776c4b127a8db996032b2b0b3e5618ac83f1b2d394bada3af6b27fa9631f036dd3b46067b274d0e985453bac0f6783da262a41f7f920d84d0514b47b58937&amp;lang=en
+</code></pre>
+<p>This is the general request structure for GET requests.</p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appid</td>
+<td>yes</td>
+<td>string</td>
+<td>application ID, required since 0.11.22 version</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>yes</td>
+<td>number</td>
+<td>the timestamp used for signing</td>
+</tr>
+<tr>
+<td>sig</td>
+<td>yes</td>
+<td>string</td>
+<td>ECC signature</td>
+</tr>
+<tr>
+<td>encode</td>
+<td>no</td>
+<td>string</td>
+<td>signature encoding format, support hex and base64, default is base64</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>no</td>
+<td>string</td>
+<td>support sha3 and sha256 and md5, default value is sha3</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>no</td>
+<td>string</td>
+<td>the language of errors and messages in response. support en, cn, ja, default is cn</td>
+</tr>
+</tbody></table>
+<h2 id='response'>Response</h2>
+<blockquote>
+<p>Successful Response Example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557144244145</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a6pPfsRpp7NVnjtCcoqDyqp5nOS971LG34uECKDBsj4="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"csbcZjx+LycfCZoYPa5ba324TUnFIEmy0TzX4vNUPqI="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x352c3d587080ae186c6037ccf786ea1c71ed87be"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HcEYvElHYswB47SDAAAC"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failed Response Example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid-parameter"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsupported coin type"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field(type) cointype - wrong"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>These are the regular fields in response body.</p>
+
+<p><em>Response Fields</em></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>number</td>
+<td>0 if succeeds. Otherwise it shows corresponding error code in <a href="#errors">Errors</a></td>
+</tr>
+<tr>
+<td>status</td>
+<td>number</td>
+<td>0 if succeeds. Otherwise it shows corresponding error code in <a href="#errors">Errors</a></td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>&quot;OK&quot; if succeeds. Otherwise it shows corresponding error message in <a href="#errors">Errors</a></td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>response contents</td>
+</tr>
+</tbody></table>
 <h1 id='v1'>V1</h1><h2 id='address'>Address</h2><h3 id='create-multiple-addresses'>Create Multiple Addresses</h3>
 <blockquote>
 <p>Request &quot;Create Multiple Addresses&quot; API returns JSON structured like this:</p>
@@ -476,15 +687,15 @@ V1 for now.</p>
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.type</td>
@@ -552,15 +763,15 @@ V1 for now.</p>
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.type</td>
@@ -616,15 +827,15 @@ V1 for now.</p>
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.type</td>
@@ -751,15 +962,15 @@ V1 for now.</p>
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.type</td>
@@ -914,15 +1125,15 @@ V1 for now.</p>
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.type</td>
@@ -1330,15 +1541,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.amount</td>
@@ -1445,15 +1656,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.amount</td>
@@ -1565,15 +1776,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.amount</td>
@@ -1973,15 +2184,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.sequence</td>
@@ -2124,15 +2335,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.sequence</td>
@@ -2317,15 +2528,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.amount</td>
@@ -2395,15 +2606,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.mode</td>
@@ -2461,15 +2672,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.address</td>
@@ -2555,15 +2766,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.address</td>
@@ -2655,15 +2866,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.address</td>
@@ -3191,15 +3402,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.to</td>
@@ -3283,15 +3494,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.audittime</td>
@@ -3339,15 +3550,15 @@ request will be rejected.
 <tr>
 <th>Parameter</th>
 <th>Required</th>
-<th>type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
 <td>yes</td>
-<td>json</td>
-<td>request data</td>
+<td>object</td>
+<td>block of core request parameters</td>
 </tr>
 <tr>
 <td>data.audittime</td>
