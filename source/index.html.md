@@ -23,7 +23,7 @@ to V2 APIs along our development cycle. Check out our [releases](https://github.
 Feel free to check out our [NodeJs SDK](https://github.com/nbltrust/jadepool-sdk-nodejs) and [Java SDK](https://github.com/nbltrust/jadepool-sdk-java). SDK only supports
 V1 for now.
 
-# General Structure
+# Request & Response Structure
 
 ## POST Request
 
@@ -51,10 +51,10 @@ This is the general request structure for POST requests.
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
+data | yes | object | data block that main parameters should be wrapped in
 appid | yes | string | application ID, required since 0.11.22 version
-timestamp | yes | number | the timestamp used for signing
-sig | yes | string | ECC signature
+timestamp | yes | number | the timestamp client used for signing
+sig | yes | string | client's ECC signature
 encode | no | string | signature encoding format, support hex and base64, default is base64
 hash | no | string | support sha3 and sha256 and md5, default value is sha3
 lang | no | string | the language of errors and messages in response. support en, cn, ja, default is cn
@@ -75,8 +75,8 @@ This is the general request structure for GET requests.
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
 appid | yes | string | application ID, required since 0.11.22 version
-timestamp | yes | number | the timestamp used for signing
-sig | yes | string | ECC signature
+timestamp | yes | number | the timestamp client used for signing
+sig | yes | string | client's ECC signature
 encode | no | string | signature encoding format, support hex and base64, default is base64
 hash | no | string | support sha3 and sha256 and md5, default value is sha3
 lang | no | string | the language of errors and messages in response. support en, cn, ja, default is cn
@@ -129,9 +129,20 @@ Field | Type | Description
 code | number | 0 if succeeds. Otherwise it shows corresponding error code in [Errors](#errors)
 status | number | 0 if succeeds. Otherwise it shows corresponding error code in [Errors](#errors)
 message | string | "OK" if succeeds. Otherwise it shows corresponding error message in [Errors](#errors)
+crypto | string | Only "ecc" is supported for now
+timestamp | number | the timestamp Jadepool used for signing
+sig | object | Jadepool's ECC signature
 result | object | response contents
 
-# V1
+# V1 API
+
+<aside class="notice">
+All timestamps are in millisecond.
+</aside>
+
+<aside class="notice">
+All main parameters in POST API should be wraped in "data" object
+</aside>
 
 ## Address
 
@@ -184,15 +195,25 @@ This endpoint enables you to request multiple new addresses at once.
 
 `POST http://jadepool.example/api/v1/addresses/batchnew`
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.type | yes | string | coin name
 data.amount | yes | number | number of addresses, range from 1 to 500.
 data.mode | no | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
 data.callback | no | string | callback url
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | number | unique ID in Jadepool's database
+appid | string | application ID, configurable on admin
+coinName | string | token type of the new address
+address | string | the new address
+state | string | this value does not mean anything for now
+mode | string | address mode
 
 ### Create Single Address
 
@@ -231,14 +252,24 @@ This endpoint enables you to request single new address.
 
 `POST http://jadepool.example/api/v1/addresses/new`
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.type | yes | string | coin name
 data.mode | no | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
 data.callback | no | string | callback url
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | number | unique ID in Jadepool's database
+appid | string | application ID, configurable on admin
+coinName | string | token type of the new address
+address | string | the new address
+state | string | this value does not mean anything for now
+mode | string | address mode
 
 ### Validate Address
 
@@ -271,13 +302,19 @@ This endpoint enables you to verify if an address is valid for specified token.
 
 `POST http://jadepool.example/api/v1/addresses/verify`
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.type | yes | string | coin name
 data.address | yes | string | address to validate
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+address | string | the address to validate
+valid | boolean | the address is valid or not
 
 ## Audit
 
@@ -347,6 +384,42 @@ Parameter | Description
 --------- | ------- 
 id | audit order ID
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+calculated | boolean | if the auditing is finished
+deposit_total | string | total deposit token value
+deposit_num | number | total deposit times
+withdraw_total | string | total withdraw token value
+withdraw_num | number | total withdraw times
+sweep_total | string | total sweep token value
+sweep_num | number | total sweep times
+sweep_internal_total | string | total sweep_internal token value
+sweep_internal_num | number | total sweep_internal times
+airdrop_total | string | total airdrop token value
+airdrop_num | number | total airdrop times
+recharge_total | string | total recharge token value
+recharge_num | number | total recharge times
+recharge_internal_total | string | total recharge_internal token value
+recharge_internal_num | number | total recharge_internal times
+recharge_unknown_total | string | total recharge_unknown token value
+recharge_unknown_num | number | total recharge_unknown times
+recharge_special_total | string | total recharge_special token value
+recharge_special_num | number | total recharge_special times
+failed_withdraw_num | number | total failed withdraw times
+failed_sweep_num | number | total failed sweep times
+failed_sweep_internal_num | number | total failed sweep_internal times
+fees | array | all type of fees burned
+type | string | the audited token type
+timestamp | number | the audited timestamp
+blocknumber | number | corresponding block near the audited timestamp
+appid | string | application ID
+calc_order_num | number | audited order number
+last | string | audit order ID of the previous audit
+id | string | audit order ID of the current audit
+
+
 ### Request audit
 
 > Request "Request audit" API returns JSON structured like this:
@@ -357,23 +430,28 @@ id | audit order ID
     "status": 0,
     "message": "OK",
     "crypto": "ecc",
-    "timestamp": 1556008371920,
+    "timestamp": 1557298936621,
     "sig": {
-        "r": "tCWtyZLol3gTEjWsRThfltjxe7rWB0m1c5oiIeFCaPE=",
-        "s": "UXCLuRMQsSDbU0xfo6dVfcADzIjAnVL5bJS5M/XqFuU=",
-        "v": 28
+        "r": "Ul3ss7f53UfspW90IgdUXTouhVi9c2Z4tyd9JpWoF9E=",
+        "s": "Umm40vdnKymEaUrOw6zxZ6c8g/8L8ERO9TYRgdUEIdQ=",
+        "v": 27
     },
     "result": {
-        "type": "ETH",
+        "type": "BTC",
         "current": {
-            "id": "5cbecdb38d1607c10ddddb49",
-            "type": "ETH",
-            "blocknumber": 9921056,
-            "timestamp": 1546425032000
+            "id": "5cd27ef846d3a66f7c08d851",
+            "type": "BTC",
+            "blocknumber": 1513223,
+            "timestamp": 1557298927000
         },
-        "last": null,
-        "namespace": "ETH",
-        "sid": "j5D28yAyhO02C-_6AAAA"
+        "last": {
+            "id": "5cc4a6b074a1172be751343e",
+            "type": "BTC",
+            "blocknumber": 1512837,
+            "timestamp": 1556380800000
+        },
+        "namespace": "BTC",
+        "sid": "uJK8Pk6LUltIu4epAAAB"
     }
 }
 ```
@@ -384,14 +462,25 @@ This endpoint enables you to request audit with timestamp of your choice.
 
 `POST http://jadepool.example/api/v1/audits`
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.type | yes | string | coin name for auditing
 data.audittime | yes | number | audit timestamp
 data.callback | no | string | callback url
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+type | string | the audited token type
+current | object | info of the current audit order
+last | object | info of the previous audit order
+id | string | audit order ID of the current/last audit
+type | string | the audited token type
+timestamp | number | the audited timestamp
+blocknumber | number | corresponding block near the audited timestamp
 
 ### Audited Orders
 
@@ -460,6 +549,30 @@ Parameter | Description
 --------- | ------- 
 id | audit order ID
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
+
 ## Transaction
 
 ### Request Withdrawal
@@ -520,11 +633,10 @@ This endpoint enables you to request withdrawal.
 
 `POST http://jadepool.example/api/v1/transactions`
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.type | yes | string | coin name for auditing
 data.to | yes | string | withdrawal address
 data.value | yes | string | value to withdraw
@@ -532,6 +644,30 @@ data.sequence | no | number | unique API nonce for each app ID
 data.auth | no | string | authentication for coin, only for HSM 
 data.extraData | no | string | some data to save in Jadepool database and will be returned the same in response
 data.callback | no | string | callback url
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
 
 ### Fetch Order
 
@@ -603,6 +739,30 @@ Parameter | Description
 --------- | ------- 
 id | order ID
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
+
 
 ## Wallet
 
@@ -646,9 +806,19 @@ Parameter | Description
 --------- | -------
 coinName | coin name
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+balance | string | total balance
+balanceAvailable | string | balance available for outgoing transfer
+balanceUnavailable | string | balance unavailable for outgoing transfer
+update_at | number | the balance update time
+addressesWithBalance | number | number of addresses that have balance
+
 ## Delegation
 
-<aside class="notice">
+<aside class="warning">
 Query parameter "coinName" in every delegation API must be the main token that can be delegated to validators. Otherwise
 request will be rejected.
 </aside>
@@ -718,6 +888,24 @@ Parameter | Description
 --------- | ------- 
 coinName | coin name
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+name | string | validator name
+address | string | validator's address
+pubkey | string | validator's public key
+jailed | boolean | if the validator is jailed
+status | number | validator's status
+shares | string | validator's shares
+delegationAmount | string | amount delegated to validator
+minSelfDelegation | string | amount delegated to validator by itself
+commission | object | validator's commission
+rate | float | validator's commission rate
+maxRate | float | validator's commission maxRate
+maxChangeRate | float | validator's commission maxChangeRate
+updateAt | string | validator info update time
+
 ### Fetch Specified Validator
 
 > Request "Fetch Specified Validator" API returns JSON structured like this:
@@ -768,7 +956,25 @@ Parameter | Description
 coinName | coin name
 validator | validator name
 
-### Fetch Reward With Validator
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+name | string | validator name
+address | string | validator's address
+pubkey | string | validator's public key
+jailed | boolean | if the validator is jailed
+status | number | validator's status
+shares | string | validator's shares
+delegationAmount | string | amount delegated to validator
+minSelfDelegation | string | amount delegated to validator by itself
+commission | object | validator's commission
+rate | float | validator's commission rate
+maxRate | float | validator's commission maxRate
+maxChangeRate | float | validator's commission maxChangeRate
+updateAt | string | validator info update time
+
+### Outstanding Reward At Validator
 
 > Request "Fetch Reward With Validator" API returns JSON structured like this:
 
@@ -796,7 +1002,7 @@ validator | validator name
 }
 ```
 
-This endpoint enables you to fetch reward amount at a specified validator.
+This endpoint enables you to fetch everyone's total reward amount at a specified validator.
 
 *HTTP Request*
 
@@ -809,6 +1015,16 @@ Parameter | Description
 coinName | coin name
 validator | validator name
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+validator | string | validator name
+nativeName | string | token
+nativeAmount | string | total reward amount in token unit
+coinName | string | main token
+amount | string | total reward amount in main token unit
+
 ### Request Delegation
 
 > Request "Request Delegation" API returns JSON structured like this:
@@ -819,26 +1035,51 @@ validator | validator name
     "status": 0,
     "message": "OK",
     "crypto": "ecc",
-    "timestamp": 1554884132672,
+    "timestamp": 1557309326894,
     "sig": {
-        "r": "cgQV3td0/uPse5oMyBjcfbXJ6lw9hO3hJAovdxwW2DQ=",
-        "s": "RorA0lqY4t0kCNyezW46SlDflGpc19k35KBhhfoq7K4=",
-        "v": 27
+        "r": "kGvfjb52iroMPZP/UH7Gq0ngzzRwc/sNrzvvxXF0Ro0=",
+        "s": "JMAThiBR+c4lBmu/nC0xNFLiMRemA9wCyZ82bTqnhKQ=",
+        "v": 28
     },
-    "result": [
-        {
-            "delegator": "cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u",
-            "validator": "cosmosvaloper1z7jw2deueg37nd6v3flmn4wy2v3nhz55tsx4y9",
-            "amount": "0.03",
-            "nativeAmount": "30000.000000000000000000"
+    "result": {
+        "data": {
+            "timestampBegin": 0,
+            "timestampFinish": 0
         },
-        {
-            "delegator": "cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u",
-            "validator": "cosmosvaloper1wpw2nrq850mwgrhteh3jwc2g7w9led2hervrfu",
-            "amount": "0.011",
-            "nativeAmount": "11000.000000000000000000"
-        }
-    ]
+        "_id": "5cd2a78ee7fa5b57ab9ddaec",
+        "id": "2428",
+        "coinName": "ATOM",
+        "txid": null,
+        "meta": null,
+        "state": "init",
+        "bizType": "DELEGATE",
+        "type": "ATOM",
+        "coinType": "ATOM",
+        "from": "cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u",
+        "to": "cosmosvaloper1wpw2nrq850mwgrhteh3jwc2g7w9led2hervrfu",
+        "value": "0.1",
+        "sequence": 1557309326848,
+        "confirmations": 0,
+        "create_at": 1557309326881,
+        "update_at": 1557309326884,
+        "action": "delegate",
+        "actionArgs": [
+            "cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u",
+            "cosmosvaloper1wpw2nrq850mwgrhteh3jwc2g7w9led2hervrfu",
+            "0.1"
+        ],
+        "actionResults": [],
+        "n": 0,
+        "fee": "0",
+        "fees": [],
+        "hash": "",
+        "block": -1,
+        "extraData": "",
+        "memo": "",
+        "sendAgain": false,
+        "namespace": "Cosmos",
+        "sid": "V0-ORASYpnLqodqtAAAG"
+    }
 }
 ```
 
@@ -855,14 +1096,37 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.amount | yes | string | delegate value
 data.validator | yes | string | validator to delegate
 data.sequence | yes | number | unique sequence
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
 
 ### Request Re-delegation
 
@@ -935,15 +1199,38 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.amount | yes | string | delegate value
 data.sequence | yes | number | unique sequence
 data.src_validator | yes | string | original validator
 data.dst_validator | yes | string | validator to re-delegate
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
 
 ### Request Undelegation
 
@@ -1015,14 +1302,37 @@ Parameter | Description
 coinName | coin name
 delegator | address requests undelegation
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.amount | yes | string | undelegate value
 data.sequence | yes | number | unique sequence
 data.validator | yes | string | validator undelegate from
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
 
 ### Overall Delegation Status
 
@@ -1070,6 +1380,15 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+delegator | string | the address that performs delegation
+validator | string | validator to delegate to
+amount | string | delegated amount in main token unit
+nativeAmount | string | delegated amount in token unit
+
 ### Delegation Status At Validator
 
 > Request "Delegation Status At Validator" API returns JSON structured like this:
@@ -1110,6 +1429,15 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 validator | validator
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+delegator | string | the address that performs delegation
+validator | string | validator to delegate to
+amount | string | delegated amount in main token unit
+nativeAmount | string | delegated amount in token unit
 
 ### Overall Undelegation Status
 
@@ -1159,6 +1487,19 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+delegator | string | the address that performs delegation
+validator | string | validator delegated to
+creationHeight | string | the block height while undelegation requested
+completionTime | string | undelegation completion time 
+initialNativeAmount | string | reuqested amount to undelegate in token unit
+nativeAmount | string | real-time actual amount that will be undelegated in token unit
+initialAmount | string | reuqested amount to undelegate in main token unit
+amount | string | real-time actual amount that will be undelegated in main token unit
+
 ### Undelegation At Validator
 
 > Request "Undelegation At Validator" API returns JSON structured like this:
@@ -1207,6 +1548,19 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 validator | validator
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+delegator | string | the address that performs delegation
+validator | string | validator delegated to
+creationHeight | string | the block height while undelegation requested
+completionTime | string | undelegation completion time
+initialNativeAmount | string | reuqested amount to undelegate in token unit
+nativeAmount | string | real-time actual amount that will be undelegated in token unit
+initialAmount | string | reuqested amount to undelegate in main token unit
+amount | string | real-time actual amount that will be undelegated in main token unit
 
 ### Fetch Address Validators
 
@@ -1273,6 +1627,24 @@ Parameter | Description
 --------- | ------- 
 coinName | coin name
 delegator | delegate from address
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+name | string | validator name
+address | string | validator's address
+pubkey | string | validator's public key
+jailed | boolean | if the validator is jailed
+status | number | validator's status
+shares | string | validator's shares
+delegationAmount | string | amount delegated to validator
+minSelfDelegation | string | amount delegated to validator by itself
+commission | object | validator's commission
+rate | float | validator's commission rate
+maxRate | float | validator's commission maxRate
+maxChangeRate | float | validator's commission maxChangeRate
+updateAt | string | validator info update time
 
 ### Set Reward Address
 
@@ -1342,13 +1714,35 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.sequence | no | number | unique sequence, required in V2.
 data.address | yes | string | reward address
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
 
 ### Fetch Reward Address
 
@@ -1386,6 +1780,12 @@ Parameter | Description
 --------- | ------- 
 coinName | coin name
 delegator | delegate from address
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+address | string | the address that receives award
 
 ### Claim Reward
 
@@ -1442,7 +1842,7 @@ delegator | delegate from address
 }
 ```
 
-This endpoint enables you to claim reward.
+This endpoint enables you to claim reward at all or specified validators.
 
 *HTTP Request*
 
@@ -1455,13 +1855,35 @@ Parameter | Description
 coinName | coin name
 delegator | delegate from address
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.sequence | no | number | unique sequence, required in V2.
-data.validator | yes | string | validator to claim reward from
+data.validator | no | string | specified validator to claim reward from, claim reward from all if not passed
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
 
 ### Fetch Overall Reward
 
@@ -1491,7 +1913,7 @@ data.validator | yes | string | validator to claim reward from
 }
 ```
 
-This endpoint enables you to fetch reward status from all validators.
+This endpoint enables you to fetch reward status at all validators.
 
 *HTTP Request*
 
@@ -1503,6 +1925,16 @@ Parameter | Description
 --------- | ------- 
 coinName | coin name
 delegator | delegate from address
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+delegator | string | address that performs delegation
+nativeName | string | token
+nativeAmount | string | reward amount in token unit
+coinName | string | main token
+amount | string | reward amount in main token unit
 
 ### Reward At Validator
 
@@ -1533,11 +1965,11 @@ delegator | delegate from address
 }
 ```
 
-This endpoint enables you to fetch reward status at specified validator.
+This endpoint enables you to fetch reward at specified validator.
 
 *HTTP Request*
 
-`GET http://jadepool.example/api/v1/stake/:coinName/rewards/:delegator/claim/:validator`
+`GET http://jadepool.example/api/v1/stake/:coinName/rewards/:delegator/profits/:validator`
 
 *Query Parameters*
 
@@ -1547,7 +1979,26 @@ coinName | coin name
 delegator | delegate from address
 validator | validator
 
-# V2
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+delegator | string | address that performs delegation
+validator | string | validator delegated to
+nativeName | string | token
+nativeAmount | string | reward amount in token unit
+coinName | string | main token
+amount | string | reward amount in main token unit
+
+# V2 API
+
+<aside class="notice">
+All timestamps are in millisecond.
+</aside>
+
+<aside class="notice">
+All main parameters in POST API should be wraped in "data" object
+</aside>
 
 ## Address
 
@@ -1606,13 +2057,23 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.amount | yes | number | number of addresses, range from 1 to 500.
 data.mode | yes | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | number | unique ID in Jadepool's database
+appid | string | application ID, configurable on admin
+type | string | token type of the new address
+address | string | the new address
+state | string | this value does not mean anything for now
+mode | string | address mode
 
 ### Create Single Address
 
@@ -1657,12 +2118,22 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.mode | yes | string | address mode: 'auto', 'deposit', 'deposit_memo', 'normal'
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | number | unique ID in Jadepool's database
+appid | string | application ID, configurable on admin
+type | string | token type of the new address
+address | string | the new address
+state | string | this value does not mean anything for now
+mode | string | address mode
 
 ### Validate Address
 
@@ -1701,12 +2172,18 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.address | yes | string | address to validate
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+address | string | the address to validate
+valid | boolean | the address is valid or not
 
 ### Force Free
 
@@ -1773,13 +2250,28 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 
-*Request Body Parameters*
+*Response Result*
 
-Parameter | Required | Type | Description
---------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
-data.address | yes | string | address to validate
-data.sequence | yes | number | unique request sequence
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
 
 ### Force Obtain
 
@@ -1846,14 +2338,36 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.address | yes | string | address to validate
 data.sequence | yes | number | unique request sequence
 data.value | yes | string | force obtain value
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
 
 ### Fetch Incomplete Orders
 
@@ -1922,6 +2436,29 @@ coinName | coin name
 address | related address
 state | optional, can be one of the incomplete order states: 'init', 'holding', 'online', 'pending'
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+
 ### Fetch Address Balance
 
 > Request "Fetch Address Balance" API returns JSON structured like this:
@@ -1958,6 +2495,12 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 address | related address
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+balance | string | the address' balance on blockchain
 
 ### Fetch Address Info
 
@@ -2002,6 +2545,17 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 address | related address
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | number | unique ID in Jadepool's database
+appid | string | application ID, configurable on admin
+type | string | token type of the new address
+address | string | the new address
+state | string | this value does not mean anything for now
+mode | string | address mode
 
 ## Audit
 
@@ -2071,6 +2625,41 @@ Parameter | Description
 --------- | -------
 id | audit order ID
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+calculated | boolean | if the auditing is finished
+deposit_total | string | total deposit token value
+deposit_num | number | total deposit times
+withdraw_total | string | total withdraw token value
+withdraw_num | number | total withdraw times
+sweep_total | string | total sweep token value
+sweep_num | number | total sweep times
+sweep_internal_total | string | total sweep_internal token value
+sweep_internal_num | number | total sweep_internal times
+airdrop_total | string | total airdrop token value
+airdrop_num | number | total airdrop times
+recharge_total | string | total recharge token value
+recharge_num | number | total recharge times
+recharge_internal_total | string | total recharge_internal token value
+recharge_internal_num | number | total recharge_internal times
+recharge_unknown_total | string | total recharge_unknown token value
+recharge_unknown_num | number | total recharge_unknown times
+recharge_special_total | string | total recharge_special token value
+recharge_special_num | number | total recharge_special times
+failed_withdraw_num | number | total failed withdraw times
+failed_sweep_num | number | total failed sweep times
+failed_sweep_internal_num | number | total failed sweep_internal times
+fees | array | all type of fees burned
+type | string | the audited token type
+timestamp | number | the audited timestamp
+blocknumber | number | corresponding block near the audited timestamp
+appid | string | application ID
+calc_order_num | number | audited order number
+last | string | audit order ID of the previous audit
+id | string | audit order ID of the current audit
+
 ### Audited Orders
 
 > Request "Audited Orders" API returns JSON structured like this:
@@ -2138,6 +2727,30 @@ Parameter | Description
 --------- | ------- 
 id | audit order ID
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
+
 ## Order
 
 ### Fetch Order
@@ -2202,9 +2815,33 @@ Parameter | Description
 --------- | ------- 
 id | order ID
 
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
+
 ## Wallet
 
-### Fetch wallet Status
+### Fetch Wallet Status
 
 > Request "Fetch wallet Status" API returns JSON structured like this:
 
@@ -2243,6 +2880,16 @@ This endpoint enables you to fetch balance details of any enabled token.
 Parameter | Description
 --------- | ------- 
 coinName | coin name
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+balance | string | total balance
+balanceAvailable | string | balance available for outgoing transfer
+balanceUnavailable | string | balance unavailable for outgoing transfer
+update_at | number | the balance update time
+addressesWithBalance | number | number of addresses that have balance
 
 ### Request Withdrawal
 
@@ -2309,16 +2956,39 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.to | yes | string | withdrawal address
 data.value | yes | string | value to withdraw
 data.sequence | yes | number | unique API nonce for each app ID
 data.auth | no | string | authentication for coin, only for HSM
 data.extraData | no | string | callback url
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
 
 ### Audit For Specified Coin
 
@@ -2359,12 +3029,20 @@ Parameter | Description
 --------- | --------- 
 coinName | coin name
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.audittime | yes | number | audit timestamp
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+type | string | the audited token type
+id | string | audit order ID of the current/last audit
+timestamp | number | the audited timestamp
+blocknumber | number | corresponding block near the audited timestamp
 
 ## Wallets
 
@@ -2403,13 +3081,242 @@ This endpoint enables you to request audit of all tokens.
 
 `POST http://jadepool.example/api/v2/wallets/audit`
 
-*Request Body Parameters*
+*Main Parameters*
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data | yes | object | block of core request parameters
 data.audittime | yes | number | audit timestamp
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+type | string | the audited token type
+id | string | audit order ID of the current/last audit
+timestamp | number | the audited timestamp
+blocknumber | number | corresponding block near the audited timestamp
 
 ## Delegation
 
 Same as [V1] (#delegation), except that sequence is required in every API.
+
+# Callback(Notification)
+
+<aside class="notice">
+All timestamps are in millisecond.
+</aside>
+
+## Order
+
+> Order notification sends JSON structured like this:
+
+```json
+{  
+   "code":0,
+   "status":0,
+   "message":"OK",
+   "crypto":"ecc",
+   "timestamp":1557286096399,
+   "sig":{  
+      "r":"WiTkCfTdBCGWHsMdd0sLiOZ536Zo013xnfUxHtFMkEk=",
+      "s":"WvJHFQucDaOIZ8HkpW3xJiCBXh1eoIdlw4Hh/n0IXDE=",
+      "v":28
+   },
+   "result":{  
+      "_id":"5cd24caaa57c8d32ee301222",
+      "id":"108",
+      "coinName":"NASH",
+      "txid":"0x662c73a8361acee47a267f580a55da9d7bbc720bb070bfd25baf765f79c2f019",
+      "meta":null,
+      "state":"pending",
+      "bizType":"WITHDRAW",
+      "type":"ETH",
+      "subType":"NASH",
+      "coinType":"NASH",
+      "from":"0x9b878f3c613c77b50ccebd67faf6d7afd46de8ae",
+      "to":"0x9cf16ecf95d707bd19a8e7f96e4fd93bd66e8c46",
+      "value":"0.2",
+      "sequence":11,
+      "confirmations":19,
+      "create_at":1557286058120,
+      "update_at":1557286084437,
+      "actionArgs":[  
+
+      ],
+      "actionResults":[  
+
+      ],
+      "n":0,
+      "fee":"0.00040597",
+      "fees":[  
+         {  
+            "_id":"5cd24ccea57c8d32ee301247",
+            "amount":"0.00040597",
+            "coinName":"ETH",
+            "nativeAmount":"0",
+            "nativeName":""
+         }
+      ],
+      "data":{  
+         "timestampBegin":1557286074480,
+         "timestampFinish":0,
+         "nonce":932,
+         "type":"Ethereum",
+         "hash":"0x662c73a8361acee47a267f580a55da9d7bbc720bb070bfd25baf765f79c2f019",
+         "blockNumber":8262212,
+         "blockHash":"0x0c946f37a4c18935b75f9c7eb714c4d970f1d6d7be47158a5a29131d7f8bf6df",
+         "from":[  
+            {  
+               "address":"0x9b878f3c613c77b50ccebd67faf6d7afd46de8ae",
+               "value":"0.2",
+               "asset":"NASH"
+            }
+         ],
+         "to":[  
+            {  
+               "address":"0x9cf16ecf95d707bd19a8e7f96e4fd93bd66e8c46",
+               "value":"0.2",
+               "asset":"NASH"
+            }
+         ],
+         "fee":"0.00040597",
+         "confirmations":19
+      },
+      "hash":"0x662c73a8361acee47a267f580a55da9d7bbc720bb070bfd25baf765f79c2f019",
+      "block":8262212,
+      "extraData":"",
+      "memo":"",
+      "sendAgain":false
+   }
+}
+```
+
+Data block enables you to get latest information about the transaction.
+
+*Callbck Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
+
+## Audit
+
+> Audit notification sends JSON structured like this:
+
+```json
+{  
+   "code":0,
+   "status":0,
+   "message":"OK",
+   "crypto":"ecc",
+   "timestamp":1557287400245,
+   "sig":{  
+      "r":"nQ7wFEn2X5XCZPVgff54gT9dbMIhqAX1+V2rwPahT6A=",
+      "s":"f3Lj6sB1gRMlgiXFZHatFK6poZul5r84tfG96S62YXc=",
+      "v":27
+   },
+   "result":{  
+      "current":{  
+         "id":"5cd251e8a57c8d32ee301756",
+         "type":"NASH",
+         "blocknumber":8263478,
+         "timestamp":1557287400245,
+         "deposit_total":"0",
+         "withdraw_total":"0",
+         "fee_total":"0",
+         "internal_fee":"0",
+         "internal_num":0
+      },
+      "calculated":true,
+      "deposit_total":"0",
+      "deposit_num":0,
+      "withdraw_total":"0",
+      "withdraw_num":0,
+      "sweep_total":"0",
+      "sweep_num":0,
+      "sweep_internal_total":"0",
+      "sweep_internal_num":0,
+      "airdrop_total":"0",
+      "airdrop_num":0,
+      "recharge_total":"0",
+      "recharge_num":0,
+      "recharge_internal_total":"0",
+      "recharge_internal_num":0,
+      "recharge_unknown_total":"0",
+      "recharge_unknown_num":0,
+      "recharge_special_total":"0",
+      "recharge_special_num":0,
+      "failed_withdraw_num":0,
+      "failed_sweep_num":0,
+      "failed_sweep_internal_num":0,
+      "fees":[  
+
+      ],
+      "type":"NASH",
+      "timestamp":1557287400245,
+      "blocknumber":8263478,
+      "appid":"pri",
+      "create_at":"2019-05-08T03:50:00.281Z",
+      "update_at":"2019-05-08T03:50:04.648Z",
+      "__v":0,
+      "last":"5cd251a5a57c8d32ee301714",
+      "calc_order_num":0,
+      "id":"5cd251e8a57c8d32ee301756"
+   }
+}
+```
+
+Delegation related orders are not audited for now. 
+
+*Callback Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+calculated | boolean | if the auditing is finished
+deposit_total | string | total deposit token value
+deposit_num | number | total deposit times
+withdraw_total | string | total withdraw token value
+withdraw_num | number | total withdraw times
+sweep_total | string | total sweep token value
+sweep_num | number | total sweep times
+sweep_internal_total | string | total sweep_internal token value
+sweep_internal_num | number | total sweep_internal times
+airdrop_total | string | total airdrop token value
+airdrop_num | number | total airdrop times
+recharge_total | string | total recharge token value
+recharge_num | number | total recharge times
+recharge_internal_total | string | total recharge_internal token value
+recharge_internal_num | number | total recharge_internal times
+recharge_unknown_total | string | total recharge_unknown token value
+recharge_unknown_num | number | total recharge_unknown times
+recharge_special_total | string | total recharge_special token value
+recharge_special_num | number | total recharge_special times
+failed_withdraw_num | number | total failed withdraw times
+failed_sweep_num | number | total failed sweep times
+failed_sweep_internal_num | number | total failed sweep_internal times
+fees | array | all type of fees burned
+type | string | the audited token type
+timestamp | number | the audited timestamp
+blocknumber | number | corresponding block near the audited timestamp
+appid | string | application ID
+calc_order_num | number | audited order number
+last | string | audit order ID of the previous audit
+id | string | audit order ID of the current audit
