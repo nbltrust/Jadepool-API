@@ -222,7 +222,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#general-structure" class="toc-h1 toc-link" data-title="General Structure">General Structure</a>
+            <a href="#request-amp-response-structure" class="toc-h1 toc-link" data-title="Request &amp; Response Structure">Request &amp; Response Structure</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#post-request" class="toc-h2 toc-link" data-title="POST Request">POST Request</a>
@@ -236,7 +236,7 @@
               </ul>
           </li>
           <li>
-            <a href="#v1" class="toc-h1 toc-link" data-title="V1">V1</a>
+            <a href="#v1-api" class="toc-h1 toc-link" data-title="V1 API">V1 API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#address" class="toc-h2 toc-link" data-title="Address">Address</a>
@@ -295,7 +295,7 @@
                             <a href="#fetch-specified-validator" class="toc-h3 toc-link" data-title="Fetch Specified Validator">Fetch Specified Validator</a>
                           </li>
                           <li>
-                            <a href="#fetch-reward-with-validator" class="toc-h3 toc-link" data-title="Fetch Reward With Validator">Fetch Reward With Validator</a>
+                            <a href="#outstanding-reward-at-validator" class="toc-h3 toc-link" data-title="Outstanding Reward At Validator">Outstanding Reward At Validator</a>
                           </li>
                           <li>
                             <a href="#request-delegation" class="toc-h3 toc-link" data-title="Request Delegation">Request Delegation</a>
@@ -341,7 +341,7 @@
               </ul>
           </li>
           <li>
-            <a href="#v2" class="toc-h1 toc-link" data-title="V2">V2</a>
+            <a href="#v2-api" class="toc-h1 toc-link" data-title="V2 API">V2 API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#address-2" class="toc-h2 toc-link" data-title="Address">Address</a>
@@ -395,7 +395,7 @@
                     <a href="#wallet-2" class="toc-h2 toc-link" data-title="Wallet">Wallet</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#fetch-wallet-status-2" class="toc-h3 toc-link" data-title="Fetch wallet Status">Fetch wallet Status</a>
+                            <a href="#fetch-wallet-status-2" class="toc-h3 toc-link" data-title="Fetch Wallet Status">Fetch Wallet Status</a>
                           </li>
                           <li>
                             <a href="#request-withdrawal-2" class="toc-h3 toc-link" data-title="Request Withdrawal">Request Withdrawal</a>
@@ -419,6 +419,17 @@
               </ul>
           </li>
           <li>
+            <a href="#callback-notification" class="toc-h1 toc-link" data-title="Callback(Notification)">Callback(Notification)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-2" class="toc-h2 toc-link" data-title="Order">Order</a>
+                  </li>
+                  <li>
+                    <a href="#audit-3" class="toc-h2 toc-link" data-title="Audit">Audit</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -437,7 +448,7 @@ to V2 APIs along our development cycle. Check out our <a href="https://github.co
 
 <p>Feel free to check out our <a href="https://github.com/nbltrust/jadepool-sdk-nodejs">NodeJs SDK</a> and <a href="https://github.com/nbltrust/jadepool-sdk-java">Java SDK</a>. SDK only supports
 V1 for now.</p>
-<h1 id='general-structure'>General Structure</h1><h2 id='post-request'>POST Request</h2>
+<h1 id='request-amp-response-structure'>Request &amp; Response Structure</h1><h2 id='post-request'>POST Request</h2>
 <blockquote>
 <p>&quot;Request withdrawal&quot; example:</p>
 </blockquote>
@@ -471,7 +482,7 @@ V1 for now.</p>
 <td>data</td>
 <td>yes</td>
 <td>object</td>
-<td>block of core request parameters</td>
+<td>data block that main parameters should be wrapped in</td>
 </tr>
 <tr>
 <td>appid</td>
@@ -483,13 +494,13 @@ V1 for now.</p>
 <td>timestamp</td>
 <td>yes</td>
 <td>number</td>
-<td>the timestamp used for signing</td>
+<td>the timestamp client used for signing</td>
 </tr>
 <tr>
 <td>sig</td>
 <td>yes</td>
 <td>string</td>
-<td>ECC signature</td>
+<td>client&#39;s ECC signature</td>
 </tr>
 <tr>
 <td>encode</td>
@@ -539,13 +550,13 @@ V1 for now.</p>
 <td>timestamp</td>
 <td>yes</td>
 <td>number</td>
-<td>the timestamp used for signing</td>
+<td>the timestamp client used for signing</td>
 </tr>
 <tr>
 <td>sig</td>
 <td>yes</td>
 <td>string</td>
-<td>ECC signature</td>
+<td>client&#39;s ECC signature</td>
 </tr>
 <tr>
 <td>encode</td>
@@ -629,12 +640,35 @@ V1 for now.</p>
 <td>&quot;OK&quot; if succeeds. Otherwise it shows corresponding error message in <a href="#errors">Errors</a></td>
 </tr>
 <tr>
+<td>crypto</td>
+<td>string</td>
+<td>Only &quot;ecc&quot; is supported for now</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>the timestamp Jadepool used for signing</td>
+</tr>
+<tr>
+<td>sig</td>
+<td>object</td>
+<td>Jadepool&#39;s ECC signature</td>
+</tr>
+<tr>
 <td>result</td>
 <td>object</td>
 <td>response contents</td>
 </tr>
 </tbody></table>
-<h1 id='v1'>V1</h1><h2 id='address'>Address</h2><h3 id='create-multiple-addresses'>Create Multiple Addresses</h3>
+<h1 id='v1-api'>V1 API</h1>
+<aside class="notice">
+All timestamps are in millisecond.
+</aside>
+
+<aside class="notice">
+All main parameters in POST API should be wraped in "data" object
+</aside>
+<h2 id='address'>Address</h2><h3 id='create-multiple-addresses'>Create Multiple Addresses</h3>
 <blockquote>
 <p>Request &quot;Create Multiple Addresses&quot; API returns JSON structured like this:</p>
 </blockquote>
@@ -681,7 +715,7 @@ V1 for now.</p>
 
 <p><code>POST http://jadepool.example/api/v1/addresses/batchnew</code></p>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -691,12 +725,6 @@ V1 for now.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.type</td>
 <td>yes</td>
@@ -720,6 +748,47 @@ V1 for now.</p>
 <td>no</td>
 <td>string</td>
 <td>callback url</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>unique ID in Jadepool&#39;s database</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID, configurable on admin</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>token type of the new address</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the new address</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>this value does not mean anything for now</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>address mode</td>
 </tr>
 </tbody></table>
 <h3 id='create-single-address'>Create Single Address</h3>
@@ -757,7 +826,7 @@ V1 for now.</p>
 
 <p><code>POST http://jadepool.example/api/v1/addresses/new</code></p>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -767,12 +836,6 @@ V1 for now.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.type</td>
 <td>yes</td>
@@ -790,6 +853,47 @@ V1 for now.</p>
 <td>no</td>
 <td>string</td>
 <td>callback url</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>unique ID in Jadepool&#39;s database</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID, configurable on admin</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>token type of the new address</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the new address</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>this value does not mean anything for now</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>address mode</td>
 </tr>
 </tbody></table>
 <h3 id='validate-address'>Validate Address</h3>
@@ -821,7 +925,7 @@ V1 for now.</p>
 
 <p><code>POST http://jadepool.example/api/v1/addresses/verify</code></p>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -831,12 +935,6 @@ V1 for now.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.type</td>
 <td>yes</td>
@@ -848,6 +946,27 @@ V1 for now.</p>
 <td>yes</td>
 <td>string</td>
 <td>address to validate</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the address to validate</td>
+</tr>
+<tr>
+<td>valid</td>
+<td>boolean</td>
+<td>the address is valid or not</td>
 </tr>
 </tbody></table>
 <h2 id='audit'>Audit</h2><h3 id='fetch-audit-order'>Fetch Audit Order</h3>
@@ -921,6 +1040,167 @@ V1 for now.</p>
 <td>audit order ID</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>calculated</td>
+<td>boolean</td>
+<td>if the auditing is finished</td>
+</tr>
+<tr>
+<td>deposit_total</td>
+<td>string</td>
+<td>total deposit token value</td>
+</tr>
+<tr>
+<td>deposit_num</td>
+<td>number</td>
+<td>total deposit times</td>
+</tr>
+<tr>
+<td>withdraw_total</td>
+<td>string</td>
+<td>total withdraw token value</td>
+</tr>
+<tr>
+<td>withdraw_num</td>
+<td>number</td>
+<td>total withdraw times</td>
+</tr>
+<tr>
+<td>sweep_total</td>
+<td>string</td>
+<td>total sweep token value</td>
+</tr>
+<tr>
+<td>sweep_num</td>
+<td>number</td>
+<td>total sweep times</td>
+</tr>
+<tr>
+<td>sweep_internal_total</td>
+<td>string</td>
+<td>total sweep_internal token value</td>
+</tr>
+<tr>
+<td>sweep_internal_num</td>
+<td>number</td>
+<td>total sweep_internal times</td>
+</tr>
+<tr>
+<td>airdrop_total</td>
+<td>string</td>
+<td>total airdrop token value</td>
+</tr>
+<tr>
+<td>airdrop_num</td>
+<td>number</td>
+<td>total airdrop times</td>
+</tr>
+<tr>
+<td>recharge_total</td>
+<td>string</td>
+<td>total recharge token value</td>
+</tr>
+<tr>
+<td>recharge_num</td>
+<td>number</td>
+<td>total recharge times</td>
+</tr>
+<tr>
+<td>recharge_internal_total</td>
+<td>string</td>
+<td>total recharge_internal token value</td>
+</tr>
+<tr>
+<td>recharge_internal_num</td>
+<td>number</td>
+<td>total recharge_internal times</td>
+</tr>
+<tr>
+<td>recharge_unknown_total</td>
+<td>string</td>
+<td>total recharge_unknown token value</td>
+</tr>
+<tr>
+<td>recharge_unknown_num</td>
+<td>number</td>
+<td>total recharge_unknown times</td>
+</tr>
+<tr>
+<td>recharge_special_total</td>
+<td>string</td>
+<td>total recharge_special token value</td>
+</tr>
+<tr>
+<td>recharge_special_num</td>
+<td>number</td>
+<td>total recharge_special times</td>
+</tr>
+<tr>
+<td>failed_withdraw_num</td>
+<td>number</td>
+<td>total failed withdraw times</td>
+</tr>
+<tr>
+<td>failed_sweep_num</td>
+<td>number</td>
+<td>total failed sweep times</td>
+</tr>
+<tr>
+<td>failed_sweep_internal_num</td>
+<td>number</td>
+<td>total failed sweep_internal times</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all type of fees burned</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the audited token type</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>the audited timestamp</td>
+</tr>
+<tr>
+<td>blocknumber</td>
+<td>number</td>
+<td>corresponding block near the audited timestamp</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID</td>
+</tr>
+<tr>
+<td>calc_order_num</td>
+<td>number</td>
+<td>audited order number</td>
+</tr>
+<tr>
+<td>last</td>
+<td>string</td>
+<td>audit order ID of the previous audit</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>audit order ID of the current audit</td>
+</tr>
+</tbody></table>
 <h3 id='request-audit'>Request audit</h3>
 <blockquote>
 <p>Request &quot;Request audit&quot; API returns JSON structured like this:</p>
@@ -930,23 +1210,28 @@ V1 for now.</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556008371920</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557298936621</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tCWtyZLol3gTEjWsRThfltjxe7rWB0m1c5oiIeFCaPE="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UXCLuRMQsSDbU0xfo6dVfcADzIjAnVL5bJS5M/XqFuU="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ul3ss7f53UfspW90IgdUXTouhVi9c2Z4tyd9JpWoF9E="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Umm40vdnKymEaUrOw6zxZ6c8g/8L8ERO9TYRgdUEIdQ="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbecdb38d1607c10ddddb49"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9921056</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cd27ef846d3a66f7c08d851"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1513223</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557298927000</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cc4a6b074a1172be751343e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512837</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556380800000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uJK8Pk6LUltIu4epAAAB"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -956,7 +1241,7 @@ V1 for now.</p>
 
 <p><code>POST http://jadepool.example/api/v1/audits</code></p>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -966,12 +1251,6 @@ V1 for now.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.type</td>
 <td>yes</td>
@@ -989,6 +1268,52 @@ V1 for now.</p>
 <td>no</td>
 <td>string</td>
 <td>callback url</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the audited token type</td>
+</tr>
+<tr>
+<td>current</td>
+<td>object</td>
+<td>info of the current audit order</td>
+</tr>
+<tr>
+<td>last</td>
+<td>object</td>
+<td>info of the previous audit order</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>audit order ID of the current/last audit</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the audited token type</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>the audited timestamp</td>
+</tr>
+<tr>
+<td>blocknumber</td>
+<td>number</td>
+<td>corresponding block near the audited timestamp</td>
 </tr>
 </tbody></table>
 <h3 id='audited-orders'>Audited Orders</h3>
@@ -1063,6 +1388,112 @@ V1 for now.</p>
 <td>audit order ID</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
+</tr>
+</tbody></table>
 <h2 id='transaction'>Transaction</h2><h3 id='request-withdrawal'>Request Withdrawal</h3>
 <blockquote>
 <p>Request &quot;Request Withdrawal&quot; API returns JSON structured like this:</p>
@@ -1119,7 +1550,7 @@ V1 for now.</p>
 
 <p><code>POST http://jadepool.example/api/v1/transactions</code></p>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -1129,12 +1560,6 @@ V1 for now.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.type</td>
 <td>yes</td>
@@ -1176,6 +1601,112 @@ V1 for now.</p>
 <td>no</td>
 <td>string</td>
 <td>callback url</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
 </tr>
 </tbody></table>
 <h3 id='fetch-order'>Fetch Order</h3>
@@ -1253,6 +1784,112 @@ V1 for now.</p>
 <td>order ID</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
+</tr>
+</tbody></table>
 <h2 id='wallet'>Wallet</h2><h3 id='fetch-wallet-status'>Fetch Wallet Status</h3>
 <blockquote>
 <p>Request &quot;Fetch Wallet Status&quot; API returns JSON structured like this:</p>
@@ -1298,8 +1935,44 @@ V1 for now.</p>
 <td>coin name</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>balance</td>
+<td>string</td>
+<td>total balance</td>
+</tr>
+<tr>
+<td>balanceAvailable</td>
+<td>string</td>
+<td>balance available for outgoing transfer</td>
+</tr>
+<tr>
+<td>balanceUnavailable</td>
+<td>string</td>
+<td>balance unavailable for outgoing transfer</td>
+</tr>
+<tr>
+<td>update_at</td>
+<td>number</td>
+<td>the balance update time</td>
+</tr>
+<tr>
+<td>addressesWithBalance</td>
+<td>number</td>
+<td>number of addresses that have balance</td>
+</tr>
+</tbody></table>
 <h2 id='delegation'>Delegation</h2>
-<aside class="notice">
+<aside class="warning">
 Query parameter "coinName" in every delegation API must be the main token that can be delegated to validators. Otherwise
 request will be rejected.
 </aside>
@@ -1373,6 +2046,82 @@ request will be rejected.
 <td>coin name</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>validator name</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>validator&#39;s address</td>
+</tr>
+<tr>
+<td>pubkey</td>
+<td>string</td>
+<td>validator&#39;s public key</td>
+</tr>
+<tr>
+<td>jailed</td>
+<td>boolean</td>
+<td>if the validator is jailed</td>
+</tr>
+<tr>
+<td>status</td>
+<td>number</td>
+<td>validator&#39;s status</td>
+</tr>
+<tr>
+<td>shares</td>
+<td>string</td>
+<td>validator&#39;s shares</td>
+</tr>
+<tr>
+<td>delegationAmount</td>
+<td>string</td>
+<td>amount delegated to validator</td>
+</tr>
+<tr>
+<td>minSelfDelegation</td>
+<td>string</td>
+<td>amount delegated to validator by itself</td>
+</tr>
+<tr>
+<td>commission</td>
+<td>object</td>
+<td>validator&#39;s commission</td>
+</tr>
+<tr>
+<td>rate</td>
+<td>float</td>
+<td>validator&#39;s commission rate</td>
+</tr>
+<tr>
+<td>maxRate</td>
+<td>float</td>
+<td>validator&#39;s commission maxRate</td>
+</tr>
+<tr>
+<td>maxChangeRate</td>
+<td>float</td>
+<td>validator&#39;s commission maxChangeRate</td>
+</tr>
+<tr>
+<td>updateAt</td>
+<td>string</td>
+<td>validator info update time</td>
+</tr>
+</tbody></table>
 <h3 id='fetch-specified-validator'>Fetch Specified Validator</h3>
 <blockquote>
 <p>Request &quot;Fetch Specified Validator&quot; API returns JSON structured like this:</p>
@@ -1431,7 +2180,83 @@ request will be rejected.
 <td>validator name</td>
 </tr>
 </tbody></table>
-<h3 id='fetch-reward-with-validator'>Fetch Reward With Validator</h3>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>validator name</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>validator&#39;s address</td>
+</tr>
+<tr>
+<td>pubkey</td>
+<td>string</td>
+<td>validator&#39;s public key</td>
+</tr>
+<tr>
+<td>jailed</td>
+<td>boolean</td>
+<td>if the validator is jailed</td>
+</tr>
+<tr>
+<td>status</td>
+<td>number</td>
+<td>validator&#39;s status</td>
+</tr>
+<tr>
+<td>shares</td>
+<td>string</td>
+<td>validator&#39;s shares</td>
+</tr>
+<tr>
+<td>delegationAmount</td>
+<td>string</td>
+<td>amount delegated to validator</td>
+</tr>
+<tr>
+<td>minSelfDelegation</td>
+<td>string</td>
+<td>amount delegated to validator by itself</td>
+</tr>
+<tr>
+<td>commission</td>
+<td>object</td>
+<td>validator&#39;s commission</td>
+</tr>
+<tr>
+<td>rate</td>
+<td>float</td>
+<td>validator&#39;s commission rate</td>
+</tr>
+<tr>
+<td>maxRate</td>
+<td>float</td>
+<td>validator&#39;s commission maxRate</td>
+</tr>
+<tr>
+<td>maxChangeRate</td>
+<td>float</td>
+<td>validator&#39;s commission maxChangeRate</td>
+</tr>
+<tr>
+<td>updateAt</td>
+<td>string</td>
+<td>validator info update time</td>
+</tr>
+</tbody></table>
+<h3 id='outstanding-reward-at-validator'>Outstanding Reward At Validator</h3>
 <blockquote>
 <p>Request &quot;Fetch Reward With Validator&quot; API returns JSON structured like this:</p>
 </blockquote>
@@ -1457,7 +2282,7 @@ request will be rejected.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint enables you to fetch reward amount at a specified validator.</p>
+<p>This endpoint enables you to fetch everyone&#39;s total reward amount at a specified validator.</p>
 
 <p><em>HTTP Request</em></p>
 
@@ -1480,6 +2305,42 @@ request will be rejected.
 <td>validator name</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>validator</td>
+<td>string</td>
+<td>validator name</td>
+</tr>
+<tr>
+<td>nativeName</td>
+<td>string</td>
+<td>token</td>
+</tr>
+<tr>
+<td>nativeAmount</td>
+<td>string</td>
+<td>total reward amount in token unit</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>main token</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>total reward amount in main token unit</td>
+</tr>
+</tbody></table>
 <h3 id='request-delegation'>Request Delegation</h3>
 <blockquote>
 <p>Request &quot;Request Delegation&quot; API returns JSON structured like this:</p>
@@ -1489,26 +2350,51 @@ request will be rejected.
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1554884132672</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557309326894</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cgQV3td0/uPse5oMyBjcfbXJ6lw9hO3hJAovdxwW2DQ="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RorA0lqY4t0kCNyezW46SlDflGpc19k35KBhhfoq7K4="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kGvfjb52iroMPZP/UH7Gq0ngzzRwc/sNrzvvxXF0Ro0="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JMAThiBR+c4lBmu/nC0xNFLiMRemA9wCyZ82bTqnhKQ="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"delegator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"validator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cosmosvaloper1z7jw2deueg37nd6v3flmn4wy2v3nhz55tsx4y9"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nativeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000.000000000000000000"</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"delegator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"validator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cosmosvaloper1wpw2nrq850mwgrhteh3jwc2g7w9led2hervrfu"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.011"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nativeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11000.000000000000000000"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cd2a78ee7fa5b57ab9ddaec"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2428"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATOM"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELEGATE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATOM"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATOM"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cosmosvaloper1wpw2nrq850mwgrhteh3jwc2g7w9led2hervrfu"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557309326848</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557309326881</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557309326884</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delegate"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"cosmos1hrnl5pugag20gnu8zy3604jetqrjaf60czkl8u"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cosmosvaloper1wpw2nrq850mwgrhteh3jwc2g7w9led2hervrfu"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cosmos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V0-ORASYpnLqodqtAAAG"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint enables you to request delegation.</p>
@@ -1535,7 +2421,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -1545,12 +2431,6 @@ request will be rejected.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.amount</td>
 <td>yes</td>
@@ -1568,6 +2448,112 @@ request will be rejected.
 <td>yes</td>
 <td>number</td>
 <td>unique sequence</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
 </tr>
 </tbody></table>
 <h3 id='request-re-delegation'>Request Re-delegation</h3>
@@ -1650,7 +2636,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -1660,12 +2646,6 @@ request will be rejected.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.amount</td>
 <td>yes</td>
@@ -1689,6 +2669,112 @@ request will be rejected.
 <td>yes</td>
 <td>string</td>
 <td>validator to re-delegate</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
 </tr>
 </tbody></table>
 <h3 id='request-undelegation'>Request Undelegation</h3>
@@ -1770,7 +2856,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -1780,12 +2866,6 @@ request will be rejected.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.amount</td>
 <td>yes</td>
@@ -1803,6 +2883,112 @@ request will be rejected.
 <td>yes</td>
 <td>string</td>
 <td>validator undelegate from</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
 </tr>
 </tbody></table>
 <h3 id='overall-delegation-status'>Overall Delegation Status</h3>
@@ -1859,6 +3045,37 @@ request will be rejected.
 <td>delegate from address</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>delegator</td>
+<td>string</td>
+<td>the address that performs delegation</td>
+</tr>
+<tr>
+<td>validator</td>
+<td>string</td>
+<td>validator to delegate to</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>delegated amount in main token unit</td>
+</tr>
+<tr>
+<td>nativeAmount</td>
+<td>string</td>
+<td>delegated amount in token unit</td>
+</tr>
+</tbody></table>
 <h3 id='delegation-status-at-validator'>Delegation Status At Validator</h3>
 <blockquote>
 <p>Request &quot;Delegation Status At Validator&quot; API returns JSON structured like this:</p>
@@ -1909,6 +3126,37 @@ request will be rejected.
 <tr>
 <td>validator</td>
 <td>validator</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>delegator</td>
+<td>string</td>
+<td>the address that performs delegation</td>
+</tr>
+<tr>
+<td>validator</td>
+<td>string</td>
+<td>validator to delegate to</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>delegated amount in main token unit</td>
+</tr>
+<tr>
+<td>nativeAmount</td>
+<td>string</td>
+<td>delegated amount in token unit</td>
 </tr>
 </tbody></table>
 <h3 id='overall-undelegation-status'>Overall Undelegation Status</h3>
@@ -1965,6 +3213,57 @@ request will be rejected.
 <tr>
 <td>delegator</td>
 <td>delegate from address</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>delegator</td>
+<td>string</td>
+<td>the address that performs delegation</td>
+</tr>
+<tr>
+<td>validator</td>
+<td>string</td>
+<td>validator delegated to</td>
+</tr>
+<tr>
+<td>creationHeight</td>
+<td>string</td>
+<td>the block height while undelegation requested</td>
+</tr>
+<tr>
+<td>completionTime</td>
+<td>string</td>
+<td>undelegation completion time</td>
+</tr>
+<tr>
+<td>initialNativeAmount</td>
+<td>string</td>
+<td>reuqested amount to undelegate in token unit</td>
+</tr>
+<tr>
+<td>nativeAmount</td>
+<td>string</td>
+<td>real-time actual amount that will be undelegated in token unit</td>
+</tr>
+<tr>
+<td>initialAmount</td>
+<td>string</td>
+<td>reuqested amount to undelegate in main token unit</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>real-time actual amount that will be undelegated in main token unit</td>
 </tr>
 </tbody></table>
 <h3 id='undelegation-at-validator'>Undelegation At Validator</h3>
@@ -2025,6 +3324,57 @@ request will be rejected.
 <tr>
 <td>validator</td>
 <td>validator</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>delegator</td>
+<td>string</td>
+<td>the address that performs delegation</td>
+</tr>
+<tr>
+<td>validator</td>
+<td>string</td>
+<td>validator delegated to</td>
+</tr>
+<tr>
+<td>creationHeight</td>
+<td>string</td>
+<td>the block height while undelegation requested</td>
+</tr>
+<tr>
+<td>completionTime</td>
+<td>string</td>
+<td>undelegation completion time</td>
+</tr>
+<tr>
+<td>initialNativeAmount</td>
+<td>string</td>
+<td>reuqested amount to undelegate in token unit</td>
+</tr>
+<tr>
+<td>nativeAmount</td>
+<td>string</td>
+<td>real-time actual amount that will be undelegated in token unit</td>
+</tr>
+<tr>
+<td>initialAmount</td>
+<td>string</td>
+<td>reuqested amount to undelegate in main token unit</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>real-time actual amount that will be undelegated in main token unit</td>
 </tr>
 </tbody></table>
 <h3 id='fetch-address-validators'>Fetch Address Validators</h3>
@@ -2099,6 +3449,82 @@ request will be rejected.
 <tr>
 <td>delegator</td>
 <td>delegate from address</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>validator name</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>validator&#39;s address</td>
+</tr>
+<tr>
+<td>pubkey</td>
+<td>string</td>
+<td>validator&#39;s public key</td>
+</tr>
+<tr>
+<td>jailed</td>
+<td>boolean</td>
+<td>if the validator is jailed</td>
+</tr>
+<tr>
+<td>status</td>
+<td>number</td>
+<td>validator&#39;s status</td>
+</tr>
+<tr>
+<td>shares</td>
+<td>string</td>
+<td>validator&#39;s shares</td>
+</tr>
+<tr>
+<td>delegationAmount</td>
+<td>string</td>
+<td>amount delegated to validator</td>
+</tr>
+<tr>
+<td>minSelfDelegation</td>
+<td>string</td>
+<td>amount delegated to validator by itself</td>
+</tr>
+<tr>
+<td>commission</td>
+<td>object</td>
+<td>validator&#39;s commission</td>
+</tr>
+<tr>
+<td>rate</td>
+<td>float</td>
+<td>validator&#39;s commission rate</td>
+</tr>
+<tr>
+<td>maxRate</td>
+<td>float</td>
+<td>validator&#39;s commission maxRate</td>
+</tr>
+<tr>
+<td>maxChangeRate</td>
+<td>float</td>
+<td>validator&#39;s commission maxChangeRate</td>
+</tr>
+<tr>
+<td>updateAt</td>
+<td>string</td>
+<td>validator info update time</td>
 </tr>
 </tbody></table>
 <h3 id='set-reward-address'>Set Reward Address</h3>
@@ -2178,7 +3604,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -2188,12 +3614,6 @@ request will be rejected.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.sequence</td>
 <td>no</td>
@@ -2205,6 +3625,107 @@ request will be rejected.
 <td>yes</td>
 <td>string</td>
 <td>reward address</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 </tbody></table>
 <h3 id='fetch-reward-address'>Fetch Reward Address</h3>
@@ -2250,6 +3771,22 @@ request will be rejected.
 <tr>
 <td>delegator</td>
 <td>delegate from address</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the address that receives award</td>
 </tr>
 </tbody></table>
 <h3 id='claim-reward'>Claim Reward</h3>
@@ -2305,7 +3842,7 @@ request will be rejected.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint enables you to claim reward.</p>
+<p>This endpoint enables you to claim reward at all or specified validators.</p>
 
 <p><em>HTTP Request</em></p>
 
@@ -2329,7 +3866,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -2340,12 +3877,6 @@ request will be rejected.
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
-<tr>
 <td>data.sequence</td>
 <td>no</td>
 <td>number</td>
@@ -2353,9 +3884,110 @@ request will be rejected.
 </tr>
 <tr>
 <td>data.validator</td>
-<td>yes</td>
+<td>no</td>
 <td>string</td>
-<td>validator to claim reward from</td>
+<td>specified validator to claim reward from, claim reward from all if not passed</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 </tbody></table>
 <h3 id='fetch-overall-reward'>Fetch Overall Reward</h3>
@@ -2384,7 +4016,7 @@ request will be rejected.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint enables you to fetch reward status from all validators.</p>
+<p>This endpoint enables you to fetch reward status at all validators.</p>
 
 <p><em>HTTP Request</em></p>
 
@@ -2405,6 +4037,42 @@ request will be rejected.
 <tr>
 <td>delegator</td>
 <td>delegate from address</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>delegator</td>
+<td>string</td>
+<td>address that performs delegation</td>
+</tr>
+<tr>
+<td>nativeName</td>
+<td>string</td>
+<td>token</td>
+</tr>
+<tr>
+<td>nativeAmount</td>
+<td>string</td>
+<td>reward amount in token unit</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>main token</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>reward amount in main token unit</td>
 </tr>
 </tbody></table>
 <h3 id='reward-at-validator'>Reward At Validator</h3>
@@ -2434,11 +4102,11 @@ request will be rejected.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint enables you to fetch reward status at specified validator.</p>
+<p>This endpoint enables you to fetch reward at specified validator.</p>
 
 <p><em>HTTP Request</em></p>
 
-<p><code>GET http://jadepool.example/api/v1/stake/:coinName/rewards/:delegator/claim/:validator</code></p>
+<p><code>GET http://jadepool.example/api/v1/stake/:coinName/rewards/:delegator/profits/:validator</code></p>
 
 <p><em>Query Parameters</em></p>
 
@@ -2461,7 +4129,56 @@ request will be rejected.
 <td>validator</td>
 </tr>
 </tbody></table>
-<h1 id='v2'>V2</h1><h2 id='address-2'>Address</h2><h3 id='create-multiple-addresses-2'>Create Multiple Addresses</h3>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>delegator</td>
+<td>string</td>
+<td>address that performs delegation</td>
+</tr>
+<tr>
+<td>validator</td>
+<td>string</td>
+<td>validator delegated to</td>
+</tr>
+<tr>
+<td>nativeName</td>
+<td>string</td>
+<td>token</td>
+</tr>
+<tr>
+<td>nativeAmount</td>
+<td>string</td>
+<td>reward amount in token unit</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>main token</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>reward amount in main token unit</td>
+</tr>
+</tbody></table>
+<h1 id='v2-api'>V2 API</h1>
+<aside class="notice">
+All timestamps are in millisecond.
+</aside>
+
+<aside class="notice">
+All main parameters in POST API should be wraped in "data" object
+</aside>
+<h2 id='address-2'>Address</h2><h3 id='create-multiple-addresses-2'>Create Multiple Addresses</h3>
 <blockquote>
 <p>Request &quot;Create Multiple Addresses&quot; API returns JSON structured like this:</p>
 </blockquote>
@@ -2522,7 +4239,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -2532,12 +4249,6 @@ request will be rejected.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.amount</td>
 <td>yes</td>
@@ -2549,6 +4260,47 @@ request will be rejected.
 <td>yes</td>
 <td>string</td>
 <td>address mode: &#39;auto&#39;, &#39;deposit&#39;, &#39;deposit_memo&#39;, &#39;normal&#39;</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>unique ID in Jadepool&#39;s database</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID, configurable on admin</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type of the new address</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the new address</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>this value does not mean anything for now</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>address mode</td>
 </tr>
 </tbody></table>
 <h3 id='create-single-address-2'>Create Single Address</h3>
@@ -2600,7 +4352,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -2611,16 +4363,51 @@ request will be rejected.
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
-<tr>
 <td>data.mode</td>
 <td>yes</td>
 <td>string</td>
 <td>address mode: &#39;auto&#39;, &#39;deposit&#39;, &#39;deposit_memo&#39;, &#39;normal&#39;</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>unique ID in Jadepool&#39;s database</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID, configurable on admin</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type of the new address</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the new address</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>this value does not mean anything for now</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>address mode</td>
 </tr>
 </tbody></table>
 <h3 id='validate-address-2'>Validate Address</h3>
@@ -2666,7 +4453,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -2677,16 +4464,31 @@ request will be rejected.
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
-<tr>
 <td>data.address</td>
 <td>yes</td>
 <td>string</td>
 <td>address to validate</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the address to validate</td>
+</tr>
+<tr>
+<td>valid</td>
+<td>boolean</td>
+<td>the address is valid or not</td>
 </tr>
 </tbody></table>
 <h3 id='force-free'>Force Free</h3>
@@ -2760,33 +4562,104 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Response Result</em></p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Required</th>
+<th>Value</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
-<tr>
-<td>data.address</td>
-<td>yes</td>
+<td>id</td>
 <td>string</td>
-<td>address to validate</td>
+<td>the order ID</td>
 </tr>
 <tr>
-<td>data.sequence</td>
-<td>yes</td>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
 <td>number</td>
-<td>unique request sequence</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 </tbody></table>
 <h3 id='force-obtain'>Force Obtain</h3>
@@ -2860,7 +4733,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -2870,12 +4743,6 @@ request will be rejected.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.address</td>
 <td>yes</td>
@@ -2893,6 +4760,107 @@ request will be rejected.
 <td>yes</td>
 <td>string</td>
 <td>force obtain value</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 </tbody></table>
 <h3 id='fetch-incomplete-orders'>Fetch Incomplete Orders</h3>
@@ -2973,6 +4941,107 @@ request will be rejected.
 <td>optional, can be one of the incomplete order states: &#39;init&#39;, &#39;holding&#39;, &#39;online&#39;, &#39;pending&#39;</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+</tbody></table>
 <h3 id='fetch-address-balance'>Fetch Address Balance</h3>
 <blockquote>
 <p>Request &quot;Fetch Address Balance&quot; API returns JSON structured like this:</p>
@@ -3016,6 +5085,22 @@ request will be rejected.
 <tr>
 <td>address</td>
 <td>related address</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>balance</td>
+<td>string</td>
+<td>the address&#39; balance on blockchain</td>
 </tr>
 </tbody></table>
 <h3 id='fetch-address-info'>Fetch Address Info</h3>
@@ -3068,6 +5153,47 @@ request will be rejected.
 <tr>
 <td>address</td>
 <td>related address</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>unique ID in Jadepool&#39;s database</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID, configurable on admin</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type of the new address</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>the new address</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>this value does not mean anything for now</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>address mode</td>
 </tr>
 </tbody></table>
 <h2 id='audit-2'>Audit</h2><h3 id='fetch-audit-order-2'>Fetch Audit Order</h3>
@@ -3139,6 +5265,167 @@ request will be rejected.
 <tr>
 <td>id</td>
 <td>audit order ID</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>calculated</td>
+<td>boolean</td>
+<td>if the auditing is finished</td>
+</tr>
+<tr>
+<td>deposit_total</td>
+<td>string</td>
+<td>total deposit token value</td>
+</tr>
+<tr>
+<td>deposit_num</td>
+<td>number</td>
+<td>total deposit times</td>
+</tr>
+<tr>
+<td>withdraw_total</td>
+<td>string</td>
+<td>total withdraw token value</td>
+</tr>
+<tr>
+<td>withdraw_num</td>
+<td>number</td>
+<td>total withdraw times</td>
+</tr>
+<tr>
+<td>sweep_total</td>
+<td>string</td>
+<td>total sweep token value</td>
+</tr>
+<tr>
+<td>sweep_num</td>
+<td>number</td>
+<td>total sweep times</td>
+</tr>
+<tr>
+<td>sweep_internal_total</td>
+<td>string</td>
+<td>total sweep_internal token value</td>
+</tr>
+<tr>
+<td>sweep_internal_num</td>
+<td>number</td>
+<td>total sweep_internal times</td>
+</tr>
+<tr>
+<td>airdrop_total</td>
+<td>string</td>
+<td>total airdrop token value</td>
+</tr>
+<tr>
+<td>airdrop_num</td>
+<td>number</td>
+<td>total airdrop times</td>
+</tr>
+<tr>
+<td>recharge_total</td>
+<td>string</td>
+<td>total recharge token value</td>
+</tr>
+<tr>
+<td>recharge_num</td>
+<td>number</td>
+<td>total recharge times</td>
+</tr>
+<tr>
+<td>recharge_internal_total</td>
+<td>string</td>
+<td>total recharge_internal token value</td>
+</tr>
+<tr>
+<td>recharge_internal_num</td>
+<td>number</td>
+<td>total recharge_internal times</td>
+</tr>
+<tr>
+<td>recharge_unknown_total</td>
+<td>string</td>
+<td>total recharge_unknown token value</td>
+</tr>
+<tr>
+<td>recharge_unknown_num</td>
+<td>number</td>
+<td>total recharge_unknown times</td>
+</tr>
+<tr>
+<td>recharge_special_total</td>
+<td>string</td>
+<td>total recharge_special token value</td>
+</tr>
+<tr>
+<td>recharge_special_num</td>
+<td>number</td>
+<td>total recharge_special times</td>
+</tr>
+<tr>
+<td>failed_withdraw_num</td>
+<td>number</td>
+<td>total failed withdraw times</td>
+</tr>
+<tr>
+<td>failed_sweep_num</td>
+<td>number</td>
+<td>total failed sweep times</td>
+</tr>
+<tr>
+<td>failed_sweep_internal_num</td>
+<td>number</td>
+<td>total failed sweep_internal times</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all type of fees burned</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the audited token type</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>the audited timestamp</td>
+</tr>
+<tr>
+<td>blocknumber</td>
+<td>number</td>
+<td>corresponding block near the audited timestamp</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID</td>
+</tr>
+<tr>
+<td>calc_order_num</td>
+<td>number</td>
+<td>audited order number</td>
+</tr>
+<tr>
+<td>last</td>
+<td>string</td>
+<td>audit order ID of the previous audit</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>audit order ID of the current audit</td>
 </tr>
 </tbody></table>
 <h3 id='audited-orders-2'>Audited Orders</h3>
@@ -3213,6 +5500,112 @@ request will be rejected.
 <td>audit order ID</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
+</tr>
+</tbody></table>
 <h2 id='order'>Order</h2><h3 id='fetch-order-2'>Fetch Order</h3>
 <blockquote>
 <p>Request &quot;fetch Order&quot; API returns JSON structured like this:</p>
@@ -3280,7 +5673,113 @@ request will be rejected.
 <td>order ID</td>
 </tr>
 </tbody></table>
-<h2 id='wallet-2'>Wallet</h2><h3 id='fetch-wallet-status-2'>Fetch wallet Status</h3>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
+</tr>
+</tbody></table>
+<h2 id='wallet-2'>Wallet</h2><h3 id='fetch-wallet-status-2'>Fetch Wallet Status</h3>
 <blockquote>
 <p>Request &quot;Fetch wallet Status&quot; API returns JSON structured like this:</p>
 </blockquote>
@@ -3323,6 +5822,42 @@ request will be rejected.
 <tr>
 <td>coinName</td>
 <td>coin name</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>balance</td>
+<td>string</td>
+<td>total balance</td>
+</tr>
+<tr>
+<td>balanceAvailable</td>
+<td>string</td>
+<td>balance available for outgoing transfer</td>
+</tr>
+<tr>
+<td>balanceUnavailable</td>
+<td>string</td>
+<td>balance unavailable for outgoing transfer</td>
+</tr>
+<tr>
+<td>update_at</td>
+<td>number</td>
+<td>the balance update time</td>
+</tr>
+<tr>
+<td>addressesWithBalance</td>
+<td>number</td>
+<td>number of addresses that have balance</td>
 </tr>
 </tbody></table>
 <h3 id='request-withdrawal-2'>Request Withdrawal</h3>
@@ -3396,7 +5931,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -3406,12 +5941,6 @@ request will be rejected.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
 <tr>
 <td>data.to</td>
 <td>yes</td>
@@ -3441,6 +5970,112 @@ request will be rejected.
 <td>no</td>
 <td>string</td>
 <td>callback url</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
 </tr>
 </tbody></table>
 <h3 id='audit-for-specified-coin'>Audit For Specified Coin</h3>
@@ -3488,7 +6123,7 @@ request will be rejected.
 </tr>
 </tbody></table>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -3499,16 +6134,41 @@ request will be rejected.
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
-<tr>
 <td>data.audittime</td>
 <td>yes</td>
 <td>number</td>
 <td>audit timestamp</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the audited token type</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>audit order ID of the current/last audit</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>the audited timestamp</td>
+</tr>
+<tr>
+<td>blocknumber</td>
+<td>number</td>
+<td>corresponding block near the audited timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='wallets'>Wallets</h2><h3 id='audit-for-all-coins'>Audit For All Coins</h3>
@@ -3544,7 +6204,7 @@ request will be rejected.
 
 <p><code>POST http://jadepool.example/api/v2/wallets/audit</code></p>
 
-<p><em>Request Body Parameters</em></p>
+<p><em>Main Parameters</em></p>
 
 <table><thead>
 <tr>
@@ -3555,20 +6215,466 @@ request will be rejected.
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>yes</td>
-<td>object</td>
-<td>block of core request parameters</td>
-</tr>
-<tr>
 <td>data.audittime</td>
 <td>yes</td>
 <td>number</td>
 <td>audit timestamp</td>
 </tr>
 </tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the audited token type</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>audit order ID of the current/last audit</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>the audited timestamp</td>
+</tr>
+<tr>
+<td>blocknumber</td>
+<td>number</td>
+<td>corresponding block near the audited timestamp</td>
+</tr>
+</tbody></table>
 <h2 id='delegation-2'>Delegation</h2>
 <p>Same as <a href="#delegation">V1</a>, except that sequence is required in every API.</p>
+<h1 id='callback-notification'>Callback(Notification)</h1>
+<aside class="notice">
+All timestamps are in millisecond.
+</aside>
+<h2 id='order-2'>Order</h2>
+<blockquote>
+<p>Order notification sends JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"crypto"</span><span class="p">:</span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557286096399</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"sig"</span><span class="p">:{</span><span class="w">  
+      </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"WiTkCfTdBCGWHsMdd0sLiOZ536Zo013xnfUxHtFMkEk="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"s"</span><span class="p">:</span><span class="s2">"WvJHFQucDaOIZ8HkpW3xJiCBXh1eoIdlw4Hh/n0IXDE="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"v"</span><span class="p">:</span><span class="mi">28</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">  
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5cd24caaa57c8d32ee301222"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"108"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid"</span><span class="p">:</span><span class="s2">"0x662c73a8361acee47a267f580a55da9d7bbc720bb070bfd25baf765f79c2f019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bizType"</span><span class="p">:</span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subType"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinType"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"0x9b878f3c613c77b50ccebd67faf6d7afd46de8ae"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"0x9cf16ecf95d707bd19a8e7f96e4fd93bd66e8c46"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sequence"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="mi">1557286058120</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="mi">1557286084437</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionArgs"</span><span class="p">:[</span><span class="w">  
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"actionResults"</span><span class="p">:[</span><span class="w">  
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"n"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0.00040597"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fees"</span><span class="p">:[</span><span class="w">  
+         </span><span class="p">{</span><span class="w">  
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5cd24ccea57c8d32ee301247"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"0.00040597"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nativeAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nativeName"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">  
+         </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="mi">1557286074480</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"nonce"</span><span class="p">:</span><span class="mi">932</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"hash"</span><span class="p">:</span><span class="s2">"0x662c73a8361acee47a267f580a55da9d7bbc720bb070bfd25baf765f79c2f019"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"blockNumber"</span><span class="p">:</span><span class="mi">8262212</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="s2">"0x0c946f37a4c18935b75f9c7eb714c4d970f1d6d7be47158a5a29131d7f8bf6df"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"from"</span><span class="p">:[</span><span class="w">  
+            </span><span class="p">{</span><span class="w">  
+               </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"0x9b878f3c613c77b50ccebd67faf6d7afd46de8ae"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"asset"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="s2">"to"</span><span class="p">:[</span><span class="w">  
+            </span><span class="p">{</span><span class="w">  
+               </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"0x9cf16ecf95d707bd19a8e7f96e4fd93bd66e8c46"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"asset"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0.00040597"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="mi">19</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"hash"</span><span class="p">:</span><span class="s2">"0x662c73a8361acee47a267f580a55da9d7bbc720bb070bfd25baf765f79c2f019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"block"</span><span class="p">:</span><span class="mi">8262212</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extraData"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"memo"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Data block enables you to get latest information about the transaction.</p>
+
+<p><em>Callbck Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
+</tr>
+</tbody></table>
+<h2 id='audit-3'>Audit</h2>
+<blockquote>
+<p>Audit notification sends JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"crypto"</span><span class="p">:</span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557287400245</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"sig"</span><span class="p">:{</span><span class="w">  
+      </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"nQ7wFEn2X5XCZPVgff54gT9dbMIhqAX1+V2rwPahT6A="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"s"</span><span class="p">:</span><span class="s2">"f3Lj6sB1gRMlgiXFZHatFK6poZul5r84tfG96S62YXc="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"v"</span><span class="p">:</span><span class="mi">27</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">  
+      </span><span class="s2">"current"</span><span class="p">:{</span><span class="w">  
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5cd251e8a57c8d32ee301756"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="mi">8263478</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557287400245</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"deposit_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"fee_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"internal_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"internal_num"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"calculated"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deposit_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deposit_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"withdraw_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sweep_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sweep_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sweep_internal_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sweep_internal_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"airdrop_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"airdrop_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_internal_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_internal_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_unknown_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_unknown_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_special_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_special_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failed_withdraw_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failed_sweep_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failed_sweep_internal_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fees"</span><span class="p">:[</span><span class="w">  
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557287400245</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="mi">8263478</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appid"</span><span class="p">:</span><span class="s2">"pri"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-05-08T03:50:00.281Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="s2">"2019-05-08T03:50:04.648Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"__v"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"5cd251a5a57c8d32ee301714"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"calc_order_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5cd251e8a57c8d32ee301756"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Delegation related orders are not audited for now. </p>
+
+<p><em>Callback Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>calculated</td>
+<td>boolean</td>
+<td>if the auditing is finished</td>
+</tr>
+<tr>
+<td>deposit_total</td>
+<td>string</td>
+<td>total deposit token value</td>
+</tr>
+<tr>
+<td>deposit_num</td>
+<td>number</td>
+<td>total deposit times</td>
+</tr>
+<tr>
+<td>withdraw_total</td>
+<td>string</td>
+<td>total withdraw token value</td>
+</tr>
+<tr>
+<td>withdraw_num</td>
+<td>number</td>
+<td>total withdraw times</td>
+</tr>
+<tr>
+<td>sweep_total</td>
+<td>string</td>
+<td>total sweep token value</td>
+</tr>
+<tr>
+<td>sweep_num</td>
+<td>number</td>
+<td>total sweep times</td>
+</tr>
+<tr>
+<td>sweep_internal_total</td>
+<td>string</td>
+<td>total sweep_internal token value</td>
+</tr>
+<tr>
+<td>sweep_internal_num</td>
+<td>number</td>
+<td>total sweep_internal times</td>
+</tr>
+<tr>
+<td>airdrop_total</td>
+<td>string</td>
+<td>total airdrop token value</td>
+</tr>
+<tr>
+<td>airdrop_num</td>
+<td>number</td>
+<td>total airdrop times</td>
+</tr>
+<tr>
+<td>recharge_total</td>
+<td>string</td>
+<td>total recharge token value</td>
+</tr>
+<tr>
+<td>recharge_num</td>
+<td>number</td>
+<td>total recharge times</td>
+</tr>
+<tr>
+<td>recharge_internal_total</td>
+<td>string</td>
+<td>total recharge_internal token value</td>
+</tr>
+<tr>
+<td>recharge_internal_num</td>
+<td>number</td>
+<td>total recharge_internal times</td>
+</tr>
+<tr>
+<td>recharge_unknown_total</td>
+<td>string</td>
+<td>total recharge_unknown token value</td>
+</tr>
+<tr>
+<td>recharge_unknown_num</td>
+<td>number</td>
+<td>total recharge_unknown times</td>
+</tr>
+<tr>
+<td>recharge_special_total</td>
+<td>string</td>
+<td>total recharge_special token value</td>
+</tr>
+<tr>
+<td>recharge_special_num</td>
+<td>number</td>
+<td>total recharge_special times</td>
+</tr>
+<tr>
+<td>failed_withdraw_num</td>
+<td>number</td>
+<td>total failed withdraw times</td>
+</tr>
+<tr>
+<td>failed_sweep_num</td>
+<td>number</td>
+<td>total failed sweep times</td>
+</tr>
+<tr>
+<td>failed_sweep_internal_num</td>
+<td>number</td>
+<td>total failed sweep_internal times</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all type of fees burned</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the audited token type</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>the audited timestamp</td>
+</tr>
+<tr>
+<td>blocknumber</td>
+<td>number</td>
+<td>corresponding block near the audited timestamp</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>application ID</td>
+</tr>
+<tr>
+<td>calc_order_num</td>
+<td>number</td>
+<td>audited order number</td>
+</tr>
+<tr>
+<td>last</td>
+<td>string</td>
+<td>audit order ID of the previous audit</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>audit order ID of the current audit</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>Jadepool API uses the following error codes:</p>
 
