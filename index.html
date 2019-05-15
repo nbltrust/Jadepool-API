@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;JSON&quot;]">
+  <body class="index" data-languages="[&quot;Example&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="JSON">JSON</a>
+              <a href="#" data-language-name="Example">Example</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,7 +222,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#request-amp-response-structure" class="toc-h1 toc-link" data-title="Request &amp; Response Structure">Request &amp; Response Structure</a>
+            <a href="#general-structure" class="toc-h1 toc-link" data-title="General Structure">General Structure</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#post-request" class="toc-h2 toc-link" data-title="POST Request">POST Request</a>
@@ -419,13 +419,24 @@
               </ul>
           </li>
           <li>
-            <a href="#callback-notification" class="toc-h1 toc-link" data-title="Callback(Notification)">Callback(Notification)</a>
+            <a href="#callback" class="toc-h1 toc-link" data-title="Callback">Callback</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#order-2" class="toc-h2 toc-link" data-title="Order">Order</a>
                   </li>
                   <li>
                     <a href="#audit-3" class="toc-h2 toc-link" data-title="Audit">Audit</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#ecc-signature" class="toc-h1 toc-link" data-title="ECC Signature">ECC Signature</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#release-0-11" class="toc-h2 toc-link" data-title="Release 0.11">Release 0.11</a>
+                  </li>
+                  <li>
+                    <a href="#release-1-0" class="toc-h2 toc-link" data-title="Release 1.0">Release 1.0</a>
                   </li>
               </ul>
           </li>
@@ -448,7 +459,7 @@ to V2 APIs along our development cycle. Check out our <a href="https://github.co
 
 <p>Feel free to check out our <a href="https://github.com/nbltrust/jadepool-sdk-nodejs">NodeJs SDK</a> and <a href="https://github.com/nbltrust/jadepool-sdk-java">Java SDK</a>. SDK only supports
 V1 for now.</p>
-<h1 id='request-amp-response-structure'>Request &amp; Response Structure</h1><h2 id='post-request'>POST Request</h2>
+<h1 id='general-structure'>General Structure</h1><h2 id='post-request'>POST Request</h2>
 <blockquote>
 <p>&quot;Request withdrawal&quot; example:</p>
 </blockquote>
@@ -6254,7 +6265,7 @@ All main parameters in POST API should be wraped in "data" object
 </tbody></table>
 <h2 id='delegation-2'>Delegation</h2>
 <p>Same as <a href="#delegation">V1</a>, except that sequence is required in every API.</p>
-<h1 id='callback-notification'>Callback(Notification)</h1>
+<h1 id='callback'>Callback</h1>
 <aside class="notice">
 All timestamps are in millisecond.
 </aside>
@@ -6675,6 +6686,131 @@ All timestamps are in millisecond.
 <td>audit order ID of the current audit</td>
 </tr>
 </tbody></table>
+<h1 id='ecc-signature'>ECC Signature</h1><h2 id='release-0-11'>Release 0.11</h2>
+<blockquote>
+<p>Javascript code of building the message to be signed:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">_buildMsg</span> <span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">sortRule</span> <span class="o">=</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">sort</span> <span class="o">||</span> <span class="s1">'key-alphabet'</span>
+  <span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">obj</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">arr</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">o</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">k</span><span class="p">:</span> <span class="p">(</span><span class="nx">sortRule</span> <span class="o">===</span> <span class="s1">'kvpair'</span> <span class="o">||</span> <span class="nx">sortRule</span> <span class="o">===</span> <span class="s1">'value'</span><span class="p">)</span> <span class="p">?</span> <span class="s1">''</span> <span class="p">:</span> <span class="nx">i</span><span class="p">,</span>
+      <span class="na">v</span><span class="p">:</span> <span class="nx">_buildMsg</span><span class="p">(</span><span class="nx">o</span><span class="p">,</span> <span class="nx">opts</span><span class="p">)</span>
+    <span class="p">}))</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">isObject</span><span class="p">(</span><span class="nx">obj</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="nx">k</span><span class="p">,</span> <span class="na">v</span><span class="p">:</span> <span class="nx">_buildMsg</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">k</span><span class="p">],</span> <span class="nx">opts</span><span class="p">)</span> <span class="p">})</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">obj</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">obj</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">''</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="c1">// Sort Array</span>
+  <span class="nx">arr</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">aVal</span>
+    <span class="kd">let</span> <span class="nx">bVal</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">sortRule</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="s1">'key'</span><span class="p">:</span>
+        <span class="nx">aVal</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">k</span>
+        <span class="nx">bVal</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">k</span>
+        <span class="k">break</span>
+      <span class="k">case</span> <span class="s1">'key-alphabet'</span><span class="p">:</span>
+        <span class="nx">aVal</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">k</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+        <span class="nx">bVal</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">k</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+        <span class="k">break</span>
+      <span class="k">case</span> <span class="s1">'value'</span><span class="p">:</span>
+        <span class="nx">aVal</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">v</span>
+        <span class="nx">bVal</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">v</span>
+        <span class="k">break</span>
+      <span class="k">case</span> <span class="s1">'kvpair'</span><span class="p">:</span>
+      <span class="na">default</span><span class="p">:</span>
+        <span class="nx">aVal</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">k</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="nx">a</span><span class="p">.</span><span class="nx">v</span>
+        <span class="nx">bVal</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">k</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">v</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">aVal</span> <span class="o">&lt;</span> <span class="nx">bVal</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">aVal</span> <span class="o">===</span> <span class="nx">bVal</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="c1">// Build message</span>
+  <span class="k">return</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">lastMsg</span><span class="p">,</span> <span class="nx">curr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">lastMsg</span> <span class="o">+</span> <span class="nx">curr</span><span class="p">.</span><span class="nx">k</span> <span class="o">+</span> <span class="nx">curr</span><span class="p">.</span><span class="nx">v</span>
+  <span class="p">},</span> <span class="s1">''</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<p><em>Steps of building signature:</em></p>
+
+<ol>
+<li>Get the current timestamp.</li>
+<li>Form a String message that consists of all main parameters in &quot;data&quot; object and the timestamp, the keys 
+must be sorted alphabetically. Use &quot;request withdrawal&quot; as an example, the message looks like this:
+</br>
+<code>
+sequence0timestamp1557913602438tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Sign the encrypted message and get the signature.</li>
+<li>Send request as the same format as described in <a href="#general-structure">General Structure</a>.</li>
+</ol>
+
+<p><em>Steps of verifying signature:</em></p>
+
+<ol>
+<li>Form a String message that consists of all fields in &quot;result&quot; object and the given timestamp of the response, the keys 
+must be sorted alphabetically. Use &quot;validate address&quot; as an example, the message looks like this:
+</br>
+<code>
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABtimestamp1557912642626validtrue
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Verify signature using the plain encrypted message and Jadepool&#39;s public key.</li>
+</ol>
+<h2 id='release-1-0'>Release 1.0</h2>
+<p><em>Steps of building signature:</em></p>
+
+<ol>
+<li>Get the current timestamp.</li>
+<li>Form a String message that consists of all main parameters in &quot;data&quot; object, the keys 
+must be sorted alphabetically. Use &quot;request withdrawal&quot; as an example, the message looks like this:
+</br>
+<code>
+sequence0tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0
+</code></li>
+<li>add timestamp at the end of the message, the message looks like this:
+</br>
+<code>
+sequence0tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0timestamp1557913602438
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Sign the encrypted message and get the signature.</li>
+<li>Send request as the same format as described in <a href="#general-structure">General Structure</a>.</li>
+</ol>
+
+<p><em>Steps of verifying signature:</em></p>
+
+<ol>
+<li>Form a String message that consists of all fields in &quot;result&quot; object of the response, the keys 
+must be sorted alphabetically. Use &quot;validate address&quot; as an example, the message looks like this:
+</br>
+<code>
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABvalidtrue
+</code></li>
+<li>add the given timestamp at the end of the message, the message looks like this:
+</br>
+<code>
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABvalidtruetimestamp1557912642626
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Verify signature using the plain encrypted message and Jadepool&#39;s public key.</li>
+</ol>
 <h1 id='errors'>Errors</h1>
 <p>Jadepool API uses the following error codes:</p>
 
@@ -7273,7 +7409,7 @@ All timestamps are in millisecond.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="JSON">JSON</a>
+                <a href="#" data-language-name="Example">Example</a>
           </div>
       </div>
     </div>
