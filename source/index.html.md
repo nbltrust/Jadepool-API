@@ -2,7 +2,7 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - JSON
+  - Example
 
 toc_footers:
   - <a href='https://github.com/nbltrust/jadepool-doc'>Jadepool Documentation</a>
@@ -23,7 +23,7 @@ to V2 APIs along our development cycle. Check out our [releases](https://github.
 Feel free to check out our [NodeJs SDK](https://github.com/nbltrust/jadepool-sdk-nodejs) and [Java SDK](https://github.com/nbltrust/jadepool-sdk-java). SDK only supports
 V1 for now.
 
-# Request & Response Structure
+# General Structure
 
 ## POST Request
 
@@ -3100,7 +3100,7 @@ blocknumber | number | corresponding block near the audited timestamp
 
 Same as [V1] (#delegation), except that sequence is required in every API.
 
-# Callback(Notification)
+# Callback
 
 <aside class="notice">
 All timestamps are in millisecond.
@@ -3320,3 +3320,127 @@ appid | string | application ID
 calc_order_num | number | audited order number
 last | string | audit order ID of the previous audit
 id | string | audit order ID of the current audit
+
+# ECC Signature
+
+## Release 0.11
+
+>  Javascript code of building the message to be signed:
+
+```js
+function _buildMsg (obj, opts = {}) {
+  let sortRule = opts.sort || 'key-alphabet'
+  let arr = []
+  if (_.isArray(obj)) {
+    arr = obj.map((o, i) => ({
+      k: (sortRule === 'kvpair' || sortRule === 'value') ? '' : i,
+      v: _buildMsg(o, opts)
+    }))
+  } else if (_.isObject(obj)) {
+    for (let k in obj) {
+      if (obj[k] !== undefined) {
+        arr.push({ k, v: _buildMsg(obj[k], opts) })
+      }
+    }
+  } else if (obj === undefined || obj === null) {
+    return ''
+  } else {
+    return obj.toString()
+  }
+  // Sort Array
+  arr.sort((a, b) => {
+    let aVal
+    let bVal
+    switch (sortRule) {
+      case 'key':
+        aVal = a.k
+        bVal = b.k
+        break
+      case 'key-alphabet':
+        aVal = a.k.toString()
+        bVal = b.k.toString()
+        break
+      case 'value':
+        aVal = a.v
+        bVal = b.v
+        break
+      case 'kvpair':
+      default:
+        aVal = a.k.toString() + a.v
+        bVal = b.k.toString() + b.v
+        break
+    }
+    if (aVal < bVal) {
+      return -1
+    } else if (aVal === bVal) {
+      return 0
+    } else {
+      return 1
+    }
+  })
+  // Build message
+  return arr.reduce((lastMsg, curr) => {
+    return lastMsg + curr.k + curr.v
+  }, '')
+}
+```
+
+*Steps of building signature:*
+
+1. Get the current timestamp.
+2. Form a String message that consists of all main parameters in "data" object and the timestamp, the keys 
+must be sorted alphabetically. Use "request withdrawal" as an example, the message looks like this:
+</br>
+```
+sequence0timestamp1557913602438tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0
+```
+3. Encrypt the message using sha3 or sha256 or md5.
+4. Sign the encrypted message and get the signature.
+5. Send request as the same format as described in [General Structure](#general-structure).
+
+*Steps of verifying signature:*
+
+1. Form a String message that consists of all fields in "result" object and the given timestamp of the response, the keys 
+must be sorted alphabetically. Use "validate address" as an example, the message looks like this:
+</br>
+```
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABtimestamp1557912642626validtrue
+```
+2. Encrypt the message using sha3 or sha256 or md5.
+3. Verify signature using the plain encrypted message and Jadepool's public key.
+
+## Release 1.0
+
+*Steps of building signature:*
+
+1. Get the current timestamp.
+2. Form a String message that consists of all main parameters in "data" object, the keys 
+must be sorted alphabetically. Use "request withdrawal" as an example, the message looks like this:
+</br>
+```
+sequence0tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0
+```
+3. add timestamp at the end of the message, the message looks like this:
+</br>
+```
+sequence0tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0timestamp1557913602438
+```
+4. Encrypt the message using sha3 or sha256 or md5.
+5. Sign the encrypted message and get the signature.
+6. Send request as the same format as described in [General Structure](#general-structure).
+
+*Steps of verifying signature:*
+
+1. Form a String message that consists of all fields in "result" object of the response, the keys 
+must be sorted alphabetically. Use "validate address" as an example, the message looks like this:
+</br>
+```
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABvalidtrue
+```
+2. add the given timestamp at the end of the message, the message looks like this:
+</br>
+```
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABvalidtruetimestamp1557912642626
+```
+2. Encrypt the message using sha3 or sha256 or md5.
+3. Verify signature using the plain encrypted message and Jadepool's public key.
