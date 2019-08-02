@@ -6746,7 +6746,21 @@ All timestamps are in millisecond.
   <span class="p">},</span> <span class="s1">''</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
-<p><em>Steps of building signature:</em></p>
+<p><em>Steps of building signature for GET requests::</em></p>
+
+<ol>
+<li>Get the current timestamp.</li>
+<li>Form a String message that contains the timestamp above. The message looks like this:
+</br>
+<code>
+timestamp1557913602438
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Sign the encrypted message and get the signature.</li>
+<li>Send request as the same format as described in <a href="#general-structure">General Structure</a>.</li>
+</ol>
+
+<p><em>Steps of building signature for POST requests::</em></p>
 
 <ol>
 <li>Get the current timestamp.</li>
@@ -6774,7 +6788,21 @@ addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABtimestamp1557912642626validt
 <li>Verify signature using the plain encrypted message and Jadepool&#39;s public key.</li>
 </ol>
 <h2 id='release-1-0'>Release 1.0</h2>
-<p><em>Steps of building signature:</em></p>
+<p><em>Steps of building signature for GET requests:</em></p>
+
+<ol>
+<li>Get the current timestamp.</li>
+<li>Form a String message that contains the timestamp above. The message looks like this:
+</br>
+<code>
+timestamp1557913602438
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Sign the encrypted message and get the signature.</li>
+<li>Send request as the same format as described in <a href="#general-structure">General Structure</a>.</li>
+</ol>
+
+<p><em>Steps of building signature for POST requests:</em></p>
 
 <ol>
 <li>Get the current timestamp.</li>
