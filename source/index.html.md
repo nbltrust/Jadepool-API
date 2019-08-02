@@ -3385,7 +3385,19 @@ function _buildMsg (obj, opts = {}) {
 }
 ```
 
-*Steps of building signature:*
+*Steps of building signature for GET requests::*
+
+1. Get the current timestamp.
+2. Form a String message that contains the timestamp above. The message looks like this:
+</br>
+```
+timestamp1557913602438
+```
+3. Encrypt the message using sha3 or sha256 or md5.
+4. Sign the encrypted message and get the signature.
+5. Send request as the same format as described in [General Structure](#general-structure).
+
+*Steps of building signature for POST requests::*
 
 1. Get the current timestamp.
 2. Form a String message that consists of all main parameters in "data" object and the timestamp, the keys 
@@ -3411,7 +3423,19 @@ addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABtimestamp1557912642626validt
 
 ## Release 1.0
 
-*Steps of building signature:*
+*Steps of building signature for GET requests:*
+
+1. Get the current timestamp.
+2. Form a String message that contains the timestamp above. The message looks like this:
+</br>
+```
+timestamp1557913602438
+```
+3. Encrypt the message using sha3 or sha256 or md5.
+4. Sign the encrypted message and get the signature.
+5. Send request as the same format as described in [General Structure](#general-structure).
+
+*Steps of building signature for POST requests:*
 
 1. Get the current timestamp.
 2. Form a String message that consists of all main parameters in "data" object, the keys 
