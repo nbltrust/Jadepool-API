@@ -433,7 +433,7 @@
             <a href="#ecc-signature" class="toc-h1 toc-link" data-title="ECC Signature">ECC Signature</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#release-0-11" class="toc-h2 toc-link" data-title="Release 0.11">Release 0.11</a>
+                    <a href="#release-0-13-x" class="toc-h2 toc-link" data-title="Release 0.13.x">Release 0.13.x</a>
                   </li>
                   <li>
                     <a href="#release-1-0" class="toc-h2 toc-link" data-title="Release 1.0">Release 1.0</a>
@@ -3629,7 +3629,7 @@ request will be rejected.
 <td>data.sequence</td>
 <td>no</td>
 <td>number</td>
-<td>unique sequence, required in V2.</td>
+<td>unique sequence</td>
 </tr>
 <tr>
 <td>data.address</td>
@@ -3891,7 +3891,7 @@ request will be rejected.
 <td>data.sequence</td>
 <td>no</td>
 <td>number</td>
-<td>unique sequence, required in V2.</td>
+<td>unique sequence</td>
 </tr>
 <tr>
 <td>data.validator</td>
@@ -4195,7 +4195,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556009381747</span><span class="p">,</span><span class="w">
@@ -4320,7 +4319,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556009180055</span><span class="p">,</span><span class="w">
@@ -4427,7 +4425,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556009541845</span><span class="p">,</span><span class="w">
@@ -4508,7 +4505,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383578</span><span class="p">,</span><span class="w">
@@ -4679,7 +4675,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383578</span><span class="p">,</span><span class="w">
@@ -4880,7 +4875,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556017079643</span><span class="p">,</span><span class="w">
@@ -5059,7 +5053,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556016915285</span><span class="p">,</span><span class="w">
@@ -5120,7 +5113,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556016629310</span><span class="p">,</span><span class="w">
@@ -5213,7 +5205,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="p">,</span><span class="w">
@@ -5445,7 +5436,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556008499840</span><span class="p">,</span><span class="w">
@@ -5623,7 +5613,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556009989295</span><span class="p">,</span><span class="w">
@@ -5796,7 +5785,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010241947</span><span class="p">,</span><span class="w">
@@ -5877,7 +5865,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383578</span><span class="p">,</span><span class="w">
@@ -6095,7 +6082,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010708546</span><span class="p">,</span><span class="w">
@@ -6188,7 +6174,6 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556011203974</span><span class="p">,</span><span class="w">
@@ -6275,7 +6260,6 @@ All timestamps are in millisecond.
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557286096399</span><span class="p">,</span><span class="w">
@@ -6465,7 +6449,6 @@ All timestamps are in millisecond.
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557287400245</span><span class="p">,</span><span class="w">
@@ -6686,7 +6669,7 @@ All timestamps are in millisecond.
 <td>audit order ID of the current audit</td>
 </tr>
 </tbody></table>
-<h1 id='ecc-signature'>ECC Signature</h1><h2 id='release-0-11'>Release 0.11</h2>
+<h1 id='ecc-signature'>ECC Signature</h1><h2 id='release-0-13-x'>Release 0.13.x</h2>
 <blockquote>
 <p>Javascript code of building the message to be signed:</p>
 </blockquote>
