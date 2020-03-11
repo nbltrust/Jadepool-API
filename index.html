@@ -5205,20 +5205,40 @@ All main parameters in POST API should be wraped in "data" object
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583808224613</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1S3Uk1gTOwnbshQLVsG9KHnAvQbmRm2Z0C/WcYN1z7w="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z9I/bjAiica0RQJHHWEow7GzJi61MjoQnA4tT/VlDic="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t90UoLKHNXTBtmw5yZdO7FJ/gcS60U4JKMgpYnCCo0o="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"K4NcSIXRdJph2Yw8mVgSmFnp5689zfc6SSO65Rg8T+8="</span><span class="p">,</span><span class="w">
         </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">214</span><span class="p">,</span><span class="w">
         </span><span class="s2">"calculated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"deposit_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"deposit_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"withdraw_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deposit_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deposit_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"withdraw_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"revert_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"revert_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"refund_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"refund_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"system_call_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"system_call_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delegate_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delegate_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"undelegate_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"undelegate_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"principal_fund_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"principal_fund_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interest_fund_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interest_fund_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sweep_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sweep_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sweep_internal_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -5229,24 +5249,46 @@ All main parameters in POST API should be wraped in "data" object
         </span><span class="s2">"recharge_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"recharge_internal_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"recharge_internal_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"recharge_unknown_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"recharge_unknown_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"recharge_unexpected_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.601343293996"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"recharge_unexpected_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
         </span><span class="s2">"recharge_special_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"recharge_special_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"failed_withdraw_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"failed_sweep_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"failed_sweep_internal_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546425032000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9921056</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-23T08:32:51.859Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-23T08:32:58.666Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"calc_order_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbecdba8d1607c10ddddb4b"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbecdb38d1607c10ddddb49"</span><span class="w">
+        </span><span class="s2">"failed_sweep_internal_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"failed_refund_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"failed_system_call_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"failed_delegate_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"failed_undelegate_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"withdraw_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0101"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"refund_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sweep_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sweep_internal_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"system_call_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"delegate_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"undelegate_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed_withdraw_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed_refund_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed_sweep_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed_sweep_internal_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004330699234"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed_system_call_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed_delegate_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed_undelegate_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e66fee06b50acfa7ec50fec"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fee_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"chainKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kusama"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583808224613</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pri"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-10T02:43:44.733Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-10T02:43:44.833Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calc_order_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e66fee041db0dfa7f558411"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5307,22 +5349,22 @@ All main parameters in POST API should be wraped in "data" object
 <tr>
 <td>sweep_total</td>
 <td>string</td>
-<td>total sweep token value</td>
+<td>total hot-to-cold token value</td>
 </tr>
 <tr>
 <td>sweep_num</td>
 <td>number</td>
-<td>total sweep times</td>
+<td>total hot-to-cold times</td>
 </tr>
 <tr>
 <td>sweep_internal_total</td>
 <td>string</td>
-<td>total sweep_internal token value</td>
+<td>total internal-out token value</td>
 </tr>
 <tr>
 <td>sweep_internal_num</td>
 <td>number</td>
-<td>total sweep_internal times</td>
+<td>total internal-out times</td>
 </tr>
 <tr>
 <td>airdrop_total</td>
@@ -5337,62 +5379,132 @@ All main parameters in POST API should be wraped in "data" object
 <tr>
 <td>recharge_total</td>
 <td>string</td>
-<td>total recharge token value</td>
+<td>total cold-to-hot token value</td>
 </tr>
 <tr>
 <td>recharge_num</td>
 <td>number</td>
-<td>total recharge times</td>
+<td>total cold-to-hot times</td>
 </tr>
 <tr>
 <td>recharge_internal_total</td>
 <td>string</td>
-<td>total recharge_internal token value</td>
+<td>total internal-in token value</td>
 </tr>
 <tr>
 <td>recharge_internal_num</td>
 <td>number</td>
-<td>total recharge_internal times</td>
+<td>total internal-in times</td>
 </tr>
 <tr>
-<td>recharge_unknown_total</td>
+<td>recharge_unexpected_total</td>
 <td>string</td>
-<td>total recharge_unknown token value</td>
+<td>total unexpected-in token value</td>
 </tr>
 <tr>
-<td>recharge_unknown_num</td>
+<td>recharge_unexpected_num</td>
 <td>number</td>
-<td>total recharge_unknown times</td>
+<td>total unexpected-in times</td>
 </tr>
 <tr>
 <td>recharge_special_total</td>
 <td>string</td>
-<td>total recharge_special token value</td>
+<td>total special-in token value</td>
 </tr>
 <tr>
 <td>recharge_special_num</td>
 <td>number</td>
-<td>total recharge_special times</td>
+<td>total special-in times</td>
 </tr>
 <tr>
 <td>failed_withdraw_num</td>
 <td>number</td>
-<td>total failed withdraw times</td>
+<td>total failed withdrawal times</td>
 </tr>
 <tr>
 <td>failed_sweep_num</td>
 <td>number</td>
-<td>total failed sweep times</td>
+<td>total failed hot-to-cold times</td>
 </tr>
 <tr>
 <td>failed_sweep_internal_num</td>
 <td>number</td>
-<td>total failed sweep_internal times</td>
+<td>total failed internal-out times</td>
 </tr>
 <tr>
 <td>fees</td>
 <td>array</td>
 <td>all type of fees burned</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>string</td>
+<td>fees burned for withdrawal</td>
+</tr>
+<tr>
+<td>refund_fee</td>
+<td>string</td>
+<td>fees burned for refund</td>
+</tr>
+<tr>
+<td>sweep_fee</td>
+<td>string</td>
+<td>fees burned for hot-to-cold</td>
+</tr>
+<tr>
+<td>sweep_internal_fee</td>
+<td>string</td>
+<td>fees burned for internal-out</td>
+</tr>
+<tr>
+<td>system_call_fee</td>
+<td>string</td>
+<td>fees burned for all system_call txs</td>
+</tr>
+<tr>
+<td>delegate_fee</td>
+<td>string</td>
+<td>fees burned for staking</td>
+</tr>
+<tr>
+<td>undelegate_fee</td>
+<td>string</td>
+<td>fees burned for unstaking</td>
+</tr>
+<tr>
+<td>failed_withdraw_fee</td>
+<td>string</td>
+<td>fees burned for failed withdrawal</td>
+</tr>
+<tr>
+<td>failed_refund_fee</td>
+<td>string</td>
+<td>fees burned for failed refund</td>
+</tr>
+<tr>
+<td>failed_sweep_fee</td>
+<td>string</td>
+<td>fees burned for refund hot-to-cold</td>
+</tr>
+<tr>
+<td>failed_sweep_internal_fee</td>
+<td>string</td>
+<td>fees burned for refund internal-out</td>
+</tr>
+<tr>
+<td>failed_system_call_fee</td>
+<td>string</td>
+<td>fees burned for all failed system_call txs</td>
+</tr>
+<tr>
+<td>failed_delegate_fee</td>
+<td>string</td>
+<td>fees burned for failed delegation</td>
+</tr>
+<tr>
+<td>failed_undelegate_fee</td>
+<td>string</td>
+<td>fees burned for failed undelegation</td>
 </tr>
 <tr>
 <td>type</td>
@@ -5435,52 +5547,141 @@ All main parameters in POST API should be wraped in "data" object
 <p>Request &quot;Audited Orders&quot; API returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556008499840</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ7ytbVqn2csvSRIlCK169YP+6Fw4npwCZrOyg7kR8="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z2Qf7nB45dcH6TfjpDT1hH+eaef2ep2ARYJKF0t7iss="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"timestampHandle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548316657572.0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timestampBegin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548316657778.0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timestampFinish"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1548320514245.0</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c49829fdddecb563c50f389"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6413"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1548320257779"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myKRmYjEzPUtsqSUzy6yMEmpMT491Rj6Va"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mfvLYmxGYgwL5NMBH7pHtBA9QzjpbapNNb"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mf">1548316656499.0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mf">1548320514267.0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00109375"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4427227cb68165f190342f857ba1a1871654d170e732aa731fbd184990be058a"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">1453798</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583897683128</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oQJOtaonOe3NvycDQXNXrjsfS3pIdgRo1imh+9o5Tv8="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eMrUrwaNs4MUFb3d+Y1ASYTN4ec46pHsgc4cvA5PnS8="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e65b0c90c34df59da78c15c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6317"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xea7876c8121bc7db0d7fd4ed005d267702a0e0fe6df3b9bb0533b0fc28faaae8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EkFskcVG8xm7mbASU29VmiJTuFuSBodNrs9xjbUKNHKqmHP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FVCSCiM5TricGwJ2TZ84mRGLgEcNAKfXUCd2fgB2MFJkCxd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722697437</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">3750</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722697549</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583897670562</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw-from-hotwallet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
 
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e660a42667364a489bdae6a"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nativeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nativeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722702743</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583745602955</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestampHandle"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722702283</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"failedBlockNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"failedTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"goodBlockNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1373448</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"goodTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583745597170</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xea7876c8121bc7db0d7fd4ed005d267702a0e0fe6df3b9bb0533b0fc28faaae8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">1369700</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x226b6eb54e524ad1ba2f1d11a4b9e7d0171a42dcb5b0ffa184f35e3b8448a959"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722620000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e65b0f490acb159d97b45c5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6318"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xea7876c8121bc7db0d7fd4ed005d267702a0e0fe6df3b9bb0533b0fc28faaae8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pri"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPOSIT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EkFskcVG8xm7mbASU29VmiJTuFuSBodNrs9xjbUKNHKqmHP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FVCSCiM5TricGwJ2TZ84mRGLgEcNAKfXUCd2fgB2MFJkCxd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">15837227406189476</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">3749</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722740617</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583897670562</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e660a3d667364a489bdae63"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KSM"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nativeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nativeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722740618</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583745597398</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestampHandle"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722740618</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xea7876c8121bc7db0d7fd4ed005d267702a0e0fe6df3b9bb0533b0fc28faaae8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">1369700</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x226b6eb54e524ad1ba2f1d11a4b9e7d0171a42dcb5b0ffa184f35e3b8448a959"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583722620000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint enables you to fetch orders in specified audit.</p>
 
@@ -6447,33 +6648,53 @@ All timestamps are in millisecond.
 <blockquote>
 <p>Audit notification sends JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557287400245</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"sig"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"nQ7wFEn2X5XCZPVgff54gT9dbMIhqAX1+V2rwPahT6A="</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"s"</span><span class="p">:</span><span class="s2">"f3Lj6sB1gRMlgiXFZHatFK6poZul5r84tfG96S62YXc="</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"hash"</span><span class="p">:</span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"sort"</span><span class="p">:</span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"encode"</span><span class="p">:</span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1582285270762</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"sig"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"Fcn5eCj/2tpF4vLhhrLDNSSlP8smdVwWXcoufINclQc="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"s"</span><span class="p">:</span><span class="s2">"cUeE1d1HFQmzJbea/1+YjqNm+/cikJbyzMY8vqClM0I="</span><span class="p">,</span><span class="w">
       </span><span class="s2">"v"</span><span class="p">:</span><span class="mi">27</span><span class="w">
    </span><span class="p">},</span><span class="w">
-   </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"current"</span><span class="p">:{</span><span class="w">  
-         </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5cd251e8a57c8d32ee301756"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="mi">8263478</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557287400245</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"current"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5e4fc1d6548491723a096c23"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="mi">140215</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1582285270762</span><span class="p">,</span><span class="w">
          </span><span class="s2">"deposit_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"fee_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"fee_total"</span><span class="p">:</span><span class="s2">"0.000126"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"internal_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"internal_num"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+         </span><span class="s2">"internal_num"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:</span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="mi">140215</span><span class="p">,</span><span class="w">
       </span><span class="s2">"calculated"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"deposit_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"deposit_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"withdraw_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"withdraw_total"</span><span class="p">:</span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"withdraw_num"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"revert_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"revert_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refund_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refund_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"system_call_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"system_call_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"undelegate_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"undelegate_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"principal_fund_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"principal_fund_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interest_fund_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interest_fund_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sweep_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sweep_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sweep_internal_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6484,26 +6705,47 @@ All timestamps are in millisecond.
       </span><span class="s2">"recharge_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"recharge_internal_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"recharge_internal_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"recharge_unknown_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"recharge_unknown_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_unexpected_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recharge_unexpected_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"recharge_special_total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"recharge_special_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"failed_withdraw_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failed_withdraw_num"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"failed_sweep_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"failed_sweep_internal_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fees"</span><span class="p">:[</span><span class="w">  
-
+      </span><span class="s2">"failed_refund_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failed_system_call_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failed_delegate_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failed_undelegate_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fees"</span><span class="p">:[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0.000126"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refund_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sweep_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sweep_internal_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"system_call_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"delegate_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"undelegate_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"failed_withdraw_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"failed_refund_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"failed_sweep_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"failed_sweep_internal_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"failed_system_call_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"failed_delegate_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"failed_undelegate_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5e65bec73aef16290cb85510"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee_type"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"NASH"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1557287400245</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"blocknumber"</span><span class="p">:</span><span class="mi">8263478</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"appid"</span><span class="p">:</span><span class="s2">"pri"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-05-08T03:50:00.281Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="s2">"2019-05-08T03:50:04.648Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"__v"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"5cd251a5a57c8d32ee301714"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"calc_order_num"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5cd251e8a57c8d32ee301756"</span><span class="w">
+      </span><span class="s2">"chainKey"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1582285270762</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appid"</span><span class="p">:</span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2020-02-21T11:41:10.864Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="s2">"2020-03-09T03:57:59.884Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"__v"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"calc_order_num"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"5e4f8be476adea46c1cea568"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5e4fc1d6548491723a096c23"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -6546,22 +6788,22 @@ All timestamps are in millisecond.
 <tr>
 <td>sweep_total</td>
 <td>string</td>
-<td>total sweep token value</td>
+<td>total hot-to-cold token value</td>
 </tr>
 <tr>
 <td>sweep_num</td>
 <td>number</td>
-<td>total sweep times</td>
+<td>total hot-to-cold times</td>
 </tr>
 <tr>
 <td>sweep_internal_total</td>
 <td>string</td>
-<td>total sweep_internal token value</td>
+<td>total internal-out token value</td>
 </tr>
 <tr>
 <td>sweep_internal_num</td>
 <td>number</td>
-<td>total sweep_internal times</td>
+<td>total internal-out times</td>
 </tr>
 <tr>
 <td>airdrop_total</td>
@@ -6576,62 +6818,132 @@ All timestamps are in millisecond.
 <tr>
 <td>recharge_total</td>
 <td>string</td>
-<td>total recharge token value</td>
+<td>total cold-to-hot token value</td>
 </tr>
 <tr>
 <td>recharge_num</td>
 <td>number</td>
-<td>total recharge times</td>
+<td>total cold-to-hot times</td>
 </tr>
 <tr>
 <td>recharge_internal_total</td>
 <td>string</td>
-<td>total recharge_internal token value</td>
+<td>total internal-in token value</td>
 </tr>
 <tr>
 <td>recharge_internal_num</td>
 <td>number</td>
-<td>total recharge_internal times</td>
+<td>total internal-in times</td>
 </tr>
 <tr>
-<td>recharge_unknown_total</td>
+<td>recharge_unexpected_total</td>
 <td>string</td>
-<td>total recharge_unknown token value</td>
+<td>total unexpected-in token value</td>
 </tr>
 <tr>
-<td>recharge_unknown_num</td>
+<td>recharge_unexpected_num</td>
 <td>number</td>
-<td>total recharge_unknown times</td>
+<td>total unexpected-in times</td>
 </tr>
 <tr>
 <td>recharge_special_total</td>
 <td>string</td>
-<td>total recharge_special token value</td>
+<td>total special-in token value</td>
 </tr>
 <tr>
 <td>recharge_special_num</td>
 <td>number</td>
-<td>total recharge_special times</td>
+<td>total special-in times</td>
 </tr>
 <tr>
 <td>failed_withdraw_num</td>
 <td>number</td>
-<td>total failed withdraw times</td>
+<td>total failed withdrawal times</td>
 </tr>
 <tr>
 <td>failed_sweep_num</td>
 <td>number</td>
-<td>total failed sweep times</td>
+<td>total failed hot-to-cold times</td>
 </tr>
 <tr>
 <td>failed_sweep_internal_num</td>
 <td>number</td>
-<td>total failed sweep_internal times</td>
+<td>total failed internal-out times</td>
 </tr>
 <tr>
 <td>fees</td>
 <td>array</td>
 <td>all type of fees burned</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>string</td>
+<td>fees burned for withdrawal</td>
+</tr>
+<tr>
+<td>refund_fee</td>
+<td>string</td>
+<td>fees burned for refund</td>
+</tr>
+<tr>
+<td>sweep_fee</td>
+<td>string</td>
+<td>fees burned for hot-to-cold</td>
+</tr>
+<tr>
+<td>sweep_internal_fee</td>
+<td>string</td>
+<td>fees burned for internal-out</td>
+</tr>
+<tr>
+<td>system_call_fee</td>
+<td>string</td>
+<td>fees burned for all system_call txs</td>
+</tr>
+<tr>
+<td>delegate_fee</td>
+<td>string</td>
+<td>fees burned for staking</td>
+</tr>
+<tr>
+<td>undelegate_fee</td>
+<td>string</td>
+<td>fees burned for unstaking</td>
+</tr>
+<tr>
+<td>failed_withdraw_fee</td>
+<td>string</td>
+<td>fees burned for failed withdrawal</td>
+</tr>
+<tr>
+<td>failed_refund_fee</td>
+<td>string</td>
+<td>fees burned for failed refund</td>
+</tr>
+<tr>
+<td>failed_sweep_fee</td>
+<td>string</td>
+<td>fees burned for refund hot-to-cold</td>
+</tr>
+<tr>
+<td>failed_sweep_internal_fee</td>
+<td>string</td>
+<td>fees burned for refund internal-out</td>
+</tr>
+<tr>
+<td>failed_system_call_fee</td>
+<td>string</td>
+<td>fees burned for all failed system_call txs</td>
+</tr>
+<tr>
+<td>failed_delegate_fee</td>
+<td>string</td>
+<td>fees burned for failed delegation</td>
+</tr>
+<tr>
+<td>failed_undelegate_fee</td>
+<td>string</td>
+<td>fees burned for failed undelegation</td>
 </tr>
 <tr>
 <td>type</td>
