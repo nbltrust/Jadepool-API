@@ -91,19 +91,6 @@ Error Code | Category | CN | EN | JA
 20203 | missing-method | 无法找到patch方法 | Failed to find 'patch' method | 「patch」方法を見つけることができない
 20204 | missing-method | 无法找到delete方法 | Failed to find 'delete' method | 「delete」方法を見つけることができない
 20205 | missing-method | 该方法未实现 | This method is not implemented | この方法は実現していない
-20301 | chain-bitcoin | 非法参数 | invalid parameter | 不正パラメータ
-20302 | chain-bitcoin | 发送Bitcoin交易失败 | failed to send bitcoin transaction | Bitcoin取引に失敗しました
-20304 | chain-bitcoin | UTXO不足 | utxo not enough | UTXO不足
-20305 | chain-bitcoin | 交易拼接后UTXO不足 | utxo not enough after tx compose | トランザクションの後にUTXOが不足しています
-20322 | chain-cybex | 发送Cybex交易失败 | failed to send cybex transaction | Cybex取引失敗送信
-20323 | chain-cybex | Cybex钱包余额不足 | cybex wallet without enough balance | Cybex財布の残高不足
-20324 | chain-cybex | Cybex未找到合适的Keys | missing cybex keys | Cybexに適切なKeysが見つかりませんでした
-20325 | chain-cybex | 扫描区块尚未处于LIB以下 | Scanning block should be below LIB | 走査ブロックまだは「LIB」以下
-20326 | chain-cybex | 未找到指定Cybex区块 | cybex block not found | 見つからないで指定Cybexブロック
-20327 | chain-cybex | 未找到指定Cybex账号 | cybex account not found | 見つからないで指定Cybexアカウント
-20331 | chain-neo | Neo地址被冻结 | Neo address is frozen | Neoのアドレスが凍結された
-20332 | chain-neo | Neo交易发送失败 | Failed to send Neo transaction | Neo取引に失敗しました
-20340 | chain-vechain | VeChain交易发送失败 | Failed to send VeChain transaction | VeChain取引に失敗しました
 21000 | rpc-failed | 该服务未找到相关信息 | The service did not find relevant information. | このサービスに関する情報は見つかりません
 21001 | rpc-failed | 该服务尚未连接或名字空间错误 | The service has not been connected or has a namespace error | このサービスはまだ接続されていません。
 21002 | rpc-failed | 该服务未找到合适的工作进程 请开启相关进程后重试 | The service did not find the right work process.Please launch the work process | このサービスのプロセスが見つかりません
@@ -112,34 +99,6 @@ Error Code | Category | CN | EN | JA
 21005 | rpc-failed | 请求超时 | Request timeout | 超過を請求する
 21006 | rpc-failed | 返回类型错误 | Return type error | 戻るタイプのエラー
 21007 | rpc-failed | 未在数据库找到该链的标尺 | Specified ruler not found | この操作は目標を発見していない
-22010 | job-flow-error | 订单处于该状态不能进行交易构建 | Unable to build raw tx due to improper status | Unable to build raw tx due to wrong status
-22011 | job-flow-error | 手续费不足 | Insufficient fee | Insufficient fee
-22012 | job-flow-error | 订单处于该状态不能进行交易发送 | Unable to send tx due to improper status | Unable to send tx due to wrong status
-22013 | job-flow-error | 订单可能已被处理过 | Order might has already been processed due to improper status | Order might has already been processed due to improper status
-22014 | job-flow-error | 无法找到交易原始数据 | Tx raw data missing | Tx raw data missing
-22015 | job-flow-error | 缺少签名或签名验证失败 | Signature missing or verification failed | Signature missing or verification failed
-22016 | job-flow-error | 余额不足 | Insufficient balance | Insufficient balance
-22017 | job-flow-error | 无法获取余额 | Failed to get balance | Failed to get balance
-22018 | job-flow-error | 构建交易过程异常 | Exception occurs while building tx | Exception occurs while building tx
-22019 | job-flow-error | 订单未能参与构建 | Order was missed while building tx | Order was missed while building tx
-22020 | job-flow-error | 无法在节点找到交易且不能断定交易一定失败 | Unable to find tx on node and cannot conclude that tx definitely failed | Unable to find tx on node and cannot conclude that tx definitely failed
-22021 | job-flow-error |  |  | 
-29001 | warning | 热钱包余额低于低水位 | Hot wallet balance below low water level | 熱財布の残高が低い水位を下回る
-29002 | warning | 订单执行失败 | Failure of order execution | 注文に失敗した
-29003 | warning | 智能合约发生故障 | Failure of Intelligent Contract | インテリジェント契約の故障
-29004 | warning | 订单无法被处理 |  | 
-29005 | warning | 订单处理被冻结 |  | 
-29006 | warning | 订单处理时间过长 |  | 
-29007 | warning | 第一次出现 FailBlockNumber（通用） |  | 
-29008 | warning | FailedBlackNumber满之前（通用） |  | 
-29009 | warning | FailedBlackNumber满 -》 nonce占用（特定） |  | 
-29010 | warning | 出现 Expired 时（通用） |  | 
-29011 | warning | failed bn => good bn 时 |  | 
-29012 | warning | good bn => failed bn 时 |  | 
-29013 | warning | 订单处理 holding => init 时 |  | 
-29014 | warning | 订单处理 holding => online 时 |  | 
-29015 | warning | 订单处理 holding => failed 时 |  | 
-29016 | warning | 订单处理变为 cancelled 时 |  | 
 40100 | authorization-failed | 用户认证失败 | User authentication failed | ユーザ認証失敗
 40101 | authorization-failed | 缺少验证参数sig | Lack of validation parameter sig | 検証パラメータsig不足
 40102 | authorization-failed | 缺少验证参数timestamp | Lack of validation parameter timestamp | 検証パラメータtimes tamp不足
