@@ -4650,7 +4650,6 @@ coinName | 币种名称
 
 Parameter | Required | Type | Description
 --------- | ------- | --------- | -----------
-data.investorID | yes | string | 投资人id
 data.countryCode | yes | string | 国家简码
 data.sequence | yes | number | 唯一序列号
 
@@ -4862,16 +4861,49 @@ relatedIssueRecords | list | holding订单记录
     "hash": "sha3",
     "sort": "key-alphabet",
     "encode": "base64",
-    "timestamp": 1596187482835,
+    "timestamp": 1597386711337,
     "sig": {
-        "r": "95eQZRqyNhSzJPoG0rBKKSLxplMJApsinEwmKDBrp4I=",
-        "s": "XN3C+1gsK3NmroNNqM48/YJ3oO+UPoUfd5uM6g5TgSE=",
+        "r": "oyw9l4iBl7V6mBXyGgfKYXBVUunH97ERiWs4XknvYrE=",
+        "s": "f4DZHBpdQfoC9s8QNBnTy2JlWN5G5vCkkMSUJad5ofk=",
         "v": 28
     },
     "result": {
-        "investorID": "user1",
+        "investorID": "user20",
+        "countryCode": "HK",
+        "attributes": {
+            "0": {
+                "expiry": "1596426046699",
+                "proofHash": "0xC5C22849CEB17E3518de508254504Ba34dCB6E2",
+                "value": "2"
+            },
+            "1": {
+                "expiry": "1596424378444",
+                "proofHash": "0xC5C22849CEB17E3518de508254504Ba34dCB6E0",
+                "value": "1"
+            },
+            "2": {
+                "expiry": "1597376046112",
+                "proofHash": "0xC5C22849CEB17E3518de508254504Ba34dCB6E2",
+                "value": "0"
+            },
+            "4": {
+                "expiry": "1597376055762",
+                "proofHash": "0xC5C22849CEB17E3518de508254504Ba34dCB6E2",
+                "value": "2"
+            },
+            "5": {
+                "expiry": "1597376076488",
+                "proofHash": "0xC5C22849CEB17E3518de508254504Ba34dCB6E2",
+                "value": "9"
+            },
+            "8": {
+                "expiry": "1597376066647",
+                "proofHash": "0xC5C22849CEB17E3518de508254504Ba34dCB6E2",
+                "value": "2"
+            }
+        },
         "namespace": "ETH",
-        "sid": "4D3nqsKl3MVqmWxiAAAJ"
+        "sid": "9rZHtghw7vHbnUjBAAAC"
     }
 }
 ```
