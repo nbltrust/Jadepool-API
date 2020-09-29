@@ -296,6 +296,9 @@
                             <a href="#request-withdrawal" class="toc-h3 toc-link" data-title="Request Withdrawal">Request Withdrawal</a>
                           </li>
                           <li>
+                            <a href="#deposit-to-eth2-0-validator" class="toc-h3 toc-link" data-title="Deposit to ETH2.0 Validator">Deposit to ETH2.0 Validator</a>
+                          </li>
+                          <li>
                             <a href="#audit-for-specified-coin" class="toc-h3 toc-link" data-title="Audit For Specified Coin">Audit For Specified Coin</a>
                           </li>
                       </ul>
@@ -449,6 +452,17 @@
                             <a href="#83287f84b9" class="toc-h3 toc-link" data-title="设置回调地址">设置回调地址</a>
                           </li>
                       </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#bls-key-server-api" class="toc-h1 toc-link" data-title="BLS Key Server API">BLS Key Server API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#derive-bls-key-pair" class="toc-h2 toc-link" data-title="Derive BLS Key Pair">Derive BLS Key Pair</a>
+                  </li>
+                  <li>
+                    <a href="#generate-deposit-data" class="toc-h2 toc-link" data-title="Generate Deposit Data">Generate Deposit Data</a>
                   </li>
               </ul>
           </li>
@@ -2687,6 +2701,264 @@ All main parameters in POST API should be wraped in "data" object
 <td>no</td>
 <td>string</td>
 <td>extra data</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>latest info of the transaction</td>
+</tr>
+</tbody></table>
+<h3 id='deposit-to-eth2-0-validator'>Deposit to ETH2.0 Validator</h3>
+<blockquote>
+<p>Request &quot;Deposit to ETH2.0 Validator&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601364624962</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mdEk9OjsiVzNI2Dk7AWlA90yj1zPrVJCdBBBDDs05DE="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fW8jnR8zx+ceZOBuiNl2XKy/3YFRuo9l7hBa8CuDpU0="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f72e2900a38036c1488cd70"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131689"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet_2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM_CALL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3E0A276B9d9085508979149A05Cd7e213EC5DA0E"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"0x3E0A276B9d9085508979149A05Cd7e213EC5DA0E"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x07b39F4fDE4A38bACe212b546dAc87C58DfE3fDC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601364625</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601364624953</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601364624955</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validator_deposit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"98114c41a81aec827c4fec58f92ae86e3d69e1dd5f9b9f16653d746d46cee1465e55a604a801d4f40b3153c032cc7905"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"00b025640e57e3bf6f3b8c06d737730b8444c034ed3a38173179f35ec4f85e31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"81526ac4a1da286d6aa73656a53120d3364510c40d2c24e7419e796104a492fdde59c4eeed9b6c1a93e980891faaca0c125ed0bc5eb032d8b8ffb7bfd957acef4e54462e39eb4d1e07b7964f4db1419e8850e615dbe48d8c7321fe683da6e963"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"3c60988198779505a2379037bf258037df8fa970af9bde863052e18d26db886b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0xa81b4143ef7be1015d22bedf3ded93dc965e94edbcf28164c84ad3831ee064e355fdc6c92e37e7a2fb1a30e0875c4164"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"bizFlows"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"sendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aYBClnuVaTicQ50AAAs"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint enables you to deposit to ETH2.0 validator.</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http://jadepool.example/api/v2/wallet/:token/validator_deposit</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>should pass &quot;ETH&quot;</td>
+</tr>
+</tbody></table>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.sequence</td>
+<td>yes</td>
+<td>number</td>
+<td>unique API nonce for each app ID</td>
+</tr>
+<tr>
+<td>data.withdrawal_pubkey</td>
+<td>yes</td>
+<td>string</td>
+<td>validator&#39;s withdrawal public key</td>
+</tr>
+<tr>
+<td>data.withdrawal_credentials</td>
+<td>yes</td>
+<td>string</td>
+<td>withdrawal credentials obtained from &quot;signing key server&quot;</td>
+</tr>
+<tr>
+<td>data.signing_pubkey</td>
+<td>yes</td>
+<td>string</td>
+<td>validator&#39;s signing public key</td>
+</tr>
+<tr>
+<td>data.signature</td>
+<td>yes</td>
+<td>string</td>
+<td>signature obtained from &quot;signing key server&quot;</td>
+</tr>
+<tr>
+<td>data.deposit_data_root</td>
+<td>yes</td>
+<td>string</td>
+<td>deposit_data_root obtained from &quot;signing key server&quot;</td>
+</tr>
+<tr>
+<td>data.amount</td>
+<td>yes</td>
+<td>string</td>
+<td>The amount to deposit to the validator</td>
 </tr>
 </tbody></table>
 
@@ -9761,6 +10033,146 @@ All main parameters in POST API should be wraped in "data" object
 <td>no</td>
 <td>string</td>
 <td>充值订单回调地址</td>
+</tr>
+</tbody></table>
+<h1 id='bls-key-server-api'>BLS Key Server API</h1>
+<aside class="notice">
+端口是8901，默认只能本地访问。若需外部访问，请参考教程设置：https://nbltrust.github.io/jadepool-hub-tech-docs/zh-hans/seed-permission.html
+</aside>
+<h3 id='derive-bls-key-pair'>Derive BLS Key Pair</h3>
+<blockquote>
+<p>Request &quot;Derive BLS Key Pair&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"privatekey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x70821c9df11e4d0b0763c502d4bfafba35070c2d379f3ae2a6e3f5689c6b7745"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pubkey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xb74e693fc033ae0ba8eb1cf94c063c9e40050803cead9da516e9e544c96b7bd5ec23b099f17dfba1ac3f8d6649e1f1dd"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Derive BLS Key Pair</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http://{api url of seed server}/api/derive_keypair</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index</td>
+<td>yes</td>
+<td>number</td>
+<td>unique ID to derive key from master seed</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index</td>
+<td>number</td>
+<td>unique ID to derive key from master seed</td>
+</tr>
+<tr>
+<td>privatekey</td>
+<td>string</td>
+<td>private key</td>
+</tr>
+<tr>
+<td>pubkey</td>
+<td>string</td>
+<td>public key</td>
+</tr>
+</tbody></table>
+<h3 id='generate-deposit-data'>Generate Deposit Data</h3>
+<blockquote>
+<p>Request &quot;Generate Deposit Data&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"signing_pubkey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98114c41a81aec827c4fec58f92ae86e3d69e1dd5f9b9f16653d746d46cee1465e55a604a801d4f40b3153c032cc7905"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"withdrawal_credentials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00b025640e57e3bf6f3b8c06d737730b8444c034ed3a38173179f35ec4f85e31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81526ac4a1da286d6aa73656a53120d3364510c40d2c24e7419e796104a492fdde59c4eeed9b6c1a93e980891faaca0c125ed0bc5eb032d8b8ffb7bfd957acef4e54462e39eb4d1e07b7964f4db1419e8850e615dbe48d8c7321fe683da6e963"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deposit_data_root"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3c60988198779505a2379037bf258037df8fa970af9bde863052e18d26db886b"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Generate Deposit Data</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http://{api url of seed server}/api/generate_deposit_data</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index</td>
+<td>yes</td>
+<td>number</td>
+<td>unique ID to derive key from master seed</td>
+</tr>
+<tr>
+<td>withdrawal_pubkey</td>
+<td>yes</td>
+<td>string</td>
+<td>validator&#39;s withdrawal public key</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>yes</td>
+<td>string</td>
+<td>amount of ETH to deposit to the validator</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>signing_pubkey</td>
+<td>string</td>
+<td>signing public key</td>
+</tr>
+<tr>
+<td>withdrawal_credentials</td>
+<td>string</td>
+<td>withdrawal credentials</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>string</td>
+<td>signature</td>
+</tr>
+<tr>
+<td>deposit_data_root</td>
+<td>string</td>
+<td>deposit data root</td>
 </tr>
 </tbody></table>
 <h1 id='callback'>Callback</h1>
