@@ -414,6 +414,9 @@
                           <li>
                             <a href="#a471daf080" class="toc-h3 toc-link" data-title="提现">提现</a>
                           </li>
+                          <li>
+                            <a href="#53bda2d4d0" class="toc-h3 toc-link" data-title="给订单设置自定义标签">给订单设置自定义标签</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -8014,6 +8017,117 @@ All main parameters in POST API should be wraped in "data" object
 <td>relatedIssueRecords</td>
 <td>list</td>
 <td>holding订单记录</td>
+</tr>
+</tbody></table>
+<h3 id='53bda2d4d0'>给订单设置自定义标签</h3>
+<blockquote>
+<p>Request &quot;给订单设置自定义标签&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605532469083</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2oKRvlpISt7BDr3fOvrzJ6JXqgILsvS5B1damohCKzU="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fnRX3/u5+ySC03ogTSo8kWnSMzUp2SHzPU78iUD4Mg4="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nModified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>给订单设置自定义标签</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http://jadepool.example/api/v2/s/wallets/:wallet/orders/:orderId/tags</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>钱包ID</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>需要打标签的订单</td>
+</tr>
+</tbody></table>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.key</td>
+<td>yes</td>
+<td>string</td>
+<td>全局唯一，关联一组标签</td>
+</tr>
+<tr>
+<td>data.locales</td>
+<td>yes</td>
+<td>array</td>
+<td>标签内容</td>
+</tr>
+<tr>
+<td>data.locales[n].lang</td>
+<td>yes</td>
+<td>enum</td>
+<td>标签语言，&#39;zh-cn&#39;或&#39;en&#39;</td>
+</tr>
+<tr>
+<td>data.locales[n].label</td>
+<td>yes</td>
+<td>string</td>
+<td>标签</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>n</td>
+<td>number</td>
+<td>选中的对象数</td>
+</tr>
+<tr>
+<td>nModified</td>
+<td>number</td>
+<td>修改的对象数</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>number</td>
+<td>修改结果，1是成功，0是失败</td>
 </tr>
 </tbody></table>
 <h2 id='ds'>DS</h2><h3 id='205c76b684'>验证是否可转账</h3>
