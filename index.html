@@ -459,6 +459,74 @@
               </ul>
           </li>
           <li>
+            <a href="#mpc-api" class="toc-h1 toc-link" data-title="MPC API">MPC API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0f7da8567e" class="toc-h2 toc-link" data-title="托管单元">托管单元</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#7a00eaec0f" class="toc-h3 toc-link" data-title="注册公钥">注册公钥</a>
+                          </li>
+                          <li>
+                            <a href="#dc593b08a2" class="toc-h3 toc-link" data-title="查询注册公钥列表">查询注册公钥列表</a>
+                          </li>
+                          <li>
+                            <a href="#68a8bc772c" class="toc-h3 toc-link" data-title="查询注册公钥信息">查询注册公钥信息</a>
+                          </li>
+                          <li>
+                            <a href="#f191b6ef84" class="toc-h3 toc-link" data-title="修改注册公钥信息">修改注册公钥信息</a>
+                          </li>
+                          <li>
+                            <a href="#2cebb45921" class="toc-h3 toc-link" data-title="创建地址">创建地址</a>
+                          </li>
+                          <li>
+                            <a href="#65f179f259" class="toc-h3 toc-link" data-title="查询地址">查询地址</a>
+                          </li>
+                          <li>
+                            <a href="#d726384075" class="toc-h3 toc-link" data-title="查询地址相关订单">查询地址相关订单</a>
+                          </li>
+                          <li>
+                            <a href="#d1b09b6b80" class="toc-h3 toc-link" data-title="查询地址余额">查询地址余额</a>
+                          </li>
+                          <li>
+                            <a href="#080bb86350" class="toc-h3 toc-link" data-title="强制更新地址余额">强制更新地址余额</a>
+                          </li>
+                          <li>
+                            <a href="#34cd7a9e4c" class="toc-h3 toc-link" data-title="发起提现">发起提现</a>
+                          </li>
+                          <li>
+                            <a href="#ad35cb42ca" class="toc-h3 toc-link" data-title="发起合约交易">发起合约交易</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#96a5882bf8" class="toc-h2 toc-link" data-title="订单相关">订单相关</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#90376e83a0" class="toc-h3 toc-link" data-title="查询订单">查询订单</a>
+                          </li>
+                          <li>
+                            <a href="#3eedd32d80" class="toc-h3 toc-link" data-title="取消订单">取消订单</a>
+                          </li>
+                          <li>
+                            <a href="#13ad33d6d4" class="toc-h3 toc-link" data-title="上传签名">上传签名</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#a72ef18d9a" class="toc-h2 toc-link" data-title="工具">工具</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#b1f7c69981" class="toc-h3 toc-link" data-title="查询手续费">查询手续费</a>
+                          </li>
+                          <li>
+                            <a href="#99a12c6b9f" class="toc-h3 toc-link" data-title="区块链调用">区块链调用</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#bls-key-server-api" class="toc-h1 toc-link" data-title="BLS Key Server API">BLS Key Server API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -10147,6 +10215,2676 @@ All main parameters in POST API should be wraped in "data" object
 <td>no</td>
 <td>string</td>
 <td>充值订单回调地址</td>
+</tr>
+</tbody></table>
+<h1 id='mpc-api'>MPC API</h1><h2 id='0f7da8567e'>托管单元</h2><h3 id='7a00eaec0f'>注册公钥</h3>
+<blockquote>
+<p>Request &quot;注册公钥&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695319833</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gtXA4NL9etHtxg3f8nUar5jBmq3CNMNsBCwIoEK4xb8="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADjm+yGuK0qAI+wsh9YL9Nt/pPu33/03XIqXHEzS0ag="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:48:39.828Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:48:39.828Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>注册公钥</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http:/{ip}/api/v2/units</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.pubKey</td>
+<td>yes</td>
+<td>string</td>
+<td>需要注册的公钥</td>
+</tr>
+<tr>
+<td>data.alias</td>
+<td>no</td>
+<td>string</td>
+<td>选填，注册的别名</td>
+</tr>
+<tr>
+<td>data.algorithm</td>
+<td>no</td>
+<td>string</td>
+<td>私钥到公钥的算法（secp256k1、ecdsa、ed25519、sr25519）</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>resource ID，唯一ID，可用以查询</td>
+</tr>
+<tr>
+<td>pubKey</td>
+<td>string</td>
+<td>需要注册的公钥</td>
+</tr>
+<tr>
+<td>alias</td>
+<td>string</td>
+<td>请求时传入值</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>array</td>
+<td>注册公钥已衍生的地址的ObjectID</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>注册公钥的（MPC）钱包</td>
+</tr>
+<tr>
+<td>algorithm</td>
+<td>string</td>
+<td>传入的私钥到公钥的算法</td>
+</tr>
+</tbody></table>
+<h3 id='dc593b08a2'>查询注册公钥列表</h3>
+<blockquote>
+<p>Request &quot;查询注册公钥列表&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695346131</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RoZ8C6fe8oihxS8IS8YeN4tGCqR9Y43PDEJULWCAOBc="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SXYDRGi9ZJUsU/Vl5fKUdCgfVK3kGyK7VWSC/Klw5Xo="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:48:39.828Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:48:39.828Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询注册公钥列表</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http://{ip}/api/v2/units?page={page}&amp;limit={limit}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>no</td>
+<td>number</td>
+<td>查询页数</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>no</td>
+<td>number</td>
+<td>每页查询数量</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list[n]._id</td>
+<td>string</td>
+<td>注册单元的唯一ID resource ID</td>
+</tr>
+<tr>
+<td>list[n].pubKey</td>
+<td>string</td>
+<td>需要注册的公钥</td>
+</tr>
+<tr>
+<td>list[n].alias</td>
+<td>string</td>
+<td>请求时传入值</td>
+</tr>
+<tr>
+<td>list[n].addresses</td>
+<td>array</td>
+<td>注册公钥已衍生的地址的ObjectID</td>
+</tr>
+<tr>
+<td>list[n].wallet</td>
+<td>string</td>
+<td>注册公钥的（MPC）钱包### 注册公钥</td>
+</tr>
+<tr>
+<td>list[n].appid</td>
+<td>string</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td>list[n].algorithm</td>
+<td>string</td>
+<td>私钥到公钥的算法</td>
+</tr>
+<tr>
+<td>pagination.page</td>
+<td>number</td>
+<td>查询所在页数</td>
+</tr>
+<tr>
+<td>pagination.limit</td>
+<td>number</td>
+<td>每页查询数量</td>
+</tr>
+<tr>
+<td>pagination.total</td>
+<td>number</td>
+<td>符合条件的条目总数</td>
+</tr>
+</tbody></table>
+<h3 id='68a8bc772c'>查询注册公钥信息</h3>
+<blockquote>
+<p>Request &quot;查询注册公钥信息&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695360816</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ss/SK084+L0Czz5eg+KCTUcEv+d3jQJ4SRMa/O1+6o="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BwMJ0/VnDZrZvw7+bspxMs8AFCITZNO35BjdCvIZ/xM="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:48:39.828Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:48:39.828Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询注册公钥信息</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http:/{ip}/api/v2/units/{ResourceID}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>注册单元的唯一ID resource ID</td>
+</tr>
+<tr>
+<td>pubKey</td>
+<td>string</td>
+<td>需要注册的公钥</td>
+</tr>
+<tr>
+<td>alias</td>
+<td>string</td>
+<td>请求时传入值</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>array</td>
+<td>注册公钥已衍生的地址的ObjectID</td>
+</tr>
+<tr>
+<td>algorithm</td>
+<td>string</td>
+<td>私钥到公钥的算法</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>注册公钥的（MPC）钱包</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用ID</td>
+</tr>
+</tbody></table>
+<h3 id='f191b6ef84'>修改注册公钥信息</h3>
+<blockquote>
+<p>Request &quot;修改注册公钥信息&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617696633108</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jObqwfW/o+CzaSqOO44Y4DT20qZmXedurFgvkjAKYn8="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRZ7X04xjrfnEguXy+ZMtvv1PouqVlO75D/SJ/3mjio="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c12930b207604bc55a029"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chainKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c12930b207604bc55a028"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:48:39.828Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T08:10:33.104Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>修改注册公钥信息</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>PATCH http:/{ip}/api/v2/units/{ResourceID}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.alias</td>
+<td>yes</td>
+<td>string</td>
+<td>目前只能修改别名</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>注册单元的唯一ID resource ID</td>
+</tr>
+<tr>
+<td>pubKey</td>
+<td>string</td>
+<td>需要注册的公钥</td>
+</tr>
+<tr>
+<td>alias</td>
+<td>string</td>
+<td>别名</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>array</td>
+<td>注册公钥已衍生的地址的ObjectID</td>
+</tr>
+<tr>
+<td>algorithm</td>
+<td>string</td>
+<td>私钥到公钥的算法</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>注册公钥的（MPC）钱包</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用ID</td>
+</tr>
+</tbody></table>
+<h3 id='2cebb45921'>创建地址</h3>
+<blockquote>
+<p>Request &quot;创建地址&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695379654</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FfDsD3F65s12UQ44x4gA0W6ZGMolMeqozkM+jtaGywY="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Huw9E+pyAvjfEkILfLLhGuYTVIGIizEOaIYy6I4hDmc="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"algorithmHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"incoming"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"incomings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"functional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dusts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"used"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"awaitPlans"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"assign_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695379640</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c12930b207604bc55a028"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"derivedPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695379642</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695379646</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>创建地址</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>创建地址的token</td>
+</tr>
+<tr>
+<td>data.algorithmHash</td>
+<td>no</td>
+<td>string</td>
+<td>选填，目前传default就可以</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>地址的唯一ObjectID</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>注册公钥、生成地址的（MPC）钱包</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>string</td>
+<td>token</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>string</td>
+<td>注册单元的唯一ID resource ID</td>
+</tr>
+</tbody></table>
+<h3 id='65f179f259'>查询地址</h3>
+<blockquote>
+<p>Request &quot;查询地址&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695411724</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lrv/KIVbLJROLjOvpWhVzTzj0E9NzvC4gRVgqQz/0ew="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Okh/d/pnHmUZJjEuyD9xAzxxkDPCDcn01Jd39HZvhaM="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"algorithmHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"incoming"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"incomings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"functional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dusts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"used"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"awaitPlans"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"assign_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695379640</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c12930b207604bc55a028"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"derivedPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x829a4d2a502ab39cc7641d7752ee88c727b41cb9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695379642</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695379646</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询地址</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>查询地址的token</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>地址的唯一ObjectID</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>注册公钥、生成地址的（MPC）钱包</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>string</td>
+<td>token</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>string</td>
+<td>注册单元的唯一ID resource ID</td>
+</tr>
+</tbody></table>
+<h3 id='d726384075'>查询地址相关订单</h3>
+<blockquote>
+<p>Request &quot;查询地址相关订单&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695595541</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U7P1fDVTntuQ0Dpl7E0PdXOxoUEcfJYSwsQ57VzxEg0="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HMsBS92+n1cDfIJ8iwUXtSWRVleEKkxKBJ5qG4rNco4="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1352b10f4804ae3167f1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1b10841c6a16c85b3748695bd890908e3998d71b809914fe2ab1f8c826754e66"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPOSIT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">16176955705364982</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695570536</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695595377</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"bizFlows"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000315"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c136bacf9f804af38890c"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nativeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nativeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695570537</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestampHandle"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695570537</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"sendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"stateTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"validationResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1b10841c6a16c85b3748695bd890908e3998d71b809914fe2ab1f8c826754e66"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">24172701</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13460b207604bc55a02a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_sign"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695558</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695558556</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695559236</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw-from-addr"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"bizFlows"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"606c13460b207604bc55a02b"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"sendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"stateTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"validationResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询地址相关订单</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/orders/{state}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>查询地址的token</td>
+</tr>
+<tr>
+<td>state</td>
+<td>no</td>
+<td>string</td>
+<td>订单状态，选填。如果只需查询某一状态的订单，传入状态（init,holding,online,pending,done,failed,cancelled）</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>数据库中_id序列</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>订单号</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>上链后的txid</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>string</td>
+<td>存放nonce</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>钱包ID</td>
+</tr>
+<tr>
+<td>sendMode</td>
+<td>string</td>
+<td>发送方式，normal、manual_sign</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>订单状态</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>订单类型</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>主type</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>string</td>
+<td>子type</td>
+</tr>
+<tr>
+<td>coinType</td>
+<td>string</td>
+<td>币种类型</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>订单创建时的from</td>
+</tr>
+<tr>
+<td>froms</td>
+<td>string</td>
+<td>实际链上去重后的from</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>到账地址</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>订单金额</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>number</td>
+<td>唯一序列号</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>当前确认数</td>
+</tr>
+<tr>
+<td>expectedConfirmations</td>
+<td>number</td>
+<td>期望确认数</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>订单动作</td>
+</tr>
+<tr>
+<td>actionArgs</td>
+<td>list</td>
+<td>action的参数</td>
+</tr>
+<tr>
+<td>actionResults</td>
+<td>list</td>
+<td>action结果</td>
+</tr>
+<tr>
+<td>postHandlers</td>
+<td>list</td>
+<td></td>
+</tr>
+<tr>
+<td>n</td>
+<td>number</td>
+<td>订单所在交易的位置</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>list</td>
+<td>手续费具体信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>订单处理过程中的数据记录</td>
+</tr>
+<tr>
+<td>pendingTags</td>
+<td>list</td>
+<td>订单异常时的标识位</td>
+</tr>
+<tr>
+<td>events</td>
+<td>list</td>
+<td>事件记录</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>交易上链的hash</td>
+</tr>
+<tr>
+<td>txid_rawtx</td>
+<td>string</td>
+<td>预先计算的hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>订单所在区块</td>
+</tr>
+<tr>
+<td>blockHash</td>
+<td>string</td>
+<td>订单所在区块的hash</td>
+</tr>
+<tr>
+<td>blockTimestamp</td>
+<td>number</td>
+<td>订单所在区块的时间戳</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
+</tr>
+<tr>
+<td>relatedOrder</td>
+<td>string</td>
+<td>关联订单</td>
+</tr>
+<tr>
+<td>relatedIssueRecords</td>
+<td>list</td>
+<td>holding订单记录</td>
+</tr>
+</tbody></table>
+<h3 id='d1b09b6b80'>查询地址余额</h3>
+<blockquote>
+<p>Request &quot;查询地址余额&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695511824</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F9NToE/+JamPmC4nBqm+13xC7K5CIYO8fxUDcbQirwQ="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LZ86aDC+astqztaAUsCz6Ei0N9yJHUn6v+JoOIQ/maA="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询地址余额</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/balance</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>查询地址的token</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>balance</td>
+<td>string</td>
+<td>地址余额</td>
+</tr>
+</tbody></table>
+<h3 id='080bb86350'>强制更新地址余额</h3>
+<blockquote>
+<p>Request &quot;强制更新地址余额&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695496440</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CvvYeJneY00UbEqtJS/6cHTzD0ggNHtGCWCqafkkWJU="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NGkUB4aseN2TrQbqdg+cl+mk3wLkFXEji7Shp70FAl0="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>强制更新地址余额</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/active</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>地址token</td>
+</tr>
+<tr>
+<td>data</td>
+<td>yes</td>
+<td>object</td>
+<td>传空对象即可</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ok</td>
+<td>boolean</td>
+<td>true表示请求成功</td>
+</tr>
+</tbody></table>
+<h3 id='34cd7a9e4c'>发起提现</h3>
+<blockquote>
+<p>Request &quot;发起提现&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617696974795</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cg7b80V6KPyJPW6IQm5I/Ga6A6bc6xdU1+tcEoEJ1eQ="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIH+w9ak4hDa8/xZkBkRilJATWM8pZoEWhGRofMZyuQ="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18ce11806dc32f818b04"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1207"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mpc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_sign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3B207951C2c906ed2F246A875275A9C70a22f2A4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"0x3B207951C2c906ed2F246A875275A9C70a22f2A4"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617696974</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617696974676</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617696974689</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw-from-addr"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"bizFlows"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"feePrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gasLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">21000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"buildingTimeout"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602356b0f7b2d26fe4e8bdb1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"sendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"stateTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"validationResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0yRVwFz4Fbn6JvNnAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>发起提现</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/withdraw</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>地址token</td>
+</tr>
+<tr>
+<td>data.sequence</td>
+<td>yes</td>
+<td>number</td>
+<td>请求的唯一序列号</td>
+</tr>
+<tr>
+<td>data.to</td>
+<td>yes</td>
+<td>number</td>
+<td>提现接收地址</td>
+</tr>
+<tr>
+<td>data.value</td>
+<td>yes</td>
+<td>number</td>
+<td>提现金额</td>
+</tr>
+<tr>
+<td>data.advanced.feePrice</td>
+<td>no</td>
+<td>number</td>
+<td>交易手续费，必须是（最小单位的）整数</td>
+</tr>
+<tr>
+<td>data.advanced.gasLimit</td>
+<td>no</td>
+<td>number</td>
+<td>以太坊系交易设置</td>
+</tr>
+<tr>
+<td>data.advanced.buildingTimeout</td>
+<td>no</td>
+<td>number</td>
+<td>如果超过该时间段构建交易没有完成就取消订单</td>
+</tr>
+<tr>
+<td>data.advanced.priority</td>
+<td>no</td>
+<td>number</td>
+<td>手续费倍率，和feePrice、gasLimit，只能二选一传入</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>数据库中_id序列</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>订单号</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>上链后的txid</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>string</td>
+<td>存放nonce</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>钱包ID</td>
+</tr>
+<tr>
+<td>sendMode</td>
+<td>string</td>
+<td>发送方式，normal、manual_sign</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>订单状态</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>订单类型</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>主type</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>string</td>
+<td>子type</td>
+</tr>
+<tr>
+<td>coinType</td>
+<td>string</td>
+<td>币种类型</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>订单创建时的from</td>
+</tr>
+<tr>
+<td>froms</td>
+<td>string</td>
+<td>实际链上去重后的from</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>到账地址</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>订单金额</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>number</td>
+<td>唯一序列号</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>当前确认数</td>
+</tr>
+<tr>
+<td>expectedConfirmations</td>
+<td>number</td>
+<td>期望确认数</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>订单动作</td>
+</tr>
+<tr>
+<td>actionArgs</td>
+<td>list</td>
+<td>action的参数</td>
+</tr>
+<tr>
+<td>actionResults</td>
+<td>list</td>
+<td>action结果</td>
+</tr>
+<tr>
+<td>postHandlers</td>
+<td>list</td>
+<td></td>
+</tr>
+<tr>
+<td>n</td>
+<td>number</td>
+<td>订单所在交易的位置</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>list</td>
+<td>手续费具体信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>订单处理过程中的数据记录</td>
+</tr>
+<tr>
+<td>pendingTags</td>
+<td>list</td>
+<td>订单异常时的标识位</td>
+</tr>
+<tr>
+<td>events</td>
+<td>list</td>
+<td>事件记录</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>交易上链的hash</td>
+</tr>
+<tr>
+<td>txid_rawtx</td>
+<td>string</td>
+<td>预先计算的hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>订单所在区块</td>
+</tr>
+<tr>
+<td>blockHash</td>
+<td>string</td>
+<td>订单所在区块的hash</td>
+</tr>
+<tr>
+<td>blockTimestamp</td>
+<td>number</td>
+<td>订单所在区块的时间戳</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
+</tr>
+<tr>
+<td>relatedOrder</td>
+<td>string</td>
+<td>关联订单</td>
+</tr>
+<tr>
+<td>relatedIssueRecords</td>
+<td>list</td>
+<td>holding订单记录</td>
+</tr>
+</tbody></table>
+<h3 id='ad35cb42ca'>发起合约交易</h3>
+<blockquote>
+<p>Request &quot;发起合约交易&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695725450</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1Fzg6L2pwr2hn5o4Bd5X8ZWxaQx6DTybeEGMksLSUos="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UZ9sOBHe3QrCtC880lFYw8wIReoPdJ9NoNVBgjJhBeM="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13ed0b207604bc55a053"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_sign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM_CALL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695725</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695725403</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695725406</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general:general:UNISWAP swapETHForExactTokens"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"hello"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"bizFlows"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"sendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"stateTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"validationResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>发起合约交易</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/invoke</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResourceID</td>
+<td>yes</td>
+<td>string</td>
+<td>注册公钥时返回的唯一ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>地址token</td>
+</tr>
+<tr>
+<td>data.sequence</td>
+<td>yes</td>
+<td>number</td>
+<td>请求的唯一序列号</td>
+</tr>
+<tr>
+<td>data.to</td>
+<td>yes</td>
+<td>number</td>
+<td>交易接收地址</td>
+</tr>
+<tr>
+<td>data.value</td>
+<td>yes</td>
+<td>number</td>
+<td>交易金额</td>
+</tr>
+<tr>
+<td>data.input</td>
+<td>yes</td>
+<td>number</td>
+<td>以太坊系交易的input data</td>
+</tr>
+<tr>
+<td>data.action</td>
+<td>yes</td>
+<td>number</td>
+<td>该项仅用于后台管理系统显示，传入便于阅读的值即可</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>数据库中_id序列</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>订单号</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>上链后的txid</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>string</td>
+<td>存放nonce</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>钱包ID</td>
+</tr>
+<tr>
+<td>sendMode</td>
+<td>string</td>
+<td>发送方式，normal、manual_sign</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>订单状态</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>订单类型</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>主type</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>string</td>
+<td>子type</td>
+</tr>
+<tr>
+<td>coinType</td>
+<td>string</td>
+<td>币种类型</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>订单创建时的from</td>
+</tr>
+<tr>
+<td>froms</td>
+<td>string</td>
+<td>实际链上去重后的from</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>到账地址</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>订单金额</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>number</td>
+<td>唯一序列号</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>当前确认数</td>
+</tr>
+<tr>
+<td>expectedConfirmations</td>
+<td>number</td>
+<td>期望确认数</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>订单动作</td>
+</tr>
+<tr>
+<td>actionArgs</td>
+<td>list</td>
+<td>action的参数</td>
+</tr>
+<tr>
+<td>actionResults</td>
+<td>list</td>
+<td>action结果</td>
+</tr>
+<tr>
+<td>postHandlers</td>
+<td>list</td>
+<td></td>
+</tr>
+<tr>
+<td>n</td>
+<td>number</td>
+<td>订单所在交易的位置</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>list</td>
+<td>手续费具体信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>订单处理过程中的数据记录</td>
+</tr>
+<tr>
+<td>pendingTags</td>
+<td>list</td>
+<td>订单异常时的标识位</td>
+</tr>
+<tr>
+<td>events</td>
+<td>list</td>
+<td>事件记录</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>交易上链的hash</td>
+</tr>
+<tr>
+<td>txid_rawtx</td>
+<td>string</td>
+<td>预先计算的hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>订单所在区块</td>
+</tr>
+<tr>
+<td>blockHash</td>
+<td>string</td>
+<td>订单所在区块的hash</td>
+</tr>
+<tr>
+<td>blockTimestamp</td>
+<td>number</td>
+<td>订单所在区块的时间戳</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
+</tr>
+<tr>
+<td>relatedOrder</td>
+<td>string</td>
+<td>关联订单</td>
+</tr>
+<tr>
+<td>relatedIssueRecords</td>
+<td>list</td>
+<td>holding订单记录</td>
+</tr>
+</tbody></table>
+<h2 id='96a5882bf8'>订单相关</h2><h3 id='90376e83a0'>查询订单</h3>
+<blockquote>
+<p>Request &quot;查询订单&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695936950</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J/g2BKbw8o6rLO4DUfcUWzUdtdKDRb9IeckomuLvyd0="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H/Hz0SwHmKSEh7BuzOZ/c3eD6P9liLsqaolQkc3EfOI="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13460b207604bc55a02a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_app"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_sign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WITHDRAW"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695558</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695558556</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695713143</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw-from-addr"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"bizFlows"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom-withdraw"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentFlow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastFlow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13460b207604bc55a02b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chainKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13460b207604bc55a02a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"building_trying"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"building_error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1347acf9f804af388907"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unbuilt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1347acf9f804af388905"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"logs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13e2acf9f804af388916"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">unitId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">606c1257733901019076dcef</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">building_trying</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">building_error</span><span class="se">\"</span><span class="s2">:null}"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695714241</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13e1acf9f804af388914"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rawtx_built"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">unitId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">606c1257733901019076dcef</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">building_trying</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">building_error</span><span class="se">\"</span><span class="s2">:null}"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695713271</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1348acf9f804af388908"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unbuilt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rawtx_built"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">unitId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">606c1257733901019076dcef</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">building_trying</span><span class="se">\"</span><span class="s2">:false}"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695560340</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:52:38.581Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T07:55:14.244Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1347acf9f804af388905"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13460b207604bc55a02b"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user request."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1257733901019076dcef"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"sendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"stateTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"validationResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state-issue"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c13e10b207604bc55a052"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">29016</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user request."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695713142</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询订单</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http:/{ip}/api/v2/orders/{orderID}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderID</td>
+<td>yes</td>
+<td>string</td>
+<td>查询订单的ID</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>数据库中_id序列</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>订单号</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>上链后的txid</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>string</td>
+<td>存放nonce</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>string</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>钱包ID</td>
+</tr>
+<tr>
+<td>sendMode</td>
+<td>string</td>
+<td>发送方式，normal、manual_sign</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>订单状态</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>订单类型</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>主type</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>string</td>
+<td>子type</td>
+</tr>
+<tr>
+<td>coinType</td>
+<td>string</td>
+<td>币种类型</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>订单创建时的from</td>
+</tr>
+<tr>
+<td>froms</td>
+<td>string</td>
+<td>实际链上去重后的from</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>到账地址</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>订单金额</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>number</td>
+<td>唯一序列号</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>当前确认数</td>
+</tr>
+<tr>
+<td>expectedConfirmations</td>
+<td>number</td>
+<td>期望确认数</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>订单动作</td>
+</tr>
+<tr>
+<td>actionArgs</td>
+<td>list</td>
+<td>action的参数</td>
+</tr>
+<tr>
+<td>actionResults</td>
+<td>list</td>
+<td>action结果</td>
+</tr>
+<tr>
+<td>postHandlers</td>
+<td>list</td>
+<td></td>
+</tr>
+<tr>
+<td>n</td>
+<td>number</td>
+<td>订单所在交易的位置</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>list</td>
+<td>手续费具体信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>订单处理过程中的数据记录</td>
+</tr>
+<tr>
+<td>pendingTags</td>
+<td>list</td>
+<td>订单异常时的标识位</td>
+</tr>
+<tr>
+<td>events</td>
+<td>list</td>
+<td>事件记录</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>交易上链的hash</td>
+</tr>
+<tr>
+<td>txid_rawtx</td>
+<td>string</td>
+<td>预先计算的hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>订单所在区块</td>
+</tr>
+<tr>
+<td>blockHash</td>
+<td>string</td>
+<td>订单所在区块的hash</td>
+</tr>
+<tr>
+<td>blockTimestamp</td>
+<td>number</td>
+<td>订单所在区块的时间戳</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
+</tr>
+<tr>
+<td>relatedOrder</td>
+<td>string</td>
+<td>关联订单</td>
+</tr>
+<tr>
+<td>relatedIssueRecords</td>
+<td>list</td>
+<td>holding订单记录</td>
+</tr>
+</tbody></table>
+<h3 id='3eedd32d80'>取消订单</h3>
+<blockquote>
+<p>Request &quot;取消订单&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695713151</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GaWb4TJ0ZHUHTa7RlwabSkuun9OFX/2x23ZKdzhPADU="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9+Y8ZJ3CE5Y5R/hoQ4IxSkp2J4ypX3/bkIcG5AUdgw="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>取消订单</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http:/{ip}/api/v2/orders/{orderID}/cancel</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderID</td>
+<td>yes</td>
+<td>string</td>
+<td>取消订单的ID</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ok</td>
+<td>boolean</td>
+<td>true表示请求成功</td>
+</tr>
+</tbody></table>
+<h3 id='13ad33d6d4'>上传签名</h3>
+<blockquote>
+<p>Request &quot;上传签名&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617698921829</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dNVXJvS7k0qGk2z7c6k/CaJpGhdNYNQ8Z2OK/tOx0LM="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CF5ogiGkkPvkoDfn0F6tYOctR+QEXVnX1iAdR2WM5Q0="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b47BkqPk6RBd8EksAAAD"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>上传签名</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http:/{ip}/api/v2/orders/{orderID}/import-sig</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderID</td>
+<td>yes</td>
+<td>string</td>
+<td>上传签名的订单ID</td>
+</tr>
+<tr>
+<td>data.sigs</td>
+<td>yes</td>
+<td>array</td>
+<td>所有签名</td>
+</tr>
+<tr>
+<td>data.sigs.signature</td>
+<td>yes</td>
+<td>string</td>
+<td>签名</td>
+</tr>
+<tr>
+<td>data.sigs.recovery</td>
+<td>yes</td>
+<td>number</td>
+<td>recovery ID</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ok</td>
+<td>boolean</td>
+<td>true表示请求成功</td>
+</tr>
+</tbody></table>
+<h2 id='a72ef18d9a'>工具</h2><h3 id='b1f7c69981'>查询手续费</h3>
+<blockquote>
+<p>Request &quot;查询手续费&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695873746</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zfnD4y41JOJV00wncmnDPen4Qk31TVL6xalKdob6C4w="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bsQeFGQuadB84yUdUYDilQqmXUXOHdYg8HilbLV8vzo="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"priorityDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feeToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feeDecimal"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feePriceMin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feePriceMax"</span><span class="p">:</span><span class="w"> </span><span class="mi">150000000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feePriceRealtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gasLimitDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">21000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gasLimitMin"</span><span class="p">:</span><span class="w"> </span><span class="mi">21000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gasLimitMax"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询手续费</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http://{ip}/api/v2/utilities/tokens/{token}/fee-prices</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>查询手续费的token</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>priorityDefault</td>
+<td>number</td>
+<td>默认手续费倍率</td>
+</tr>
+<tr>
+<td>feeToken</td>
+<td>string</td>
+<td>查询的token</td>
+</tr>
+<tr>
+<td>feeDecimal</td>
+<td>number</td>
+<td>单位小数位</td>
+</tr>
+<tr>
+<td>feePriceMin</td>
+<td>number</td>
+<td>范围最低，实时fee的一倍</td>
+</tr>
+<tr>
+<td>feePriceMax</td>
+<td>number</td>
+<td>范围最高，实时fee的十倍</td>
+</tr>
+<tr>
+<td>feePriceRealtime</td>
+<td>number</td>
+<td>实时fee价格</td>
+</tr>
+<tr>
+<td>gasLimitMin</td>
+<td>number</td>
+<td>最小gas limit</td>
+</tr>
+<tr>
+<td>gasLimitMax</td>
+<td>number</td>
+<td>最大gas limit</td>
+</tr>
+</tbody></table>
+<h3 id='99a12c6b9f'>区块链调用</h3>
+<blockquote>
+<p>Request &quot;区块链调用&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617695804871</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QqE3UwP5VcWuGcbxY1gGid9X7WdFGyGfXvZOkCsOf8c="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UyekOcKXgIySyA4Oo0DoXTHRZpE70FUOaSW3J+VIlLU="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x37e11d600"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1232"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1IenchlwJXm5e2eAAAE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>区块链调用</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http://{ip}/api/v2/utilities/tokens/{token}/call</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>yes</td>
+<td>string</td>
+<td>调用区块链方法的token</td>
+</tr>
+<tr>
+<td>data.id</td>
+<td>no</td>
+<td>string</td>
+<td>调用rpc方法的ID</td>
+</tr>
+<tr>
+<td>data.method</td>
+<td>no</td>
+<td>string</td>
+<td>调用的rpc方法</td>
+</tr>
+<tr>
+<td>data.params</td>
+<td>no</td>
+<td>array</td>
+<td>调用rpc方法传入的参数</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>传入的调用rpc方法的ID</td>
+</tr>
+<tr>
+<td>result</td>
+<td>string</td>
+<td>调用rpc方法的返回结果</td>
 </tr>
 </tbody></table>
 <h1 id='bls-key-server-api'>BLS Key Server API</h1>
