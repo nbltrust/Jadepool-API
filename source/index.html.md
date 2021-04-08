@@ -1260,6 +1260,135 @@ memo | string | order note, editable on admin
 sendAgain | boolean | if we suggest client to send the same request again
 data | object | latest info of the transaction
 
+### Deposit to ETH2.0 Validator
+
+> Request "Deposit to ETH2.0 Validator" API returns JSON structured like this:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "hash": "sha3",
+    "sort": "key-alphabet",
+    "encode": "base64",
+    "timestamp": 1601364624962,
+    "sig": {
+        "r": "mdEk9OjsiVzNI2Dk7AWlA90yj1zPrVJCdBBBDDs05DE=",
+        "s": "fW8jnR8zx+ceZOBuiNl2XKy/3YFRuo9l7hBa8CuDpU0=",
+        "v": 28
+    },
+    "result": {
+        "_id": "5f72e2900a38036c1488cd70",
+        "id": "131689",
+        "coinName": "ETH",
+        "txid": null,
+        "meta": null,
+        "appid": "app_4",
+        "wallet": "wallet_2",
+        "sendMode": "normal",
+        "state": "init",
+        "bizType": "SYSTEM_CALL",
+        "type": "ETH",
+        "coinType": "ETH",
+        "from": "0x3E0A276B9d9085508979149A05Cd7e213EC5DA0E",
+        "froms": [
+            "0x3E0A276B9d9085508979149A05Cd7e213EC5DA0E"
+        ],
+        "to": "0x07b39F4fDE4A38bACe212b546dAc87C58DfE3fDC",
+        "value": "1",
+        "sequence": 1601364625,
+        "confirmations": 0,
+        "expectedConfirmations": 0,
+        "create_at": 1601364624953,
+        "update_at": 1601364624955,
+        "action": "validator_deposit",
+        "actionArgs": [
+            "98114c41a81aec827c4fec58f92ae86e3d69e1dd5f9b9f16653d746d46cee1465e55a604a801d4f40b3153c032cc7905",
+            "00b025640e57e3bf6f3b8c06d737730b8444c034ed3a38173179f35ec4f85e31",
+            "81526ac4a1da286d6aa73656a53120d3364510c40d2c24e7419e796104a492fdde59c4eeed9b6c1a93e980891faaca0c125ed0bc5eb032d8b8ffb7bfd957acef4e54462e39eb4d1e07b7964f4db1419e8850e615dbe48d8c7321fe683da6e963",
+            "3c60988198779505a2379037bf258037df8fa970af9bde863052e18d26db886b",
+            "0xa81b4143ef7be1015d22bedf3ded93dc965e94edbcf28164c84ad3831ee064e355fdc6c92e37e7a2fb1a30e0875c4164"
+        ],
+        "actionResults": [],
+        "postHandlers": [],
+        "bizFlows": [],
+        "n": 0,
+        "fee": "0",
+        "fees": [],
+        "data": {
+            "timestampBegin": 0,
+            "timestampFinish": 0
+        },
+        "options": {},
+        "pendingTags": [],
+        "sendingTags": [],
+        "events": [],
+        "hash": "",
+        "txid_rawtx": "",
+        "block": -1,
+        "blockHash": "",
+        "blockTimestamp": -1,
+        "extraData": "",
+        "memo": "",
+        "sendAgain": false,
+        "relatedOrder": "",
+        "relatedIssueRecords": [],
+        "namespace": "ETH",
+        "sid": "9aYBClnuVaTicQ50AAAs"
+    }
+}
+```
+
+This endpoint enables you to deposit to ETH2.0 validator.
+
+*HTTP Request*
+
+`POST http://jadepool.example/api/v2/wallet/:token/validator_deposit`
+
+*Query Parameters*
+
+Parameter | Description 
+--------- | --------- 
+token | should pass "ETH"
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+data.sequence | yes | number | unique API nonce for each app ID
+data.withdrawal_pubkey | yes | string | validator's withdrawal public key
+data.withdrawal_credentials | yes | string | withdrawal credentials obtained from "signing key server"
+data.signing_pubkey | yes | string | validator's signing public key
+data.signature | yes | string | signature obtained from "signing key server"
+data.deposit_data_root | yes | string | deposit_data_root obtained from "signing key server"
+data.amount | yes | string | The amount to deposit to the validator
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | the order ID
+coinName | string | unique token name
+txid | string | transaction hash
+meta | any | supplementary data
+state | string | order state
+bizType | string | order type
+type | string | token type
+from | string | transaction input
+to | string | transaction output
+value | string | transaction value
+confirmations | number | number of transaction confirmations
+fee | string | fee burnt for the transaction
+fees | array | all types of fee burnt for the transaction
+hash | string | transaction hash
+block | number | the block transaction mined in
+extraData | string | same as the extraData in request
+memo | string | order note, editable on admin
+sendAgain | boolean | if we suggest client to send the same request again
+data | object | latest info of the transaction
+
 ### Audit For Specified Coin
 
 > Request "Audit For Specified Coin" API returns JSON structured like this:
@@ -4128,6 +4257,64 @@ sendAgain | string | 重发标识
 relatedOrder | string | 关联订单
 relatedIssueRecords | list | holding订单记录
 
+### 给订单设置自定义标签
+
+> Request "给订单设置自定义标签" API returns JSON structured like this:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "hash": "sha3",
+    "sort": "key-alphabet",
+    "encode": "base64",
+    "timestamp": 1605532469083,
+    "sig": {
+        "r": "2oKRvlpISt7BDr3fOvrzJ6JXqgILsvS5B1damohCKzU=",
+        "s": "fnRX3/u5+ySC03ogTSo8kWnSMzUp2SHzPU78iUD4Mg4=",
+        "v": 28
+    },
+    "result": {
+        "n": 1,
+        "nModified": 1,
+        "ok": 1
+    }
+}
+
+```
+
+给订单设置自定义标签
+
+*HTTP Request*
+
+`POST http://jadepool.example/api/v2/s/wallets/:wallet/orders/:orderId/tags`
+
+*Query Parameters*
+
+Parameter | Description 
+--------- | --------- 
+wallet | 钱包ID
+orderId | 需要打标签的订单
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+data.key | yes | string | 全局唯一，关联一组标签
+data.locales | yes | array | 标签内容
+data.locales[n].lang | yes | enum | 标签语言，'zh-cn'或'en'
+data.locales[n].label | yes | string | 标签
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+n | number | 选中的对象数
+nModified | number | 修改的对象数
+ok | number | 修改结果，1是成功，0是失败
+
 ## DS
 ### 验证是否可转账
 
@@ -5074,6 +5261,1500 @@ Parameter | Required | Type | Description
 data.audit | no | string | 审计回调地址
 data.orderDefault | no | string | 默认回调地址
 data.order.WITHDRAW | no | string | 充值订单回调地址
+
+# MPC API
+
+## 托管单元
+
+### 注册公钥
+
+> Request "注册公钥" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695319833,
+  "sig": {
+    "r": "gtXA4NL9etHtxg3f8nUar5jBmq3CNMNsBCwIoEK4xb8=",
+    "s": "ADjm+yGuK0qAI+wsh9YL9Nt/pPu33/03XIqXHEzS0ag=",
+    "v": 27
+  },
+  "result": {
+    "algorithm": "secp256k1",
+    "_id": "606c1257733901019076dcef",
+    "addresses": [],
+    "appid": "custom_app",
+    "wallet": "custom",
+    "publicKey": "033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75",
+    "alias": "alice",
+    "meta": {
+      "a": 1
+    },
+    "create_at": "2021-04-06T07:48:39.828Z",
+    "update_at": "2021-04-06T07:48:39.828Z",
+    "__v": 0
+  }
+}
+```
+
+注册公钥
+
+*HTTP Request*
+
+`POST http:/{ip}/api/v2/units`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+data.pubKey | yes | string | 需要注册的公钥
+data.alias | no | string | 选填，注册的别名
+data.algorithm | no | string | 私钥到公钥的算法（secp256k1、ecdsa、ed25519、sr25519）
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | resource ID，唯一ID，可用以查询
+pubKey | string | 需要注册的公钥
+alias | string | 请求时传入值
+addresses | array | 注册公钥已衍生的地址的ObjectID
+wallet | string | 注册公钥的（MPC）钱包
+algorithm | string | 传入的私钥到公钥的算法
+
+### 查询注册公钥列表
+
+> Request "查询注册公钥列表" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695346131,
+  "sig": {
+    "r": "RoZ8C6fe8oihxS8IS8YeN4tGCqR9Y43PDEJULWCAOBc=",
+    "s": "SXYDRGi9ZJUsU/Vl5fKUdCgfVK3kGyK7VWSC/Klw5Xo=",
+    "v": 27
+  },
+  "result": {
+    "list": [
+      {
+        "algorithm": "secp256k1",
+        "_id": "606c1257733901019076dcef",
+        "addresses": [],
+        "appid": "custom_app",
+        "wallet": "custom",
+        "publicKey": "033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75",
+        "alias": "alice",
+        "meta": {
+          "a": 1
+        },
+        "create_at": "2021-04-06T07:48:39.828Z",
+        "update_at": "2021-04-06T07:48:39.828Z"
+      }
+    ],
+    "pagination": {
+      "page": 0,
+      "limit": 10,
+      "total": 1
+    }
+  }
+}
+```
+
+查询注册公钥列表
+
+*HTTP Request*
+
+`GET http://{ip}/api/v2/units?page={page}&limit={limit}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+page | no | number | 查询页数
+limit | no | number | 每页查询数量
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+list[n]._id | string | 注册单元的唯一ID resource ID
+list[n].pubKey | string | 需要注册的公钥
+list[n].alias | string | 请求时传入值
+list[n].addresses | array | 注册公钥已衍生的地址的ObjectID
+list[n].wallet | string | 注册公钥的（MPC）钱包### 注册公钥
+list[n].appid | string | 应用ID
+list[n].algorithm | string | 私钥到公钥的算法
+pagination.page | number | 查询所在页数
+pagination.limit | number | 每页查询数量
+pagination.total | number | 符合条件的条目总数
+
+### 查询注册公钥信息
+
+> Request "查询注册公钥信息" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695360816,
+  "sig": {
+    "r": "2ss/SK084+L0Czz5eg+KCTUcEv+d3jQJ4SRMa/O1+6o=",
+    "s": "BwMJ0/VnDZrZvw7+bspxMs8AFCITZNO35BjdCvIZ/xM=",
+    "v": 27
+  },
+  "result": {
+    "algorithm": "secp256k1",
+    "_id": "606c1257733901019076dcef",
+    "addresses": [],
+    "appid": "custom_app",
+    "wallet": "custom",
+    "publicKey": "033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75",
+    "alias": "alice",
+    "meta": {
+      "a": 1
+    },
+    "create_at": "2021-04-06T07:48:39.828Z",
+    "update_at": "2021-04-06T07:48:39.828Z",
+    "__v": 0
+  }
+}
+```
+
+查询注册公钥信息
+
+*HTTP Request*
+
+`GET http:/{ip}/api/v2/units/{ResourceID}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 注册单元的唯一ID resource ID
+pubKey | string | 需要注册的公钥
+alias | string | 请求时传入值
+addresses | array | 注册公钥已衍生的地址的ObjectID
+algorithm | string | 私钥到公钥的算法
+wallet | string | 注册公钥的（MPC）钱包
+appid | string | 应用ID
+
+### 修改注册公钥信息
+
+> Request "修改注册公钥信息" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617696633108,
+  "sig": {
+    "r": "jObqwfW/o+CzaSqOO44Y4DT20qZmXedurFgvkjAKYn8=",
+    "s": "FRZ7X04xjrfnEguXy+ZMtvv1PouqVlO75D/SJ/3mjio=",
+    "v": 28
+  },
+  "result": {
+    "algorithm": "secp256k1",
+    "_id": "606c1257733901019076dcef",
+    "addresses": [
+      {
+        "_id": "606c12930b207604bc55a029",
+        "chainKey": "ETH",
+        "instance": "606c12930b207604bc55a028"
+      }
+    ],
+    "appid": "custom_app",
+    "wallet": "custom",
+    "publicKey": "033fdc284b5b980927c7a011ff0506aa7208ea327b3e905328f038bf259d2fbc75",
+    "alias": "alice",
+    "meta": {
+      "a": 3
+    },
+    "create_at": "2021-04-06T07:48:39.828Z",
+    "update_at": "2021-04-06T08:10:33.104Z",
+    "__v": 0
+  }
+}
+```
+
+修改注册公钥信息
+
+*HTTP Request*
+
+`PATCH http:/{ip}/api/v2/units/{ResourceID}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+data.alias | yes | string | 目前只能修改别名
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 注册单元的唯一ID resource ID
+pubKey | string | 需要注册的公钥
+alias | string | 别名
+addresses | array | 注册公钥已衍生的地址的ObjectID
+algorithm | string | 私钥到公钥的算法
+wallet | string | 注册公钥的（MPC）钱包
+appid | string | 应用ID
+
+### 创建地址
+
+> Request "创建地址" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695379654,
+  "sig": {
+    "r": "FfDsD3F65s12UQ44x4gA0W6ZGMolMeqozkM+jtaGywY=",
+    "s": "Huw9E+pyAvjfEkILfLLhGuYTVIGIizEOaIYy6I4hDmc=",
+    "v": 28
+  },
+  "result": {
+    "algorithmHash": "default",
+    "wallet": "custom",
+    "incoming": false,
+    "incomings": [],
+    "tags": [],
+    "functional": false,
+    "dusts": [],
+    "state": "used",
+    "awaitPlans": [],
+    "assign_at": 1617695379640,
+    "_id": "606c12930b207604bc55a028",
+    "appid": "custom_app",
+    "type": "ETH",
+    "subType": "ETH",
+    "mode": "normal",
+    "algorithm": "secp256k1",
+    "id": 1,
+    "derivedPath": "",
+    "address": "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9",
+    "create_at": 1617695379642,
+    "update_at": 1617695379646,
+    "unit": "606c1257733901019076dcef",
+    "__v": 0,
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+创建地址
+
+*HTTP Request*
+
+`POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+token | yes | string | 创建地址的token
+data.algorithmHash | no | string | 选填，目前传default就可以
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 地址的唯一ObjectID
+wallet | string | 注册公钥、生成地址的（MPC）钱包
+appid | string | 应用ID
+subType | string | token
+address | string | 地址
+unit | string | 注册单元的唯一ID resource ID
+
+### 查询地址
+
+> Request "查询地址" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695411724,
+  "sig": {
+    "r": "Lrv/KIVbLJROLjOvpWhVzTzj0E9NzvC4gRVgqQz/0ew=",
+    "s": "Okh/d/pnHmUZJjEuyD9xAzxxkDPCDcn01Jd39HZvhaM=",
+    "v": 28
+  },
+  "result": {
+    "algorithmHash": "default",
+    "wallet": "custom",
+    "incoming": false,
+    "incomings": [],
+    "tags": [],
+    "functional": false,
+    "dusts": [],
+    "state": "used",
+    "awaitPlans": [],
+    "assign_at": 1617695379640,
+    "_id": "606c12930b207604bc55a028",
+    "appid": "custom_app",
+    "type": "ETH",
+    "subType": "ETH",
+    "mode": "normal",
+    "algorithm": "secp256k1",
+    "id": 1,
+    "derivedPath": "",
+    "address": "0x829a4d2a502ab39cc7641d7752ee88c727b41cb9",
+    "create_at": 1617695379642,
+    "update_at": 1617695379646,
+    "unit": "606c1257733901019076dcef",
+    "__v": 0,
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+查询地址
+
+*HTTP Request*
+
+`GET http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+token | yes | string | 查询地址的token
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 地址的唯一ObjectID
+wallet | string | 注册公钥、生成地址的（MPC）钱包
+appid | string | 应用ID
+subType | string | token
+address | string | 地址
+unit | string | 注册单元的唯一ID resource ID
+
+### 查询地址相关订单
+
+> Request "查询地址相关订单" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695595541,
+  "sig": {
+    "r": "U7P1fDVTntuQ0Dpl7E0PdXOxoUEcfJYSwsQ57VzxEg0=",
+    "s": "HMsBS92+n1cDfIJ8iwUXtSWRVleEKkxKBJ5qG4rNco4=",
+    "v": 27
+  },
+  "result": [
+    {
+      "_id": "606c1352b10f4804ae3167f1",
+      "id": "54",
+      "coinName": "ETH",
+      "txid": "0x1b10841c6a16c85b3748695bd890908e3998d71b809914fe2ab1f8c826754e66",
+      "meta": null,
+      "appid": "custom_app",
+      "wallet": "custom",
+      "sendMode": "normal",
+      "state": "pending",
+      "bizType": "DEPOSIT",
+      "type": "ETH",
+      "coinType": "ETH",
+      "from": "0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f",
+      "froms": [
+        "0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f"
+      ],
+      "to": "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9",
+      "value": "0.1",
+      "sequence": 16176955705364982,
+      "confirmations": 14,
+      "expectedConfirmations": 20,
+      "create_at": 1617695570536,
+      "update_at": 1617695595377,
+      "actionArgs": [],
+      "actionResults": [],
+      "postHandlers": [],
+      "bizFlows": [],
+      "tags": [],
+      "n": 0,
+      "fee": "0.000315",
+      "fees": [
+        {
+          "_id": "606c136bacf9f804af38890c",
+          "amount": "0.000315",
+          "coinName": "ETH",
+          "nativeAmount": "0",
+          "nativeName": ""
+        }
+      ],
+      "data": {
+        "timestampBegin": 1617695570537,
+        "timestampFinish": 0,
+        "timestampHandle": 1617695570537
+      },
+      "options": {},
+      "pendingTags": [],
+      "sendingTags": [],
+      "stateTags": [],
+      "validationResults": [],
+      "events": [],
+      "inputs": [],
+      "hash": "0x1b10841c6a16c85b3748695bd890908e3998d71b809914fe2ab1f8c826754e66",
+      "txid_rawtx": "",
+      "block": 24172701,
+      "blockHash": "",
+      "blockTimestamp": -1,
+      "extraData": "",
+      "memo": "",
+      "sendAgain": false,
+      "relatedOrder": "",
+      "relatedIssueRecords": [],
+      "namespace": "ETH",
+      "sid": "-1IenchlwJXm5e2eAAAE"
+    },
+    {
+      "_id": "606c13460b207604bc55a02a",
+      "id": "53",
+      "coinName": "ETH",
+      "txid": null,
+      "meta": null,
+      "appid": "custom_app",
+      "wallet": "custom",
+      "sendMode": "custom_sign",
+      "state": "init",
+      "bizType": "WITHDRAW",
+      "type": "ETH",
+      "coinType": "ETH",
+      "from": "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9",
+      "froms": [
+        "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"
+      ],
+      "to": "0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f",
+      "value": "0.002",
+      "sequence": 1617695558,
+      "confirmations": 0,
+      "expectedConfirmations": 0,
+      "create_at": 1617695558556,
+      "update_at": 1617695559236,
+      "action": "withdraw-from-addr",
+      "actionArgs": [],
+      "actionResults": [],
+      "postHandlers": [],
+      "bizFlows": [
+        "606c13460b207604bc55a02b"
+      ],
+      "tags": [],
+      "n": 0,
+      "fee": "0",
+      "fees": [],
+      "data": {
+        "timestampBegin": 0,
+        "timestampFinish": 0
+      },
+      "options": {
+        "unitId": "606c1257733901019076dcef"
+      },
+      "pendingTags": [],
+      "sendingTags": [],
+      "stateTags": [],
+      "validationResults": [],
+      "events": [],
+      "inputs": [],
+      "hash": "",
+      "txid_rawtx": "",
+      "block": -1,
+      "blockHash": "",
+      "blockTimestamp": -1,
+      "extraData": "",
+      "memo": "",
+      "sendAgain": false,
+      "relatedOrder": "",
+      "relatedIssueRecords": [],
+      "namespace": "ETH",
+      "sid": "-1IenchlwJXm5e2eAAAE"
+    }
+  ]
+}
+```
+
+查询地址相关订单
+
+*HTTP Request*
+
+`GET http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/orders/{state}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+token | yes | string | 查询地址的token
+state | no | string | 订单状态，选填。如果只需查询某一状态的订单，传入状态（init,holding,online,pending,done,failed,cancelled）
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 数据库中_id序列
+id | string | 订单号
+coinName | string | 币种名称
+txid | string | 上链后的txid
+meta | string | 存放nonce
+appid | string | 应用id
+wallet | string | 钱包ID
+sendMode | string | 发送方式，normal、manual_sign
+state | string | 订单状态
+bizType | string | 订单类型
+type | string | 主type
+subType | string | 子type
+coinType | string | 币种类型
+from | string | 订单创建时的from
+froms | string | 实际链上去重后的from
+to | string | 到账地址
+value | string | 订单金额
+sequence | number | 唯一序列号
+confirmations | number | 当前确认数
+expectedConfirmations | number | 期望确认数
+action | string | 订单动作
+actionArgs | list | action的参数
+actionResults | list | action结果
+postHandlers | list |
+n | number | 订单所在交易的位置
+fee | string | 手续费
+fees | list | 手续费具体信息
+data | object | 订单处理过程中的数据记录
+pendingTags | list | 订单异常时的标识位
+events | list | 事件记录
+hash | string | 交易上链的hash
+txid_rawtx | string | 预先计算的hash
+block | number | 订单所在区块
+blockHash | string | 订单所在区块的hash
+blockTimestamp | number | 订单所在区块的时间戳
+extraData | string | 额外信息
+memo | string | 提现时的memo
+sendAgain | string | 重发标识
+relatedOrder | string | 关联订单
+relatedIssueRecords | list | holding订单记录
+
+### 查询地址余额
+
+> Request "查询地址余额" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695511824,
+  "sig": {
+    "r": "F9NToE/+JamPmC4nBqm+13xC7K5CIYO8fxUDcbQirwQ=",
+    "s": "LZ86aDC+astqztaAUsCz6Ei0N9yJHUn6v+JoOIQ/maA=",
+    "v": 28
+  },
+  "result": {
+    "balance": "0.1",
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+查询地址余额
+
+*HTTP Request*
+
+`GET http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/balance`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+token | yes | string | 查询地址的token
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+balance | string | 地址余额
+
+### 强制更新地址余额
+
+> Request "强制更新地址余额" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695496440,
+  "sig": {
+    "r": "CvvYeJneY00UbEqtJS/6cHTzD0ggNHtGCWCqafkkWJU=",
+    "s": "NGkUB4aseN2TrQbqdg+cl+mk3wLkFXEji7Shp70FAl0=",
+    "v": 27
+  },
+  "result": {
+    "ok": true,
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+强制更新地址余额
+
+*HTTP Request*
+
+`POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/active`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+token | yes | string | 地址token
+data | yes | object | 传空对象即可
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+ok | boolean | true表示请求成功
+
+### 发起提现
+
+> Request "发起提现" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617696974795,
+  "sig": {
+    "r": "cg7b80V6KPyJPW6IQm5I/Ga6A6bc6xdU1+tcEoEJ1eQ=",
+    "s": "MIH+w9ak4hDa8/xZkBkRilJATWM8pZoEWhGRofMZyuQ=",
+    "v": 27
+  },
+  "result": {
+    "_id": "606c18ce11806dc32f818b04",
+    "id": "1207",
+    "coinName": "ETH",
+    "txid": null,
+    "meta": null,
+    "appid": "custom_app",
+    "wallet": "mpc",
+    "sendMode": "custom_sign",
+    "state": "init",
+    "bizType": "WITHDRAW",
+    "type": "ETH",
+    "coinType": "ETH",
+    "from": "0x3B207951C2c906ed2F246A875275A9C70a22f2A4",
+    "froms": [
+      "0x3B207951C2c906ed2F246A875275A9C70a22f2A4"
+    ],
+    "to": "0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f",
+    "value": "0.002",
+    "sequence": 1617696974,
+    "confirmations": 0,
+    "expectedConfirmations": 0,
+    "create_at": 1617696974676,
+    "update_at": 1617696974689,
+    "action": "withdraw-from-addr",
+    "actionArgs": [],
+    "actionResults": [],
+    "postHandlers": [],
+    "bizFlows": [],
+    "tags": [],
+    "n": 0,
+    "fee": "0",
+    "fees": [],
+    "data": {
+      "timestampBegin": 0,
+      "timestampFinish": 0
+    },
+    "options": {
+      "feePrice": 10000000000,
+      "gasLimit": 21000,
+      "buildingTimeout": 15000,
+      "unitId": "602356b0f7b2d26fe4e8bdb1"
+    },
+    "pendingTags": [],
+    "sendingTags": [],
+    "stateTags": [],
+    "validationResults": [],
+    "events": [],
+    "inputs": [],
+    "hash": "",
+    "txid_rawtx": "",
+    "block": -1,
+    "blockHash": "",
+    "blockTimestamp": -1,
+    "extraData": "",
+    "memo": "",
+    "sendAgain": false,
+    "relatedOrder": "",
+    "relatedIssueRecords": [],
+    "namespace": "ETH",
+    "sid": "0yRVwFz4Fbn6JvNnAAAE"
+  }
+}
+```
+
+发起提现
+
+*HTTP Request*
+
+`POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/withdraw`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+token | yes | string | 地址token
+data.sequence | yes | number | 请求的唯一序列号
+data.to | yes | number | 提现接收地址
+data.value | yes | number | 提现金额
+data.advanced.feePrice | no | number | 交易手续费，必须是（最小单位的）整数
+data.advanced.gasLimit | no | number | 以太坊系交易设置
+data.advanced.buildingTimeout | no | number | 如果超过该时间段构建交易没有完成就取消订单
+data.advanced.priority | no | number | 手续费倍率，和feePrice、gasLimit，只能二选一传入
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 数据库中_id序列
+id | string | 订单号
+coinName | string | 币种名称
+txid | string | 上链后的txid
+meta | string | 存放nonce
+appid | string | 应用id
+wallet | string | 钱包ID
+sendMode | string | 发送方式，normal、manual_sign
+state | string | 订单状态
+bizType | string | 订单类型
+type | string | 主type
+subType | string | 子type
+coinType | string | 币种类型
+from | string | 订单创建时的from
+froms | string | 实际链上去重后的from
+to | string | 到账地址
+value | string | 订单金额
+sequence | number | 唯一序列号
+confirmations | number | 当前确认数
+expectedConfirmations | number | 期望确认数
+action | string | 订单动作
+actionArgs | list | action的参数
+actionResults | list | action结果
+postHandlers | list |
+n | number | 订单所在交易的位置
+fee | string | 手续费
+fees | list | 手续费具体信息
+data | object | 订单处理过程中的数据记录
+pendingTags | list | 订单异常时的标识位
+events | list | 事件记录
+hash | string | 交易上链的hash
+txid_rawtx | string | 预先计算的hash
+block | number | 订单所在区块
+blockHash | string | 订单所在区块的hash
+blockTimestamp | number | 订单所在区块的时间戳
+extraData | string | 额外信息
+memo | string | 提现时的memo
+sendAgain | string | 重发标识
+relatedOrder | string | 关联订单
+relatedIssueRecords | list | holding订单记录
+
+### 发起合约交易
+
+> Request "发起合约交易" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695725450,
+  "sig": {
+    "r": "1Fzg6L2pwr2hn5o4Bd5X8ZWxaQx6DTybeEGMksLSUos=",
+    "s": "UZ9sOBHe3QrCtC880lFYw8wIReoPdJ9NoNVBgjJhBeM=",
+    "v": 28
+  },
+  "result": {
+    "_id": "606c13ed0b207604bc55a053",
+    "id": "55",
+    "coinName": "ETH",
+    "txid": null,
+    "meta": null,
+    "appid": "custom_app",
+    "wallet": "custom",
+    "sendMode": "custom_sign",
+    "state": "init",
+    "bizType": "SYSTEM_CALL",
+    "type": "ETH",
+    "coinType": "ETH",
+    "from": "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9",
+    "froms": [
+      "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"
+    ],
+    "to": "0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f",
+    "value": "0",
+    "sequence": 1617695725,
+    "confirmations": 0,
+    "expectedConfirmations": 0,
+    "create_at": 1617695725403,
+    "update_at": 1617695725406,
+    "action": "general:general:UNISWAP swapETHForExactTokens",
+    "actionArgs": [
+      "hello"
+    ],
+    "actionResults": [],
+    "postHandlers": [],
+    "bizFlows": [],
+    "tags": [],
+    "n": 0,
+    "fee": "0",
+    "fees": [],
+    "data": {
+      "timestampBegin": 0,
+      "timestampFinish": 0
+    },
+    "options": {
+      "unitId": "606c1257733901019076dcef"
+    },
+    "pendingTags": [],
+    "sendingTags": [],
+    "stateTags": [],
+    "validationResults": [],
+    "events": [],
+    "inputs": [],
+    "hash": "",
+    "txid_rawtx": "",
+    "block": -1,
+    "blockHash": "",
+    "blockTimestamp": -1,
+    "extraData": "",
+    "memo": "",
+    "sendAgain": false,
+    "relatedOrder": "",
+    "relatedIssueRecords": [],
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+发起合约交易
+
+*HTTP Request*
+
+`POST http:/{ip}/api/v2/units/{ResourceID}/addresses/{token}/invoke`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+ResourceID | yes | string | 注册公钥时返回的唯一ID
+token | yes | string | 地址token
+data.sequence | yes | number | 请求的唯一序列号
+data.to | yes | number | 交易接收地址
+data.value | yes | number | 交易金额
+data.input | yes | number | 以太坊系交易的input data
+data.action | yes | number | 该项仅用于后台管理系统显示，传入便于阅读的值即可
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 数据库中_id序列
+id | string | 订单号
+coinName | string | 币种名称
+txid | string | 上链后的txid
+meta | string | 存放nonce
+appid | string | 应用id
+wallet | string | 钱包ID
+sendMode | string | 发送方式，normal、manual_sign
+state | string | 订单状态
+bizType | string | 订单类型
+type | string | 主type
+subType | string | 子type
+coinType | string | 币种类型
+from | string | 订单创建时的from
+froms | string | 实际链上去重后的from
+to | string | 到账地址
+value | string | 订单金额
+sequence | number | 唯一序列号
+confirmations | number | 当前确认数
+expectedConfirmations | number | 期望确认数
+action | string | 订单动作
+actionArgs | list | action的参数
+actionResults | list | action结果
+postHandlers | list |
+n | number | 订单所在交易的位置
+fee | string | 手续费
+fees | list | 手续费具体信息
+data | object | 订单处理过程中的数据记录
+pendingTags | list | 订单异常时的标识位
+events | list | 事件记录
+hash | string | 交易上链的hash
+txid_rawtx | string | 预先计算的hash
+block | number | 订单所在区块
+blockHash | string | 订单所在区块的hash
+blockTimestamp | number | 订单所在区块的时间戳
+extraData | string | 额外信息
+memo | string | 提现时的memo
+sendAgain | string | 重发标识
+relatedOrder | string | 关联订单
+relatedIssueRecords | list | holding订单记录
+
+## 订单相关
+
+### 查询订单
+
+> Request "查询订单" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695936950,
+  "sig": {
+    "r": "J/g2BKbw8o6rLO4DUfcUWzUdtdKDRb9IeckomuLvyd0=",
+    "s": "H/Hz0SwHmKSEh7BuzOZ/c3eD6P9liLsqaolQkc3EfOI=",
+    "v": 28
+  },
+  "result": {
+    "_id": "606c13460b207604bc55a02a",
+    "id": "53",
+    "coinName": "ETH",
+    "txid": null,
+    "meta": null,
+    "appid": "custom_app",
+    "wallet": "custom",
+    "sendMode": "custom_sign",
+    "state": "cancelled",
+    "bizType": "WITHDRAW",
+    "type": "ETH",
+    "coinType": "ETH",
+    "from": "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9",
+    "froms": [
+      "0x829A4D2a502ab39CC7641D7752eE88C727B41CB9"
+    ],
+    "to": "0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f",
+    "value": "0.002",
+    "sequence": 1617695558,
+    "confirmations": 0,
+    "expectedConfirmations": 0,
+    "create_at": 1617695558556,
+    "update_at": 1617695713143,
+    "action": "withdraw-from-addr",
+    "actionArgs": [],
+    "actionResults": [],
+    "postHandlers": [],
+    "bizFlows": [
+      {
+        "wallet": "custom",
+        "category": "custom-withdraw",
+        "currentFlow": "end",
+        "lastFlow": "cancelled",
+        "_id": "606c13460b207604bc55a02b",
+        "chainKey": "ETH",
+        "coinName": "ETH",
+        "related": "606c13460b207604bc55a02a",
+        "data": {
+          "unitId": "606c1257733901019076dcef",
+          "building_trying": false,
+          "building_error": null
+        },
+        "attempts": [
+          {
+            "_id": "606c1347acf9f804af388907",
+            "flow": "unbuilt",
+            "transaction": "606c1347acf9f804af388905"
+          }
+        ],
+        "logs": [
+          {
+            "_id": "606c13e2acf9f804af388916",
+            "from": "cancelled",
+            "to": "end",
+            "data": "{\"unitId\":\"606c1257733901019076dcef\",\"building_trying\":false,\"building_error\":null}",
+            "occuredAt": 1617695714241
+          },
+          {
+            "_id": "606c13e1acf9f804af388914",
+            "from": "rawtx_built",
+            "to": "cancelled",
+            "data": "{\"unitId\":\"606c1257733901019076dcef\",\"building_trying\":false,\"building_error\":null}",
+            "occuredAt": 1617695713271
+          },
+          {
+            "_id": "606c1348acf9f804af388908",
+            "from": "unbuilt",
+            "to": "rawtx_built",
+            "data": "{\"unitId\":\"606c1257733901019076dcef\",\"building_trying\":false}",
+            "occuredAt": 1617695560340
+          }
+        ],
+        "createdAt": "2021-04-06T07:52:38.581Z",
+        "updatedAt": "2021-04-06T07:55:14.244Z",
+        "__v": 3,
+        "transaction": "606c1347acf9f804af388905",
+        "finished": true,
+        "id": "606c13460b207604bc55a02b"
+      }
+    ],
+    "tags": [],
+    "n": 0,
+    "fee": "0",
+    "fees": [],
+    "data": {
+      "timestampBegin": 0,
+      "timestampFinish": 0,
+      "reason": "user request."
+    },
+    "options": {
+      "unitId": "606c1257733901019076dcef"
+    },
+    "pendingTags": [],
+    "sendingTags": [],
+    "stateTags": [],
+    "validationResults": [],
+    "events": [
+      {
+        "topic": "state-issue",
+        "_id": "606c13e10b207604bc55a052",
+        "value": "cancelled",
+        "code": 29016,
+        "message": "user request.",
+        "occuredAt": 1617695713142
+      }
+    ],
+    "inputs": [],
+    "hash": "",
+    "txid_rawtx": "",
+    "block": -1,
+    "blockHash": "",
+    "blockTimestamp": -1,
+    "extraData": "",
+    "memo": "",
+    "sendAgain": false,
+    "relatedOrder": "",
+    "relatedIssueRecords": [],
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+查询订单
+
+*HTTP Request*
+
+`GET http:/{ip}/api/v2/orders/{orderID}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+orderID | yes | string | 查询订单的ID
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+_id | string | 数据库中_id序列
+id | string | 订单号
+coinName | string | 币种名称
+txid | string | 上链后的txid
+meta | string | 存放nonce
+appid | string | 应用id
+wallet | string | 钱包ID
+sendMode | string | 发送方式，normal、manual_sign
+state | string | 订单状态
+bizType | string | 订单类型
+type | string | 主type
+subType | string | 子type
+coinType | string | 币种类型
+from | string | 订单创建时的from
+froms | string | 实际链上去重后的from
+to | string | 到账地址
+value | string | 订单金额
+sequence | number | 唯一序列号
+confirmations | number | 当前确认数
+expectedConfirmations | number | 期望确认数
+action | string | 订单动作
+actionArgs | list | action的参数
+actionResults | list | action结果
+postHandlers | list |
+n | number | 订单所在交易的位置
+fee | string | 手续费
+fees | list | 手续费具体信息
+data | object | 订单处理过程中的数据记录
+pendingTags | list | 订单异常时的标识位
+events | list | 事件记录
+hash | string | 交易上链的hash
+txid_rawtx | string | 预先计算的hash
+block | number | 订单所在区块
+blockHash | string | 订单所在区块的hash
+blockTimestamp | number | 订单所在区块的时间戳
+extraData | string | 额外信息
+memo | string | 提现时的memo
+sendAgain | string | 重发标识
+relatedOrder | string | 关联订单
+relatedIssueRecords | list | holding订单记录
+
+### 取消订单
+
+> Request "取消订单" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695713151,
+  "sig": {
+    "r": "GaWb4TJ0ZHUHTa7RlwabSkuun9OFX/2x23ZKdzhPADU=",
+    "s": "c9+Y8ZJ3CE5Y5R/hoQ4IxSkp2J4ypX3/bkIcG5AUdgw=",
+    "v": 27
+  },
+  "result": {
+    "ok": true,
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+取消订单
+
+*HTTP Request*
+
+`POST http:/{ip}/api/v2/orders/{orderID}/cancel`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+orderID | yes | string | 取消订单的ID
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+ok | boolean | true表示请求成功
+
+### 上传签名
+
+> Request "上传签名" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617698921829,
+  "sig": {
+    "r": "dNVXJvS7k0qGk2z7c6k/CaJpGhdNYNQ8Z2OK/tOx0LM=",
+    "s": "CF5ogiGkkPvkoDfn0F6tYOctR+QEXVnX1iAdR2WM5Q0=",
+    "v": 28
+  },
+  "result": {
+    "ok": true,
+    "namespace": "ETH",
+    "sid": "b47BkqPk6RBd8EksAAAD"
+  }
+}
+```
+
+上传签名
+
+*HTTP Request*
+
+`POST http:/{ip}/api/v2/orders/{orderID}/import-sig`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+orderID | yes | string | 上传签名的订单ID
+data.sigs | yes | array | 所有签名
+data.sigs.signature | yes | string | 签名
+data.sigs.recovery | yes | number | recovery ID
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+ok | boolean | true表示请求成功
+
+## 工具
+
+### 查询手续费
+
+> Request "查询手续费" API returns JSON structured like this:
+
+```json
+{
+  "code": 0,
+  "status": 0,
+  "message": "OK",
+  "crypto": "ecc",
+  "hash": "sha3",
+  "sort": "key-alphabet",
+  "encode": "base64",
+  "timestamp": 1617695873746,
+  "sig": {
+    "r": "zfnD4y41JOJV00wncmnDPen4Qk31TVL6xalKdob6C4w=",
+    "s": "bsQeFGQuadB84yUdUYDilQqmXUXOHdYg8HilbLV8vzo=",
+    "v": 28
+  },
+  "result": {
+    "priorityDefault": 1,
+    "feeToken": "ETH",
+    "feeDecimal": 18,
+    "feePriceMin": 1500000000,
+    "feePriceMax": 150000000000,
+    "feePriceRealtime": 15000000000,
+    "gasLimitDefault": 21000,
+    "gasLimitMin": 21000,
+    "gasLimitMax": 100000,
+    "namespace": "ETH",
+    "sid": "-1IenchlwJXm5e2eAAAE"
+  }
+}
+```
+
+查询手续费
+
+*HTTP Request*
+
+`GET http://{ip}/api/v2/utilities/tokens/{token}/fee-prices`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+token | yes | string | 查询手续费的token
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+priorityDefault | number | 默认手续费倍率
+feeToken | string | 查询的token
+feeDecimal | number | 单位小数位
+feePriceMin | number | 范围最低，实时fee的一倍
+feePriceMax | number | 范围最高，实时fee的十倍
+feePriceRealtime | number | 实时fee价格
+gasLimitMin | number | 最小gas limit
+gasLimitMax | number | 最大gas limit
+
+### 区块链调用
+
+> Request "区块链调用" API returns JSON structured like this:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "hash": "sha3",
+    "sort": "key-alphabet",
+    "encode": "base64",
+    "timestamp": 1617695804871,
+    "sig": {
+        "r": "QqE3UwP5VcWuGcbxY1gGid9X7WdFGyGfXvZOkCsOf8c=",
+        "s": "UyekOcKXgIySyA4Oo0DoXTHRZpE70FUOaSW3J+VIlLU=",
+        "v": 28
+    },
+    "result": {
+        "jsonrpc": "2.0",
+        "result": "0x37e11d600",
+        "id": "0x1232",
+        "namespace": "ETH",
+        "sid": "-1IenchlwJXm5e2eAAAE"
+    }
+}
+```
+
+区块链调用
+
+*HTTP Request*
+
+`POST http://{ip}/api/v2/utilities/tokens/{token}/call`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+token | yes | string | 调用区块链方法的token
+data.id | no | string | 调用rpc方法的ID
+data.method | no | string | 调用的rpc方法
+data.params | no | array | 调用rpc方法传入的参数
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+id | string | 传入的调用rpc方法的ID
+result | string | 调用rpc方法的返回结果
+
+
+# BLS Key Server API
+
+<aside class="notice">
+端口是8901，默认只能本地访问。若需外部访问，请参考教程设置：https://nbltrust.github.io/jadepool-hub-tech-docs/zh-hans/seed-permission.html
+</aside>
+
+### Derive BLS Key Pair
+
+> Request "Derive BLS Key Pair" API returns JSON structured like this:
+
+```json
+{
+    "index": 10,
+    "privatekey": "0x70821c9df11e4d0b0763c502d4bfafba35070c2d379f3ae2a6e3f5689c6b7745",
+    "pubkey": "0xb74e693fc033ae0ba8eb1cf94c063c9e40050803cead9da516e9e544c96b7bd5ec23b099f17dfba1ac3f8d6649e1f1dd"
+}
+```
+
+Derive BLS Key Pair
+
+*HTTP Request*
+
+`POST http://{api url of seed server}/api/derive_keypair`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+index | yes | number | unique ID to derive key from master seed
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+index | number | unique ID to derive key from master seed
+privatekey | string | private key
+pubkey | string | public key
+
+### Generate Deposit Data
+
+> Request "Generate Deposit Data" API returns JSON structured like this:
+
+```json
+{
+    "signing_pubkey": "98114c41a81aec827c4fec58f92ae86e3d69e1dd5f9b9f16653d746d46cee1465e55a604a801d4f40b3153c032cc7905",
+    "withdrawal_credentials": "00b025640e57e3bf6f3b8c06d737730b8444c034ed3a38173179f35ec4f85e31",
+    "signature": "81526ac4a1da286d6aa73656a53120d3364510c40d2c24e7419e796104a492fdde59c4eeed9b6c1a93e980891faaca0c125ed0bc5eb032d8b8ffb7bfd957acef4e54462e39eb4d1e07b7964f4db1419e8850e615dbe48d8c7321fe683da6e963",
+    "deposit_data_root": "3c60988198779505a2379037bf258037df8fa970af9bde863052e18d26db886b"
+}
+```
+
+Generate Deposit Data
+
+*HTTP Request*
+
+`POST http://{api url of seed server}/api/generate_deposit_data`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+index | yes | number | unique ID to derive key from master seed
+withdrawal_pubkey | yes | string | validator's withdrawal public key
+amount | yes | string | amount of ETH to deposit to the validator
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+signing_pubkey | string | signing public key
+withdrawal_credentials | string | withdrawal credentials
+signature | string | signature
+deposit_data_root | string | deposit data root
 
 # Callback
 
