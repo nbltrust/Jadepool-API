@@ -6475,6 +6475,211 @@ sendAgain | string | 重发标识
 relatedOrder | string | 关联订单
 relatedIssueRecords | list | holding订单记录
 
+### 查询交易信息
+
+> Request "查询交易信息" API returns JSON structured like this:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "hash": "sha3",
+    "sort": "key-alphabet",
+    "encode": "base64",
+    "timestamp": 1617697164776,
+    "sig": {
+        "r": "go2InzFNTexM2y8RkdlEhxOWHorK0vk0JzFx/ONKNQ8=",
+        "s": "NADx1vSeCg7osCVtgxtFULxdjdpCmEw5/SH/Xoybjbs=",
+        "v": 28
+    },
+    "result": {
+        "round": 0,
+        "sequence": 0,
+        "index": 0,
+        "involvedOrders": [
+            "606c18ce11806dc32f818b04"
+        ],
+        "_id": "606c18d0de0c51c33083dc87",
+        "batch": "606c18ce11806dc32f818b05",
+        "wallet": "mpc",
+        "coinName": "ETH",
+        "senderAddress": "0x3b207951c2c906ed2f246a875275a9c70a22f2a4",
+        "raw": "0xed808502540be4008252089404e98d7a5ca93d3ddcf88dbb0f9dde1e2910061f87071afd498d000080822fca8080",
+        "changes": [],
+        "inputs": [
+            {
+                "_id": "606c18d0de0c51c33083dc88",
+                "raw": "{\"sender\":\"0x3b207951c2c906ed2f246a875275a9c70a22f2a4\",\"txParams\":{\"chainId\":12234,\"nonce\":0,\"gasPrice\":\"0x2540be400\",\"gasLimit\":\"0x5208\",\"to\":\"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f\",\"value\":\"0x71afd498d0000\",\"data\":\"\"},\"nonce\":0}",
+                "msgToSign": "031cdedff09182169afb8790e5c6e79701fd96609f505eac6bfdecd3b8243294",
+                "wallet": "mpc",
+                "senderAddress": "0x3b207951c2c906ed2f246a875275a9c70a22f2a4",
+                "uid": "0x3b207951c2c906ed2f246a875275a9c70a22f2a4:0",
+                "pubKey": "02122185db5be954c20e889b41f1e57b4274e2776a7c459b97f55c2193df81ba73",
+                "algorithm": "secp256k1",
+                "derivedPath": "m/44'/60'/900'/0/2",
+                "sig": "{\"r\":\"59256d606748540cd761da3139d6d2a87c71b87e893912c1e7e11c82fd6c5b61\",\"s\":\"796b5a5ec3e9e6bfd6623c6ba1b2f1c841f22b447db9e4a4224658742e14be89\",\"v\":1}"
+            }
+        ],
+        "create_at": "2021-04-06T08:16:16.721Z",
+        "update_at": "2021-04-06T08:18:27.991Z"
+    }
+}
+```
+
+查询交易信息
+
+*HTTP Request*
+
+`GET http:/{ip}/api/v2/orders/{orderID}/transaction`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+orderID | yes | string | 查询订单的ID
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+raw | string | 交易原始数据，用于解析出交易数据
+inputs[n].msgToSign | string | 用于签名
+
+### 查询业务流程
+
+> Request "查询业务流程" API returns JSON structured like this:
+
+```json
+{
+    "code": 0,
+    "status": 0,
+    "message": "OK",
+    "crypto": "ecc",
+    "hash": "sha3",
+    "sort": "key-alphabet",
+    "encode": "base64",
+    "timestamp": 1617697142346,
+    "sig": {
+        "r": "wIY+y6vUHTFaZLNgF4LyEv7IrRq90PE1zsPsduQg4+w=",
+        "s": "SU3zVRQfShMLZXK2zTmB+kOI+I8HEl7RKUx5f2w29NM=",
+        "v": 28
+    },
+    "result": {
+        "wallet": "mpc",
+        "category": "custom-withdraw",
+        "currentFlow": "confirming",
+        "lastFlow": "sending",
+        "_id": "606c18ce11806dc32f818b05",
+        "chainKey": "ETH",
+        "coinName": "ETH",
+        "related": "606c18ce11806dc32f818b04",
+        "data": {
+            "unitId": "602356b0f7b2d26fe4e8bdb1",
+            "building_trying": false,
+            "building_error": null,
+            "sending_error": null
+        },
+        "attempts": [
+            {
+                "_id": "606c18d0de0c51c33083dc89",
+                "flow": "unbuilt",
+                "transaction": "606c18d0de0c51c33083dc87"
+            }
+        ],
+        "logs": [
+            {
+                "_id": "606c1956de0c51c33083dc91",
+                "from": "sending",
+                "to": "confirming",
+                "data": "{\"unitId\":\"602356b0f7b2d26fe4e8bdb1\",\"building_trying\":false,\"building_error\":null,\"sending_error\":null}",
+                "occuredAt": 1617697110136
+            },
+            {
+                "_id": "606c1955de0c51c33083dc8f",
+                "from": "ready_to_send",
+                "to": "sending",
+                "data": "{\"unitId\":\"602356b0f7b2d26fe4e8bdb1\",\"building_trying\":false,\"building_error\":null,\"sending_error\":null}",
+                "occuredAt": 1617697109352
+            },
+            {
+                "_id": "606c1954de0c51c33083dc8c",
+                "from": "rawtx_built",
+                "to": "ready_to_send",
+                "data": "{\"unitId\":\"602356b0f7b2d26fe4e8bdb1\",\"building_trying\":false,\"building_error\":null}",
+                "occuredAt": 1617697108031
+            },
+            {
+                "_id": "606c18d1de0c51c33083dc8a",
+                "from": "unbuilt",
+                "to": "rawtx_built",
+                "data": "{\"unitId\":\"602356b0f7b2d26fe4e8bdb1\",\"building_trying\":false}",
+                "occuredAt": 1617696977368
+            }
+        ],
+        "createdAt": "2021-04-06T08:16:14.751Z",
+        "updatedAt": "2021-04-06T08:18:30.139Z",
+        "__v": 4,
+        "transaction": {
+            "round": 0,
+            "sequence": 0,
+            "index": 0,
+            "involvedOrders": [
+                "606c18ce11806dc32f818b04"
+            ],
+            "_id": "606c18d0de0c51c33083dc87",
+            "batch": "606c18ce11806dc32f818b05",
+            "wallet": "mpc",
+            "coinName": "ETH",
+            "senderAddress": "0x3b207951c2c906ed2f246a875275a9c70a22f2a4",
+            "raw": "0xed808502540be4008252089404e98d7a5ca93d3ddcf88dbb0f9dde1e2910061f87071afd498d000080822fca8080",
+            "changes": [],
+            "inputs": [
+                {
+                    "_id": "606c18d0de0c51c33083dc88",
+                    "raw": "{\"sender\":\"0x3b207951c2c906ed2f246a875275a9c70a22f2a4\",\"txParams\":{\"chainId\":12234,\"nonce\":0,\"gasPrice\":\"0x2540be400\",\"gasLimit\":\"0x5208\",\"to\":\"0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f\",\"value\":\"0x71afd498d0000\",\"data\":\"\"},\"nonce\":0}",
+                    "msgToSign": "031cdedff09182169afb8790e5c6e79701fd96609f505eac6bfdecd3b8243294",
+                    "wallet": "mpc",
+                    "senderAddress": "0x3b207951c2c906ed2f246a875275a9c70a22f2a4",
+                    "uid": "0x3b207951c2c906ed2f246a875275a9c70a22f2a4:0",
+                    "pubKey": "02122185db5be954c20e889b41f1e57b4274e2776a7c459b97f55c2193df81ba73",
+                    "algorithm": "secp256k1",
+                    "derivedPath": "m/44'/60'/900'/0/2",
+                    "sig": "{\"r\":\"59256d606748540cd761da3139d6d2a87c71b87e893912c1e7e11c82fd6c5b61\",\"s\":\"796b5a5ec3e9e6bfd6623c6ba1b2f1c841f22b447db9e4a4224658742e14be89\",\"v\":1}"
+                }
+            ],
+            "create_at": "2021-04-06T08:16:16.721Z",
+            "update_at": "2021-04-06T08:18:27.991Z"
+        },
+        "finished": false,
+        "id": "606c18ce11806dc32f818b05"
+    }
+}
+```
+
+查询业务流程
+
+*HTTP Request*
+
+`GET http:/{ip}/api/v2/orders/{orderID}/bizflows/{category}`
+
+*Main Parameters*
+
+Parameter | Required | Type | Description
+--------- | ------- | --------- | -----------
+orderID | yes | string | 查询订单的ID
+category | yes | string | MPC模式下传custom-withdraw
+
+*Response Result*
+
+Value | Type | Description
+--------- | ------- | ---------
+currentFlow | string | 目前业务流程的状态
+lastFlow | string | 业务流程的上一个状态
+transaction.raw | string | 交易原始数据，用于解析出交易数据
+transaction.inputs[n].msgToSign | string | 用于签名
+
 ### 取消订单
 
 > Request "取消订单" API returns JSON structured like this:
