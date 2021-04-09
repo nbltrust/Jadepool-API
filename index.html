@@ -506,6 +506,12 @@
                             <a href="#90376e83a0" class="toc-h3 toc-link" data-title="查询订单">查询订单</a>
                           </li>
                           <li>
+                            <a href="#1333ca551f" class="toc-h3 toc-link" data-title="查询交易信息">查询交易信息</a>
+                          </li>
+                          <li>
+                            <a href="#4570a8e8b9" class="toc-h3 toc-link" data-title="查询业务流程">查询业务流程</a>
+                          </li>
+                          <li>
                             <a href="#3eedd32d80" class="toc-h3 toc-link" data-title="取消订单">取消订单</a>
                           </li>
                           <li>
@@ -12543,6 +12549,270 @@ All main parameters in POST API should be wraped in "data" object
 <td>relatedIssueRecords</td>
 <td>list</td>
 <td>holding订单记录</td>
+</tr>
+</tbody></table>
+<h3 id='1333ca551f'>查询交易信息</h3>
+<blockquote>
+<p>Request &quot;查询交易信息&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617697164776</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"go2InzFNTexM2y8RkdlEhxOWHorK0vk0JzFx/ONKNQ8="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NADx1vSeCg7osCVtgxtFULxdjdpCmEw5/SH/Xoybjbs="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"involvedOrders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"606c18ce11806dc32f818b04"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18d0de0c51c33083dc87"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18ce11806dc32f818b05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mpc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"senderAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3b207951c2c906ed2f246a875275a9c70a22f2a4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xed808502540be4008252089404e98d7a5ca93d3ddcf88dbb0f9dde1e2910061f87071afd498d000080822fca8080"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18d0de0c51c33083dc88"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">sender</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x3b207951c2c906ed2f246a875275a9c70a22f2a4</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">txParams</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">chainId</span><span class="se">\"</span><span class="s2">:12234,</span><span class="se">\"</span><span class="s2">nonce</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">gasPrice</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x2540be400</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">gasLimit</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x5208</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">to</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x71afd498d0000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">data</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">nonce</span><span class="se">\"</span><span class="s2">:0}"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"msgToSign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"031cdedff09182169afb8790e5c6e79701fd96609f505eac6bfdecd3b8243294"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mpc"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"senderAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3b207951c2c906ed2f246a875275a9c70a22f2a4"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3b207951c2c906ed2f246a875275a9c70a22f2a4:0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"pubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02122185db5be954c20e889b41f1e57b4274e2776a7c459b97f55c2193df81ba73"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"derivedPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m/44'/60'/900'/0/2"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">r</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">59256d606748540cd761da3139d6d2a87c71b87e893912c1e7e11c82fd6c5b61</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">s</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">796b5a5ec3e9e6bfd6623c6ba1b2f1c841f22b447db9e4a4224658742e14be89</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">v</span><span class="se">\"</span><span class="s2">:1}"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T08:16:16.721Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T08:18:27.991Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询交易信息</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http:/{ip}/api/v2/orders/{orderID}/transaction</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderID</td>
+<td>yes</td>
+<td>string</td>
+<td>查询订单的ID</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>raw</td>
+<td>string</td>
+<td>交易原始数据，用于解析出交易数据</td>
+</tr>
+<tr>
+<td>inputs[n].msgToSign</td>
+<td>string</td>
+<td>用于签名</td>
+</tr>
+</tbody></table>
+<h3 id='4570a8e8b9'>查询业务流程</h3>
+<blockquote>
+<p>Request &quot;查询业务流程&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617697142346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wIY+y6vUHTFaZLNgF4LyEv7IrRq90PE1zsPsduQg4+w="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SU3zVRQfShMLZXK2zTmB+kOI+I8HEl7RKUx5f2w29NM="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mpc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom-withdraw"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentFlow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirming"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastFlow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sending"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18ce11806dc32f818b05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chainKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18ce11806dc32f818b04"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602356b0f7b2d26fe4e8bdb1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"building_trying"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"building_error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sending_error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18d0de0c51c33083dc89"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unbuilt"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18d0de0c51c33083dc87"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"logs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1956de0c51c33083dc91"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sending"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirming"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">unitId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">602356b0f7b2d26fe4e8bdb1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">building_trying</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">building_error</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">sending_error</span><span class="se">\"</span><span class="s2">:null}"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617697110136</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1955de0c51c33083dc8f"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready_to_send"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sending"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">unitId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">602356b0f7b2d26fe4e8bdb1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">building_trying</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">building_error</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">sending_error</span><span class="se">\"</span><span class="s2">:null}"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617697109352</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c1954de0c51c33083dc8c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rawtx_built"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready_to_send"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">unitId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">602356b0f7b2d26fe4e8bdb1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">building_trying</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">building_error</span><span class="se">\"</span><span class="s2">:null}"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617697108031</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18d1de0c51c33083dc8a"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unbuilt"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rawtx_built"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">unitId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">602356b0f7b2d26fe4e8bdb1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">building_trying</span><span class="se">\"</span><span class="s2">:false}"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"occuredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617696977368</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T08:16:14.751Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T08:18:30.139Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"involvedOrders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"606c18ce11806dc32f818b04"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18d0de0c51c33083dc87"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18ce11806dc32f818b05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mpc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"senderAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3b207951c2c906ed2f246a875275a9c70a22f2a4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xed808502540be4008252089404e98d7a5ca93d3ddcf88dbb0f9dde1e2910061f87071afd498d000080822fca8080"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18d0de0c51c33083dc88"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">sender</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x3b207951c2c906ed2f246a875275a9c70a22f2a4</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">txParams</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">chainId</span><span class="se">\"</span><span class="s2">:12234,</span><span class="se">\"</span><span class="s2">nonce</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">gasPrice</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x2540be400</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">gasLimit</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x5208</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">to</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x04e98D7A5ca93d3DdcF88DbB0f9Dde1E2910061f</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0x71afd498d0000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">data</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">nonce</span><span class="se">\"</span><span class="s2">:0}"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"msgToSign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"031cdedff09182169afb8790e5c6e79701fd96609f505eac6bfdecd3b8243294"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mpc"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"senderAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3b207951c2c906ed2f246a875275a9c70a22f2a4"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x3b207951c2c906ed2f246a875275a9c70a22f2a4:0"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"pubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02122185db5be954c20e889b41f1e57b4274e2776a7c459b97f55c2193df81ba73"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"derivedPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m/44'/60'/900'/0/2"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">r</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">59256d606748540cd761da3139d6d2a87c71b87e893912c1e7e11c82fd6c5b61</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">s</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">796b5a5ec3e9e6bfd6623c6ba1b2f1c841f22b447db9e4a4224658742e14be89</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">v</span><span class="se">\"</span><span class="s2">:1}"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T08:16:16.721Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-06T08:18:27.991Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606c18ce11806dc32f818b05"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询业务流程</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http:/{ip}/api/v2/orders/{orderID}/bizflows/{category}</code></p>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderID</td>
+<td>yes</td>
+<td>string</td>
+<td>查询订单的ID</td>
+</tr>
+<tr>
+<td>category</td>
+<td>yes</td>
+<td>string</td>
+<td>MPC模式下传custom-withdraw</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currentFlow</td>
+<td>string</td>
+<td>目前业务流程的状态</td>
+</tr>
+<tr>
+<td>lastFlow</td>
+<td>string</td>
+<td>业务流程的上一个状态</td>
+</tr>
+<tr>
+<td>transaction.raw</td>
+<td>string</td>
+<td>交易原始数据，用于解析出交易数据</td>
+</tr>
+<tr>
+<td>transaction.inputs[n].msgToSign</td>
+<td>string</td>
+<td>用于签名</td>
 </tr>
 </tbody></table>
 <h3 id='3eedd32d80'>取消订单</h3>
