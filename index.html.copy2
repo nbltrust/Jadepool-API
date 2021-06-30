@@ -1,512 +1,4 @@
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
-
-    <style>
-      .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight .gh {
-  color: #999999;
-}
-.highlight .sr {
-  color: #f6aa11;
-}
-.highlight .go {
-  color: #888888;
-}
-.highlight .gp {
-  color: #555555;
-}
-.highlight .gs {
-}
-.highlight .gu {
-  color: #aaaaaa;
-}
-.highlight .nb {
-  color: #f6aa11;
-}
-.highlight .cm {
-  color: #75715e;
-}
-.highlight .cp {
-  color: #75715e;
-}
-.highlight .c1 {
-  color: #75715e;
-}
-.highlight .cs {
-  color: #75715e;
-}
-.highlight .c, .highlight .cd {
-  color: #75715e;
-}
-.highlight .err {
-  color: #960050;
-}
-.highlight .gr {
-  color: #960050;
-}
-.highlight .gt {
-  color: #960050;
-}
-.highlight .gd {
-  color: #49483e;
-}
-.highlight .gi {
-  color: #49483e;
-}
-.highlight .ge {
-  color: #49483e;
-}
-.highlight .kc {
-  color: #66d9ef;
-}
-.highlight .kd {
-  color: #66d9ef;
-}
-.highlight .kr {
-  color: #66d9ef;
-}
-.highlight .no {
-  color: #66d9ef;
-}
-.highlight .kt {
-  color: #66d9ef;
-}
-.highlight .mf {
-  color: #ae81ff;
-}
-.highlight .mh {
-  color: #ae81ff;
-}
-.highlight .il {
-  color: #ae81ff;
-}
-.highlight .mi {
-  color: #ae81ff;
-}
-.highlight .mo {
-  color: #ae81ff;
-}
-.highlight .m, .highlight .mb, .highlight .mx {
-  color: #ae81ff;
-}
-.highlight .sc {
-  color: #ae81ff;
-}
-.highlight .se {
-  color: #ae81ff;
-}
-.highlight .ss {
-  color: #ae81ff;
-}
-.highlight .sd {
-  color: #e6db74;
-}
-.highlight .s2 {
-  color: #e6db74;
-}
-.highlight .sb {
-  color: #e6db74;
-}
-.highlight .sh {
-  color: #e6db74;
-}
-.highlight .si {
-  color: #e6db74;
-}
-.highlight .sx {
-  color: #e6db74;
-}
-.highlight .s1 {
-  color: #e6db74;
-}
-.highlight .s {
-  color: #e6db74;
-}
-.highlight .na {
-  color: #a6e22e;
-}
-.highlight .nc {
-  color: #a6e22e;
-}
-.highlight .nd {
-  color: #a6e22e;
-}
-.highlight .ne {
-  color: #a6e22e;
-}
-.highlight .nf {
-  color: #a6e22e;
-}
-.highlight .vc {
-  color: #ffffff;
-}
-.highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
-  color: #ffffff;
-}
-.highlight .ni {
-  color: #ffffff;
-}
-.highlight .bp {
-  color: #ffffff;
-}
-.highlight .vg {
-  color: #ffffff;
-}
-.highlight .vi {
-  color: #ffffff;
-}
-.highlight .nv {
-  color: #ffffff;
-}
-.highlight .w {
-  color: #ffffff;
-}
-.highlight {
-  color: #ffffff;
-}
-.highlight .n, .highlight .py, .highlight .nx {
-  color: #ffffff;
-}
-.highlight .ow {
-  color: #f92672;
-}
-.highlight .nt {
-  color: #f92672;
-}
-.highlight .k, .highlight .kv {
-  color: #f92672;
-}
-.highlight .kn {
-  color: #f92672;
-}
-.highlight .kp {
-  color: #f92672;
-}
-.highlight .o {
-  color: #f92672;
-}
-    </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
-  </head>
-
-  <body class="index" data-languages="[&quot;Example&quot;]">
-    <a href="#" id="nav-button">
-      <span>
-        NAV
-        <img src="images/navbar.png" alt="Navbar" />
-      </span>
-    </a>
-    <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="Example">Example</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <ul id="toc" class="toc-list-h1">
-          <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#general-structure" class="toc-h1 toc-link" data-title="General Structure">General Structure</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#post" class="toc-h2 toc-link" data-title="POST请求">POST请求</a>
-                  </li>
-                  <li>
-                    <a href="#get-request" class="toc-h2 toc-link" data-title="GET Request">GET Request</a>
-                  </li>
-                  <li>
-                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#api" class="toc-h1 toc-link" data-title="API">API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#address" class="toc-h2 toc-link" data-title="Address">Address</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#create-multiple-addresses" class="toc-h3 toc-link" data-title="Create Multiple Addresses">Create Multiple Addresses</a>
-                          </li>
-                          <li>
-                            <a href="#create-single-address" class="toc-h3 toc-link" data-title="Create Single Address">Create Single Address</a>
-                          </li>
-                          <li>
-                            <a href="#validate-address" class="toc-h3 toc-link" data-title="Validate Address">Validate Address</a>
-                          </li>
-                          <li>
-                            <a href="#fetch-incomplete-orders" class="toc-h3 toc-link" data-title="Fetch Incomplete Orders">Fetch Incomplete Orders</a>
-                          </li>
-                          <li>
-                            <a href="#fetch-address-balance" class="toc-h3 toc-link" data-title="Fetch Address Balance">Fetch Address Balance</a>
-                          </li>
-                          <li>
-                            <a href="#fetch-address-info" class="toc-h3 toc-link" data-title="Fetch Address Info">Fetch Address Info</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#audit" class="toc-h2 toc-link" data-title="Audit">Audit</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#fetch-audit-order" class="toc-h3 toc-link" data-title="Fetch Audit Order">Fetch Audit Order</a>
-                          </li>
-                          <li>
-                            <a href="#audited-orders" class="toc-h3 toc-link" data-title="Audited Orders">Audited Orders</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#refund-unexpected-in-assets" class="toc-h3 toc-link" data-title="Refund Unexpected-in Assets">Refund Unexpected-in Assets</a>
-                          </li>
-                          <li>
-                            <a href="#fetch-order" class="toc-h3 toc-link" data-title="Fetch Order">Fetch Order</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#wallet" class="toc-h2 toc-link" data-title="Wallet">Wallet</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#fetch-wallet-status" class="toc-h3 toc-link" data-title="Fetch Wallet Status">Fetch Wallet Status</a>
-                          </li>
-                          <li>
-                            <a href="#request-withdrawal" class="toc-h3 toc-link" data-title="Request Withdrawal">Request Withdrawal</a>
-                          </li>
-                          <li>
-                            <a href="#deposit-to-eth2-0-validator" class="toc-h3 toc-link" data-title="Deposit to ETH2.0 Validator">Deposit to ETH2.0 Validator</a>
-                          </li>
-                          <li>
-                            <a href="#audit-for-specified-coin" class="toc-h3 toc-link" data-title="Audit For Specified Coin">Audit For Specified Coin</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#wallets" class="toc-h2 toc-link" data-title="Wallets">Wallets</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#audit-for-all-coins" class="toc-h3 toc-link" data-title="Audit For All Coins">Audit For All Coins</a>
-                          </li>
-                      </ul>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#sudo-api" class="toc-h1 toc-link" data-title="Sudo API">Sudo API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#wallet-2" class="toc-h2 toc-link" data-title="Wallet">Wallet</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#e22e0c6119" class="toc-h3 toc-link" data-title="查询钱包列表">查询钱包列表</a>
-                          </li>
-                          <li>
-                            <a href="#0d993f66e2" class="toc-h3 toc-link" data-title="查询钱包具体信息">查询钱包具体信息</a>
-                          </li>
-                          <li>
-                            <a href="#f17d0ef59d" class="toc-h3 toc-link" data-title="创建充值地址">创建充值地址</a>
-                          </li>
-                          <li>
-                            <a href="#0caffb248c" class="toc-h3 toc-link" data-title="批量创建充值地址">批量创建充值地址</a>
-                          </li>
-                          <li>
-                            <a href="#a0c187af19" class="toc-h3 toc-link" data-title="查询充值地址信息">查询充值地址信息</a>
-                          </li>
-                          <li>
-                            <a href="#22582f6b9b" class="toc-h3 toc-link" data-title="查询充值地址余额">查询充值地址余额</a>
-                          </li>
-                          <li>
-                            <a href="#92d59b6aad" class="toc-h3 toc-link" data-title="查询订单详情">查询订单详情</a>
-                          </li>
-                          <li>
-                            <a href="#a35b9b2919" class="toc-h3 toc-link" data-title="查询订单附加流程">查询订单附加流程</a>
-                          </li>
-                          <li>
-                            <a href="#88dddff86a" class="toc-h3 toc-link" data-title="处理订单附加流程">处理订单附加流程</a>
-                          </li>
-                          <li>
-                            <a href="#0bed682e6f" class="toc-h3 toc-link" data-title="查询钱包余额">查询钱包余额</a>
-                          </li>
-                          <li>
-                            <a href="#fa95391c1e" class="toc-h3 toc-link" data-title="查询钱包地址">查询钱包地址</a>
-                          </li>
-                          <li>
-                            <a href="#a471daf080" class="toc-h3 toc-link" data-title="提现">提现</a>
-                          </li>
-                          <li>
-                            <a href="#53bda2d4d0" class="toc-h3 toc-link" data-title="给订单设置自定义标签">给订单设置自定义标签</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#ds" class="toc-h2 toc-link" data-title="DS">DS</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#205c76b684" class="toc-h3 toc-link" data-title="验证是否可转账">验证是否可转账</a>
-                          </li>
-                          <li>
-                            <a href="#7a7c61f296" class="toc-h3 toc-link" data-title="将钱包注册为投资人">将钱包注册为投资人</a>
-                          </li>
-                          <li>
-                            <a href="#1120d708a4" class="toc-h3 toc-link" data-title="添加到当前投资人">添加到当前投资人</a>
-                          </li>
-                          <li>
-                            <a href="#734fb935f3" class="toc-h3 toc-link" data-title="从当前投资人移出">从当前投资人移出</a>
-                          </li>
-                          <li>
-                            <a href="#1094d9ecba" class="toc-h3 toc-link" data-title="添加投资人国家">添加投资人国家</a>
-                          </li>
-                          <li>
-                            <a href="#74672bda4c" class="toc-h3 toc-link" data-title="添加投资人属性">添加投资人属性</a>
-                          </li>
-                          <li>
-                            <a href="#b2db0a94f6" class="toc-h3 toc-link" data-title="获取钱包的注册信息">获取钱包的注册信息</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#utilities" class="toc-h2 toc-link" data-title="Utilities">Utilities</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#4eadf67a1a" class="toc-h3 toc-link" data-title="验证地址有效性">验证地址有效性</a>
-                          </li>
-                          <li>
-                            <a href="#83287f84b9" class="toc-h3 toc-link" data-title="设置回调地址">设置回调地址</a>
-                          </li>
-                      </ul>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#mpc-api" class="toc-h1 toc-link" data-title="MPC API">MPC API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#0f7da8567e" class="toc-h2 toc-link" data-title="托管单元">托管单元</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#7a00eaec0f" class="toc-h3 toc-link" data-title="注册公钥">注册公钥</a>
-                          </li>
-                          <li>
-                            <a href="#dc593b08a2" class="toc-h3 toc-link" data-title="查询注册公钥列表">查询注册公钥列表</a>
-                          </li>
-                          <li>
-                            <a href="#68a8bc772c" class="toc-h3 toc-link" data-title="查询注册公钥信息">查询注册公钥信息</a>
-                          </li>
-                          <li>
-                            <a href="#f191b6ef84" class="toc-h3 toc-link" data-title="修改注册公钥信息">修改注册公钥信息</a>
-                          </li>
-                          <li>
-                            <a href="#2cebb45921" class="toc-h3 toc-link" data-title="创建地址">创建地址</a>
-                          </li>
-                          <li>
-                            <a href="#65f179f259" class="toc-h3 toc-link" data-title="查询地址">查询地址</a>
-                          </li>
-                          <li>
-                            <a href="#d726384075" class="toc-h3 toc-link" data-title="查询地址相关订单">查询地址相关订单</a>
-                          </li>
-                          <li>
-                            <a href="#d1b09b6b80" class="toc-h3 toc-link" data-title="查询地址余额">查询地址余额</a>
-                          </li>
-                          <li>
-                            <a href="#080bb86350" class="toc-h3 toc-link" data-title="强制更新地址余额">强制更新地址余额</a>
-                          </li>
-                          <li>
-                            <a href="#34cd7a9e4c" class="toc-h3 toc-link" data-title="发起提现">发起提现</a>
-                          </li>
-                          <li>
-                            <a href="#ad35cb42ca" class="toc-h3 toc-link" data-title="发起合约交易">发起合约交易</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#96a5882bf8" class="toc-h2 toc-link" data-title="订单相关">订单相关</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#90376e83a0" class="toc-h3 toc-link" data-title="查询订单">查询订单</a>
-                          </li>
-                          <li>
-                            <a href="#1333ca551f" class="toc-h3 toc-link" data-title="查询交易信息">查询交易信息</a>
-                          </li>
-                          <li>
-                            <a href="#4570a8e8b9" class="toc-h3 toc-link" data-title="查询业务流程">查询业务流程</a>
-                          </li>
-                          <li>
-                            <a href="#3eedd32d80" class="toc-h3 toc-link" data-title="取消订单">取消订单</a>
-                          </li>
-                          <li>
-                            <a href="#13ad33d6d4" class="toc-h3 toc-link" data-title="上传签名">上传签名</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#a72ef18d9a" class="toc-h2 toc-link" data-title="工具">工具</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#b1f7c69981" class="toc-h3 toc-link" data-title="查询手续费">查询手续费</a>
-                          </li>
-                          <li>
-                            <a href="#99a12c6b9f" class="toc-h3 toc-link" data-title="区块链调用">区块链调用</a>
-                          </li>
-                      </ul>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#bls-key-server-api" class="toc-h1 toc-link" data-title="BLS Key Server API">BLS Key Server API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#derive-bls-key-pair" class="toc-h2 toc-link" data-title="Derive BLS Key Pair">Derive BLS Key Pair</a>
-                  </li>
-                  <li>
-                    <a href="#generate-deposit-data" class="toc-h2 toc-link" data-title="Generate Deposit Data">Generate Deposit Data</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#callback" class="toc-h1 toc-link" data-title="Callback">Callback</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#order-2" class="toc-h2 toc-link" data-title="Order">Order</a>
-                  </li>
-                  <li>
-                    <a href="#audit-2" class="toc-h2 toc-link" data-title="Audit">Audit</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#ecc-signature" class="toc-h1 toc-link" data-title="ECC Signature">ECC Signature</a>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-          </li>
-      </ul>
-        <ul class="toc-footer">
-            <li><a href='https://github.com/nbltrust/jadepool-doc'>Jadepool Documentation</a></li>
-        </ul>
-    </div>
-    <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <h1 id='introduction'>Introduction</h1>
+<h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Jadepool API! </p>
 <h1 id='general-structure'>General Structure</h1><h2 id='post'>POST请求</h2>
 <blockquote>
@@ -1038,6 +530,376 @@ All main parameters in POST API should be wraped in "data" object
 <td>the address is valid or not</td>
 </tr>
 </tbody></table>
+<h3 id='force-free'>Force Free</h3>
+<blockquote>
+<p>Request &quot;Force Free&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383578</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wBs2UnJLy16lww2mrp8oi71W/Qi1101ElkIDFKGjq9c="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WJYTn/vjf0y/Z3DdkJ/7XAiqvylKI/DhHP0mlMLDg7I="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbed58f8d1607c10ddddf93"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6515"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWEEP_INTERNAL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xa268f4ae690ac1421775568d783439c7c1151749"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xbf0aa791e34d3af906050fcb713305c1d92880af"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383570</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383571</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint enables you to transfer tokens from a deposit address to the main hot wallet address.</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http://jadepool.example/api/v2/address/:coinName/free</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinName</td>
+<td>coin name</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+</tbody></table>
+<h3 id='force-obtain'>Force Obtain</h3>
+<blockquote>
+<p>Request &quot;Force Obtain&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383578</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wBs2UnJLy16lww2mrp8oi71W/Qi1101ElkIDFKGjq9c="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WJYTn/vjf0y/Z3DdkJ/7XAiqvylKI/DhHP0mlMLDg7I="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cbed58f8d1607c10ddddf93"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6515"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWEEP_INTERNAL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xa268f4ae690ac1421775568d783439c7c1151749"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xbf0aa791e34d3af906050fcb713305c1d92880af"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383570</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1556010383571</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j5D28yAyhO02C-_6AAAA"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint enables you to transfer tokens from the main hot wallet address to a deposit address.</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>POST http://jadepool.example/api/v2/address/:coinName/obtain</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinName</td>
+<td>coin name</td>
+</tr>
+</tbody></table>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.address</td>
+<td>yes</td>
+<td>string</td>
+<td>address to validate</td>
+</tr>
+<tr>
+<td>data.sequence</td>
+<td>yes</td>
+<td>number</td>
+<td>unique request sequence</td>
+</tr>
+<tr>
+<td>data.value</td>
+<td>yes</td>
+<td>string</td>
+<td>force obtain value</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>the order ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>unique token name</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>any</td>
+<td>supplementary data</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>order state</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>order type</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>token type</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string</td>
+<td>transaction input</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string</td>
+<td>transaction output</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>transaction value</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>number</td>
+<td>number of transaction confirmations</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>array</td>
+<td>all types of fee burnt for the transaction</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>transaction hash</td>
+</tr>
+<tr>
+<td>block</td>
+<td>number</td>
+<td>the block transaction mined in</td>
+</tr>
+<tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+</tbody></table>
 <h3 id='fetch-incomplete-orders'>Fetch Incomplete Orders</h3>
 <blockquote>
 <p>Request &quot;Fetch Incomplete Orders&quot; API returns JSON structured like this:</p>
@@ -1201,9 +1063,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>the block transaction mined in</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 </tbody></table>
 <h3 id='fetch-address-balance'>Fetch Address Balance</h3>
@@ -1947,217 +1819,9 @@ All main parameters in POST API should be wraped in "data" object
 <td>the block transaction mined in</td>
 </tr>
 <tr>
-<td>memo</td>
+<td>extraData</td>
 <td>string</td>
-<td>order note, editable on admin</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>latest info of the transaction</td>
-</tr>
-</tbody></table>
-<h2 id='order'>Order</h2><h3 id='refund-unexpected-in-assets'>Refund Unexpected-in Assets</h3>
-<blockquote>
-<p>Request &quot;Refund Unexpected-in Assets&quot; API returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1624859845880</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B7iOKZ071kYSz+peHxdlXEbBfPVgAOhNSMJQnl7igcA="</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNM6tYNWRnNdq/tm24LgbzUrOi24jXunCBRQCoDjeGs="</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60d964c5ebb1bfca52a69ee1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6332"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pri"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFUND"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mpwyP1L7oAHxQyWnBX4CuPxUx2kvZA67ZP"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"mpwyP1L7oAHxQyWnBX4CuPxUx2kvZA67ZP"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mnJQyeDFmGjNoxyxKQC6MMFdpx77rYV3Bo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">16248539560000000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1624859845856</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1624859845865</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"bizFlows"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"feePrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isTransferCompletely"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"sendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"stateTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"stateDetailTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"validationResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6329"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bLdVjAvce60S6F_GAAAQ"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint enables you to request refund regarding orders of Unexpected-in type.</p>
-
-<p><em>HTTP Request</em></p>
-
-<p><code>POST http://jadepool.example/api/v2/orders/:id/refund</code></p>
-
-<p><em>Query Parameters</em></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>异常入账订单ID</td>
-</tr>
-</tbody></table>
-
-<p><em>Main Parameters</em></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data.to</td>
-<td>yes</td>
-<td>string</td>
-<td>退款接收地址</td>
-</tr>
-</tbody></table>
-
-<p><em>Response Result</em></p>
-
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>string</td>
-<td>the order ID</td>
-</tr>
-<tr>
-<td>coinName</td>
-<td>string</td>
-<td>unique token name</td>
-</tr>
-<tr>
-<td>txid</td>
-<td>string</td>
-<td>transaction hash</td>
-</tr>
-<tr>
-<td>meta</td>
-<td>any</td>
-<td>supplementary data</td>
-</tr>
-<tr>
-<td>state</td>
-<td>string</td>
-<td>order state</td>
-</tr>
-<tr>
-<td>bizType</td>
-<td>string</td>
-<td>order type</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>token type</td>
-</tr>
-<tr>
-<td>from</td>
-<td>string</td>
-<td>transaction input</td>
-</tr>
-<tr>
-<td>to</td>
-<td>string</td>
-<td>transaction output</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>transaction value</td>
-</tr>
-<tr>
-<td>confirmations</td>
-<td>number</td>
-<td>number of transaction confirmations</td>
-</tr>
-<tr>
-<td>fee</td>
-<td>string</td>
-<td>fee burnt for the transaction</td>
-</tr>
-<tr>
-<td>fees</td>
-<td>array</td>
-<td>all types of fee burnt for the transaction</td>
-</tr>
-<tr>
-<td>hash</td>
-<td>string</td>
-<td>transaction hash</td>
-</tr>
-<tr>
-<td>block</td>
-<td>number</td>
-<td>the block transaction mined in</td>
+<td>same as the extraData in request</td>
 </tr>
 <tr>
 <td>memo</td>
@@ -2165,12 +1829,17 @@ All main parameters in POST API should be wraped in "data" object
 <td>order note, editable on admin</td>
 </tr>
 <tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
+</tr>
+<tr>
 <td>data</td>
 <td>object</td>
 <td>latest info of the transaction</td>
 </tr>
 </tbody></table>
-<h3 id='fetch-order'>Fetch Order</h3>
+<h2 id='order'>Order</h2><h3 id='fetch-order'>Fetch Order</h3>
 <blockquote>
 <p>Request &quot;fetch Order&quot; API returns JSON structured like this:</p>
 </blockquote>
@@ -2330,6 +1999,11 @@ All main parameters in POST API should be wraped in "data" object
 <td>memo</td>
 <td>string</td>
 <td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 <tr>
 <td>data</td>
@@ -2614,9 +2288,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>the block transaction mined in</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 <tr>
 <td>data</td>
@@ -2862,9 +2546,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>the block transaction mined in</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 <tr>
 <td>data</td>
@@ -4332,9 +4026,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -5435,9 +5139,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -5963,9 +5677,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -6286,9 +6010,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -6609,9 +6343,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -6932,9 +6676,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -7276,9 +7030,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -8597,9 +8361,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -9169,9 +8943,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -9510,9 +9294,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -9875,9 +9669,19 @@ All main parameters in POST API should be wraped in "data" object
 <td>订单所在区块的时间戳</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>额外信息</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>提现时的memo</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>string</td>
+<td>重发标识</td>
 </tr>
 <tr>
 <td>relatedOrder</td>
@@ -10809,9 +10613,19 @@ All timestamps are in millisecond.
 <td>the block transaction mined in</td>
 </tr>
 <tr>
+<td>extraData</td>
+<td>string</td>
+<td>same as the extraData in request</td>
+</tr>
+<tr>
 <td>memo</td>
 <td>string</td>
 <td>order note, editable on admin</td>
+</tr>
+<tr>
+<td>sendAgain</td>
+<td>boolean</td>
+<td>if we suggest client to send the same request again</td>
 </tr>
 <tr>
 <td>data</td>
@@ -11156,7 +10970,7 @@ All timestamps are in millisecond.
 <td>audit order ID of the current audit</td>
 </tr>
 </tbody></table>
-<h1 id='ecc-signature'>ECC Signature</h1>
+<h1 id='ecc-signature'>ECC Signature</h1><h2 id='release-0-13-x'>Release 0.13.x</h2>
 <blockquote>
 <p>Javascript code of building the message to be signed:</p>
 </blockquote>
@@ -11257,803 +11071,55 @@ addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABtimestamp1557912642626validt
 <li>Encrypt the message using sha3 or sha256 or md5.</li>
 <li>Verify signature using the plain encrypted message and Jadepool&#39;s public key.</li>
 </ol>
-<h1 id='errors'>Errors</h1>
-<p>Jadepool API uses the following error codes:</p>
+<h2 id='release-1-0'>Release 1.0</h2>
+<p><em>Steps of building signature for GET requests:</em></p>
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Category</th>
-<th>CN</th>
-<th>EN</th>
-<th>JA</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>401</td>
-<td>general-error</td>
-<td>401 用户认证失败或已过期</td>
-<td>401 authentication failed or expired</td>
-<td>401 認証が期限切れ</td>
-</tr>
-<tr>
-<td>403</td>
-<td>general-error</td>
-<td>403 权限不足拒绝访问</td>
-<td>403 invalid authorization</td>
-<td>403 権限不足</td>
-</tr>
-<tr>
-<td>404</td>
-<td>general-error</td>
-<td>404 该API不存在</td>
-<td>API not found</td>
-<td>このAPIは存在しない</td>
-</tr>
-<tr>
-<td>405</td>
-<td>general-error</td>
-<td>405 该方法不可用</td>
-<td>405 Method Not Allowed</td>
-<td>405 Method Not Allowed</td>
-</tr>
-<tr>
-<td>500</td>
-<td>general-error</td>
-<td>500 请求失败({code})</td>
-<td>500 request failed({code})</td>
-<td>500 リクエスト失敗({code})</td>
-</tr>
-<tr>
-<td>10001</td>
-<td>general-error</td>
-<td>系统错误</td>
-<td>system error</td>
-<td>システムエラー</td>
-</tr>
-<tr>
-<td>10002</td>
-<td>general-error</td>
-<td>非法参数</td>
-<td>invalid parameter</td>
-<td>不正パラメータ</td>
-</tr>
-<tr>
-<td>10003</td>
-<td>general-error</td>
-<td>请求内容需为参数data</td>
-<td>request data should be in &#39;data&#39; field</td>
-<td>依頼内容をパラメータ必要&#39;data&#39;</td>
-</tr>
-<tr>
-<td>10004</td>
-<td>general-error</td>
-<td>无法删除已关联的对象</td>
-<td>cannot delete associated object</td>
-<td>関連する対象を削除できません</td>
-</tr>
-<tr>
-<td>10005</td>
-<td>general-error</td>
-<td>未找到指定的钱包</td>
-<td>No specified wallet was found</td>
-<td>指定されたウォレットが見つかりませんでした</td>
-</tr>
-<tr>
-<td>10010</td>
-<td>general-error</td>
-<td>暂不支持该模块</td>
-<td>This module is not supported for now</td>
-<td>このモジュールはサポートされていません</td>
-</tr>
-<tr>
-<td>10098</td>
-<td>general-error</td>
-<td>系统尚未初始化</td>
-<td>System not initialized</td>
-<td>システムはまだ初期化されていません</td>
-</tr>
-<tr>
-<td>10099</td>
-<td>general-error</td>
-<td>系统已完成了初始化流程</td>
-<td>system is already initialized</td>
-<td>システムは初期化の流れを完了した</td>
-</tr>
-<tr>
-<td>10200</td>
-<td>general-error</td>
-<td>系统连接慢雾网络时出错</td>
-<td>Occur error when connecting to slowmist</td>
-<td>Occur error when connecting to slowmist</td>
-</tr>
-<tr>
-<td>20000</td>
-<td>invalid-parameter</td>
-<td>不支持该币种类型</td>
-<td>unsupported coin type</td>
-<td>貨幣種のタイプを支持しない</td>
-</tr>
-<tr>
-<td>20001</td>
-<td>invalid-parameter</td>
-<td>地址错误-首字母不对</td>
-<td>address wrong - first charactor</td>
-<td>アドレスエラー-頭文字が間違っていません</td>
-</tr>
-<tr>
-<td>20002</td>
-<td>invalid-parameter</td>
-<td>地址错误-长度不对</td>
-<td>address wrong - length</td>
-<td>アドレスエラー-長さが違います</td>
-</tr>
-<tr>
-<td>20003</td>
-<td>invalid-parameter</td>
-<td>地址与类型不匹配</td>
-<td>The address is miss-match with requested type</td>
-<td>アドレスとタイプが一致しない</td>
-</tr>
-<tr>
-<td>20004</td>
-<td>invalid-parameter</td>
-<td>提币金额高于高水位</td>
-<td>The withdrawal amount is higher then high water level</td>
-<td>貨幣の金額は高い水位より高い</td>
-</tr>
-<tr>
-<td>20005</td>
-<td>invalid-parameter</td>
-<td>提币MEMO长度非法</td>
-<td>length of the withdrawal memo is invalid</td>
-<td>引き下げメモの長さが無効です</td>
-</tr>
-<tr>
-<td>20006</td>
-<td>invalid-parameter</td>
-<td>提现序号已使用</td>
-<td>The withdrawal sequence was used</td>
-<td>番号が使用済み</td>
-</tr>
-<tr>
-<td>20007</td>
-<td>invalid-parameter</td>
-<td>不支持该业务模式</td>
-<td>This business model is not supported</td>
-<td>このビジネスモデルはサポートされていません</td>
-</tr>
-<tr>
-<td>20008</td>
-<td>invalid-parameter</td>
-<td>该地址余额与参数不符</td>
-<td>The address balance does not match the parameters</td>
-<td>このアドレス残高はパラメータと一致しません。</td>
-</tr>
-<tr>
-<td>20009</td>
-<td>invalid-parameter</td>
-<td>该地址已存在相关业务</td>
-<td>The address already has relevant business</td>
-<td>すでに関連業務があります。</td>
-</tr>
-<tr>
-<td>20010</td>
-<td>invalid-parameter</td>
-<td>必选参数不能为空</td>
-<td>Necessary parameters cannot be empty</td>
-<td>必選パラメータは空けてはならない</td>
-</tr>
-<tr>
-<td>20011</td>
-<td>invalid-parameter</td>
-<td>该币种类型目前无法提现</td>
-<td>The type of currency cannot be withdrawn.</td>
-<td>この貨幣の種類のタイプは現在現われることができない</td>
-</tr>
-<tr>
-<td>20012</td>
-<td>invalid-parameter</td>
-<td>该币种无法用于Stake相关操作</td>
-<td>This currency cannot be used for Stake-related operations</td>
-<td>この貨幣はステーションに関連する操作ができません</td>
-</tr>
-<tr>
-<td>20013</td>
-<td>invalid-parameter</td>
-<td>该地址尚未在目标上进行过抵押代理</td>
-<td>The address has not been delegated on the target validator</td>
-<td>ターゲットバリデータにアドレスが委任されていません</td>
-</tr>
-<tr>
-<td>20014</td>
-<td>invalid-parameter</td>
-<td>该地址在目标上的抵押金额不足</td>
-<td>The address has insufficient delegated amount on the target validator</td>
-<td>ターゲット上のアドレス、担保額</td>
-</tr>
-<tr>
-<td>20015</td>
-<td>invalid-parameter</td>
-<td>该地址在目标上不存在取消中的抵押</td>
-<td>The address has no undelegations on the target validator</td>
-<td>このアドレスは、ターゲットには、キャンセル中の担保が存在しません。</td>
-</tr>
-<tr>
-<td>20016</td>
-<td>invalid-parameter</td>
-<td>转抵押地址不可相同</td>
-<td>The address of re-delegations should be not same</td>
-<td>担保のアドレスは同じではない</td>
-</tr>
-<tr>
-<td>20017</td>
-<td>invalid-parameter</td>
-<td>该地址无法用于Stake相关操作</td>
-<td>This address cannot be used for Stake-related operations</td>
-<td>このアドレスに関連した活動のために使われる賭け</td>
-</tr>
-<tr>
-<td>20018</td>
-<td>invalid-parameter</td>
-<td>该地址在目标上的取消抵押数已达到上限</td>
-<td>The amount of un-delegations on the target address has reached the upper limit.</td>
-<td>目標アドレスに関する国連代表団の量が上限に達している。</td>
-</tr>
-<tr>
-<td>20021</td>
-<td>invalid-parameter</td>
-<td>扫描地址需为内部地址</td>
-<td>Scanning address should be internal address</td>
-<td>スキャンアドレスは内部アドレス</td>
-</tr>
-<tr>
-<td>20022</td>
-<td>invalid-parameter</td>
-<td>提现地址不可为系统地址</td>
-<td>The withdrawal address is not a systematic address.</td>
-<td>現金引き出しアドレスと係統のアドレス</td>
-</tr>
-<tr>
-<td>20023</td>
-<td>invalid-parameter</td>
-<td>交易发起地址需为内部地址</td>
-<td>Source address should be an internal address</td>
-<td>アドレスを内部アドレスでなければなりません</td>
-</tr>
-<tr>
-<td>20024</td>
-<td>invalid-parameter</td>
-<td>该地址并不属于指定钱包</td>
-<td>The address does not belong to the specified wallet.</td>
-<td>この住所は指定されたウォレットではありません</td>
-</tr>
-<tr>
-<td>20025</td>
-<td>invalid-parameter</td>
-<td>该订单并不属于指定钱包</td>
-<td>The order does not belong to the specified wallet.</td>
-<td>この注文は指定された財布ではありません</td>
-</tr>
-<tr>
-<td>20026</td>
-<td>invalid-parameter</td>
-<td>该内容并不属于指定钱包</td>
-<td>The entity does not belong to the specified wallet.</td>
-<td>この内容は指定されたウォレットではありません</td>
-</tr>
-<tr>
-<td>20028</td>
-<td>invalid-parameter</td>
-<td>已开启自动审计，该API已禁用</td>
-<td>Auto Audit has been enabled and the API is disabled</td>
-<td>自動監査が開始されました。このAPIは無効になりました。</td>
-</tr>
-<tr>
-<td>20029</td>
-<td>invalid-parameter</td>
-<td>未找到符合时间戳的区块号</td>
-<td>No block number matching the timestamp was found</td>
-<td>時間のスタンプに合ったブロック番号が見つかりません</td>
-</tr>
-<tr>
-<td>20030</td>
-<td>invalid-parameter</td>
-<td>起始时间需小于结束时间</td>
-<td>Start time should be less than end time</td>
-<td>開始時間は終了時間より小さい</td>
-</tr>
-<tr>
-<td>20031</td>
-<td>invalid-parameter</td>
-<td>审计时间戳应小于当前时间</td>
-<td>Audit timestamp should be less than current time</td>
-<td>監査時間のスタンプは現在の時間より小さいです</td>
-</tr>
-<tr>
-<td>20032</td>
-<td>invalid-parameter</td>
-<td>不支持地址重扫功能</td>
-<td>Rescan by Address is not supported</td>
-<td>アドレスをサポートしていない</td>
-</tr>
-<tr>
-<td>20033</td>
-<td>invalid-parameter</td>
-<td>不支持区块重扫功能</td>
-<td>Rescan by Block is not supported</td>
-<td>カット機能をサポートしていない</td>
-</tr>
-<tr>
-<td>20034</td>
-<td>invalid-parameter</td>
-<td>应用AppID必须为字母</td>
-<td>AppID must be alphabetic</td>
-<td>応用AppIDなければならない文字</td>
-</tr>
-<tr>
-<td>20035</td>
-<td>invalid-parameter</td>
-<td>传入的公钥不符合指定的编码方式</td>
-<td>The incoming public key does not match the specified encoding</td>
-<td>伝えられた公鍵は指定されたコード方式に合致しない</td>
-</tr>
-<tr>
-<td>20036</td>
-<td>invalid-parameter</td>
-<td>应用AppID不存在</td>
-<td>AppID does not exist</td>
-<td>応用AppIDは存在しない</td>
-</tr>
-<tr>
-<td>20037</td>
-<td>invalid-parameter</td>
-<td>应用AppID已存在</td>
-<td>AppID already exists</td>
-<td>応用AppIDすでに存在する</td>
-</tr>
-<tr>
-<td>20038</td>
-<td>invalid-parameter</td>
-<td>代币已存在</td>
-<td>Token already exists</td>
-<td>トークンが既に存在している</td>
-</tr>
-<tr>
-<td>20039</td>
-<td>invalid-parameter</td>
-<td>不存在此代币</td>
-<td>Token doesn&#39;t exist</td>
-<td>このトークンは存在しない</td>
-</tr>
-<tr>
-<td>20040</td>
-<td>invalid-parameter</td>
-<td>需要禁用此代币</td>
-<td>Token should be disabled</td>
-<td>トークンを無効にする</td>
-</tr>
-<tr>
-<td>20041</td>
-<td>invalid-parameter</td>
-<td>已使用的公钥</td>
-<td>Public key duplicated</td>
-<td>公鍵が既に存在している</td>
-</tr>
-<tr>
-<td>20042</td>
-<td>invalid-parameter</td>
-<td>已存在该名称的钱包</td>
-<td>A wallet with that name already exists</td>
-<td>この名前のウォレットは既に存在します</td>
-</tr>
-<tr>
-<td>20043</td>
-<td>invalid-parameter</td>
-<td>此代币尚存在处理中的订单</td>
-<td>This token still has some order under processing</td>
-<td>このトークンはまだ処理中の注文があります。</td>
-</tr>
-<tr>
-<td>20044</td>
-<td>invalid-parameter</td>
-<td>不可删除钱包内的最后一个应用</td>
-<td>The last application in the wallet that cannot be deleted</td>
-<td>ウォレットの最後のアプリケーションを削除してはいけません。</td>
-</tr>
-<tr>
-<td>20045</td>
-<td>invalid-parameter</td>
-<td>该应用目前存在异常不可用</td>
-<td>The application is currently unavailable</td>
-<td>このアプリケーションは現在異常があります。利用できません</td>
-</tr>
-<tr>
-<td>20046</td>
-<td>invalid-parameter</td>
-<td>该币种无法使用此操作</td>
-<td>This currency cannot be used for this operation</td>
-<td>この貨幣はこの操作を使用できない</td>
-</tr>
-<tr>
-<td>20047</td>
-<td>invalid-parameter</td>
-<td>批量操作进程失败</td>
-<td>Batch operations of process failed</td>
-<td>Batch operations of process failed</td>
-</tr>
-<tr>
-<td>20048</td>
-<td>invalid-parameter</td>
-<td>该用户名已存在</td>
-<td>The username already exists</td>
-<td>ユーザ名は既に存在します</td>
-</tr>
-<tr>
-<td>20049</td>
-<td>invalid-parameter</td>
-<td>非法地址</td>
-<td>Invalid address</td>
-<td>Invalid address</td>
-</tr>
-<tr>
-<td>20050</td>
-<td>invalid-parameter</td>
-<td>OrderBatch处于不支持此操作的状态</td>
-<td>OrderBatch处于不支持此操作的状态</td>
-<td>OrderBatch处于不支持此操作的状态</td>
-</tr>
-<tr>
-<td>20051</td>
-<td>invalid-parameter</td>
-<td>签名文件格式异常</td>
-<td>签名文件格式异常</td>
-<td>签名文件格式异常</td>
-</tr>
-<tr>
-<td>20052</td>
-<td>invalid-parameter</td>
-<td>存在处理中OrderBatch</td>
-<td>存在处理中OrderBatch</td>
-<td>存在处理中OrderBatch</td>
-</tr>
-<tr>
-<td>20053</td>
-<td>invalid-parameter</td>
-<td>不能同时切换多个私钥，请等待订单完成后再试。</td>
-<td>Only changing one permission is allowed at a time. Please retry later.</td>
-<td>Only changing one permission is allowed at a time. Please retry later.</td>
-</tr>
-<tr>
-<td>20054</td>
-<td>invalid-parameter</td>
-<td>非法公钥</td>
-<td>Invalid public key</td>
-<td>Invalid public key</td>
-</tr>
-<tr>
-<td>20101</td>
-<td>chain-general-error</td>
-<td>热钱包余额不足</td>
-<td>Insufficient hot wallet balance</td>
-<td>熱い財布の残額が足りない</td>
-</tr>
-<tr>
-<td>20102</td>
-<td>chain-general-error</td>
-<td>连接区块链节点失败</td>
-<td>Failed to connection blockchain node</td>
-<td>ブロックのチェーンノードを接続して失敗します</td>
-</tr>
-<tr>
-<td>20103</td>
-<td>chain-general-error</td>
-<td>手续费不足</td>
-<td>Insufficient fees</td>
-<td>手数料が足りない</td>
-</tr>
-<tr>
-<td>20104</td>
-<td>chain-general-error</td>
-<td>目前系统不支持该区块链网络</td>
-<td>The current system does not support this block chain network</td>
-<td>現在システムはこのエリアのチェーンネットワークをサポートしていません</td>
-</tr>
-<tr>
-<td>20105</td>
-<td>chain-general-error</td>
-<td>目前该区块链网络已被禁用</td>
-<td>The block chain network is currently disabled</td>
-<td>現在この区画チェーンネットワークはすでに使用禁止されている</td>
-</tr>
-<tr>
-<td>20106</td>
-<td>chain-general-error</td>
-<td>该区块链网络目前正在运行中</td>
-<td>The block chain network is currently in operation.</td>
-<td>同チェーンブロックインターネットは現在進行中</td>
-</tr>
-<tr>
-<td>20107</td>
-<td>chain-general-error</td>
-<td>该类型已存在激活中的运行进程，若需开启更多同类进程需JP_MULTI_WORKERS特性支持</td>
-<td>&quot;This type of running process already exists in activation</td>
-<td>and JP_MULTI_WORKERS feature support is required to open more similar processes.&quot;</td>
-</tr>
-<tr>
-<td>20108</td>
-<td>chain-general-error</td>
-<td>该方法仅支持UTXO类代币调用</td>
-<td>This method only supports UTXO class token invocation</td>
-<td>この方法はUTXO類トークンの呼び出しのみに対応しています。</td>
-</tr>
-<tr>
-<td>20109</td>
-<td>chain-general-error</td>
-<td>该类型在部分钱包中尚处于启用状态</td>
-<td>The one is still active in some wallets</td>
-<td>このタイプは一部のウォレットでまだ有効です</td>
-</tr>
-<tr>
-<td>20110</td>
-<td>chain-general-error</td>
-<td>调用区块链方法的参数不正确</td>
-<td>Incorrect parameters for calling block chain methods</td>
-<td>ブロックチェーンのパラメータを呼び出すのは正しくない</td>
-</tr>
-<tr>
-<td>20111</td>
-<td>chain-general-error</td>
-<td>删除前请先禁用该代币</td>
-<td>Disable token first</td>
-<td>先ずはトークンを無効にしてください</td>
-</tr>
-<tr>
-<td>20112</td>
-<td>chain-general-error</td>
-<td>请确保区块链至少启动过一次</td>
-<td>Please make sure the blockchain has been started at least once</td>
-<td>ブロックチェーンが少なくとも一回起動されたことを確認してください</td>
-</tr>
-<tr>
-<td>20113</td>
-<td>chain-general-error</td>
-<td>该区块链不支持安全钱包模式</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>20114</td>
-<td>chain-general-error</td>
-<td>该操作仅在普通钱包中支持</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>20115</td>
-<td>chain-general-error</td>
-<td>系统检测到订单状态不正确，申请补发通知失败</td>
-<td>Request failed due to incorrect order status</td>
-<td>Request failed due to incorrect order status</td>
-</tr>
-<tr>
-<td>20200</td>
-<td>missing-method</td>
-<td>无法找到list方法</td>
-<td>Failed to find &#39;list&#39; method</td>
-<td>「list」方法を見つけることができない</td>
-</tr>
-<tr>
-<td>20201</td>
-<td>missing-method</td>
-<td>无法找到fetch方法</td>
-<td>Failed to find &#39;fetch&#39; method</td>
-<td>「fetch」方法を見つけることができない</td>
-</tr>
-<tr>
-<td>20202</td>
-<td>missing-method</td>
-<td>无法找到create方法</td>
-<td>Failed to find &#39;create&#39; method</td>
-<td>「create」方法を見つけることができない</td>
-</tr>
-<tr>
-<td>20203</td>
-<td>missing-method</td>
-<td>无法找到patch方法</td>
-<td>Failed to find &#39;patch&#39; method</td>
-<td>「patch」方法を見つけることができない</td>
-</tr>
-<tr>
-<td>20204</td>
-<td>missing-method</td>
-<td>无法找到delete方法</td>
-<td>Failed to find &#39;delete&#39; method</td>
-<td>「delete」方法を見つけることができない</td>
-</tr>
-<tr>
-<td>20205</td>
-<td>missing-method</td>
-<td>该方法未实现</td>
-<td>This method is not implemented</td>
-<td>この方法は実現していない</td>
-</tr>
-<tr>
-<td>21000</td>
-<td>rpc-failed</td>
-<td>该服务未找到相关信息</td>
-<td>The service did not find relevant information.</td>
-<td>このサービスに関する情報は見つかりません</td>
-</tr>
-<tr>
-<td>21001</td>
-<td>rpc-failed</td>
-<td>该服务尚未连接或名字空间错误</td>
-<td>The service has not been connected or has a namespace error</td>
-<td>このサービスはまだ接続されていません。</td>
-</tr>
-<tr>
-<td>21002</td>
-<td>rpc-failed</td>
-<td>该服务未找到合适的工作进程 请开启相关进程后重试</td>
-<td>The service did not find the right work process.Please launch the work process</td>
-<td>このサービスのプロセスが見つかりません</td>
-</tr>
-<tr>
-<td>21003</td>
-<td>rpc-failed</td>
-<td>该操作未找到目标进行执行</td>
-<td>The operation did not find the target for execution.</td>
-<td>この操作は目標を発見していない</td>
-</tr>
-<tr>
-<td>21004</td>
-<td>rpc-failed</td>
-<td>JSONRPC服务未找到</td>
-<td>JSONRPC service not found</td>
-<td>JSONRPCサービスは見つかりません</td>
-</tr>
-<tr>
-<td>21005</td>
-<td>rpc-failed</td>
-<td>请求超时</td>
-<td>Request timeout</td>
-<td>超過を請求する</td>
-</tr>
-<tr>
-<td>21006</td>
-<td>rpc-failed</td>
-<td>返回类型错误</td>
-<td>Return type error</td>
-<td>戻るタイプのエラー</td>
-</tr>
-<tr>
-<td>21007</td>
-<td>rpc-failed</td>
-<td>未在数据库找到该链的标尺</td>
-<td>Specified ruler not found</td>
-<td>この操作は目標を発見していない</td>
-</tr>
-<tr>
-<td>40100</td>
-<td>authorization-failed</td>
-<td>用户认证失败</td>
-<td>User authentication failed</td>
-<td>ユーザ認証失敗</td>
-</tr>
-<tr>
-<td>40101</td>
-<td>authorization-failed</td>
-<td>缺少验证参数sig</td>
-<td>Lack of validation parameter sig</td>
-<td>検証パラメータsig不足</td>
-</tr>
-<tr>
-<td>40102</td>
-<td>authorization-failed</td>
-<td>缺少验证参数timestamp</td>
-<td>Lack of validation parameter timestamp</td>
-<td>検証パラメータtimes tamp不足</td>
-</tr>
-<tr>
-<td>40103</td>
-<td>authorization-failed</td>
-<td>缺少验证参数crypto</td>
-<td>Lack of validation parameter crypto</td>
-<td>検証パラメータcrypto不足</td>
-</tr>
-<tr>
-<td>40104</td>
-<td>authorization-failed</td>
-<td>未找到验证所需的公钥</td>
-<td>Failed to find required public key for validation</td>
-<td>検証に必要な公鍵が見つからない</td>
-</tr>
-<tr>
-<td>40110</td>
-<td>authorization-failed</td>
-<td>该API仅限内部调用</td>
-<td>The API is internal only</td>
-<td>このAPIは内部の呼び出しだけで</td>
-</tr>
-<tr>
-<td>40300</td>
-<td>permission-failed</td>
-<td>无访问权限</td>
-<td>No access rights</td>
-<td>アクセス権限</td>
-</tr>
-<tr>
-<td>40301</td>
-<td>permission-failed</td>
-<td>未完成认证</td>
-<td>Uncompleted certification</td>
-<td>未完成の認証</td>
-</tr>
-<tr>
-<td>40302</td>
-<td>permission-failed</td>
-<td>该操作被锁定</td>
-<td>The operation is locked</td>
-<td>この操作ロックされて</td>
-</tr>
-<tr>
-<td>40400</td>
-<td>resouce-not-found</td>
-<td>未找到指定订单号</td>
-<td>Failed to find the specified order id</td>
-<td>見つからない指定の注文番号</td>
-</tr>
-<tr>
-<td>40401</td>
-<td>resouce-not-found</td>
-<td>未找到指定审计信息</td>
-<td>Failed to find the specified audit information</td>
-<td>見つからない指定の監査情報</td>
-</tr>
-<tr>
-<td>40410</td>
-<td>resouce-not-found</td>
-<td>未找到指定对象</td>
-<td>Failed to find the specified object</td>
-<td>見つからない指定のオブジェクト</td>
-</tr>
-<tr>
-<td>40411</td>
-<td>resouce-not-found</td>
-<td>未找到指定地址</td>
-<td>Failed to find the specified address</td>
-<td>見つからない指定のアドレス</td>
-</tr>
-<tr>
-<td>50000</td>
-<td>service-failed</td>
-<td>未能找到Redis服务</td>
-<td>Failed to connect redis server</td>
-<td>Redis服务接続失敗</td>
-</tr>
-<tr>
-<td>50001</td>
-<td>service-failed</td>
-<td>未能找到Consul服务</td>
-<td>Failed to connect consul server</td>
-<td>Consul服务接続失敗</td>
-</tr>
-<tr>
-<td>50003</td>
-<td>service-failed</td>
-<td>Redis查询错误</td>
-<td>Faild to fetch data from redis server</td>
-<td>Redis検索失敗</td>
-</tr>
-</tbody></table>
+<ol>
+<li>Get the current timestamp.</li>
+<li>Form a String message that contains the timestamp above. The message looks like this:
+</br>
+<code>
+timestamp1557913602438
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Sign the encrypted message and get the signature.</li>
+<li>Send request as the same format as described in <a href="#general-structure">General Structure</a>.</li>
+</ol>
 
-      </div>
-      <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="Example">Example</a>
-          </div>
-      </div>
-    </div>
-  </body>
-</html>
+<p><em>Steps of building signature for POST requests:</em></p>
+
+<ol>
+<li>Get the current timestamp.</li>
+<li>Form a String message that consists of all main parameters in &quot;data&quot; object, the keys 
+must be sorted alphabetically. Use &quot;request withdrawal&quot; as an example, the message looks like this:
+</br>
+<code>
+sequence0tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0
+</code></li>
+<li>add timestamp at the end of the message, the message looks like this:
+</br>
+<code>
+sequence0tomg2bfYdfii2GG13HK94jXBYPPCSWRmSiAStypeBTCvalue0timestamp1557913602438
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Sign the encrypted message and get the signature.</li>
+<li>Send request as the same format as described in <a href="#general-structure">General Structure</a>.</li>
+</ol>
+
+<p><em>Steps of verifying signature:</em></p>
+
+<ol>
+<li>Form a String message that consists of all fields in &quot;result&quot; object of the response, the keys 
+must be sorted alphabetically. Use &quot;validate address&quot; as an example, the message looks like this:
+</br>
+<code>
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABvalidtrue
+</code></li>
+<li>add the given timestamp at the end of the message, the message looks like this:
+</br>
+<code>
+addressawesome1namespaceEosiosidJGEPU47lvG6qICvmAAABvalidtruetimestamp1557912642626
+</code></li>
+<li>Encrypt the message using sha3 or sha256 or md5.</li>
+<li>Verify signature using the plain encrypted message and Jadepool&#39;s public key.</li>
+</ol>
