@@ -281,6 +281,12 @@
                           <li>
                             <a href="#fetch-order" class="toc-h3 toc-link" data-title="Fetch Order">Fetch Order</a>
                           </li>
+                          <li>
+                            <a href="#a35b9b2919" class="toc-h3 toc-link" data-title="查询订单附加流程">查询订单附加流程</a>
+                          </li>
+                          <li>
+                            <a href="#88dddff86a" class="toc-h3 toc-link" data-title="处理订单附加流程">处理订单附加流程</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -338,10 +344,10 @@
                             <a href="#92d59b6aad" class="toc-h3 toc-link" data-title="查询订单详情">查询订单详情</a>
                           </li>
                           <li>
-                            <a href="#a35b9b2919" class="toc-h3 toc-link" data-title="查询订单附加流程">查询订单附加流程</a>
+                            <a href="#a35b9b2919-2" class="toc-h3 toc-link" data-title="查询订单附加流程">查询订单附加流程</a>
                           </li>
                           <li>
-                            <a href="#88dddff86a" class="toc-h3 toc-link" data-title="处理订单附加流程">处理订单附加流程</a>
+                            <a href="#88dddff86a-2" class="toc-h3 toc-link" data-title="处理订单附加流程">处理订单附加流程</a>
                           </li>
                           <li>
                             <a href="#0bed682e6f" class="toc-h3 toc-link" data-title="查询钱包余额">查询钱包余额</a>
@@ -2335,6 +2341,578 @@ All main parameters in POST API should be wraped in "data" object
 <td>data</td>
 <td>object</td>
 <td>latest info of the transaction</td>
+</tr>
+</tbody></table>
+<h3 id='a35b9b2919'>查询订单附加流程</h3>
+<blockquote>
+<p>Request &quot;查询订单附加流程&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1599120766743</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2DwcfGNW+DFQ0PhyqZ/pgUj2IP8vuyYPMvaDlixcEWA="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G7YPgpzm1HzSsNtM/6prRoBHkgpnkErOegkjTyPL5jg="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-safe-deposit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentFlow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-success"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastFlow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attempt-failed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaef"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chainKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509acf79e8081994d37cfe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"targets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"0xc5e33b3ced9af1c58875759ce1a179b9ee06761d"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"passed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"retry"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f50a57832406319967afb3c"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1517"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"appid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sendMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bizType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWEEP_INTERNAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x8b71f8d59fc673044e6e6283abd33600e827c31f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"froms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"0x8b71f8d59fc673044e6e6283abd33600e827c31f"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x8767996c12dd811111313d3458a18e275fb63142"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">15991207605972806</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expectedConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1599120760597</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"update_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1599120760599</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sweep-to-hot"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"actionArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"actionResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"postHandlers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"timestampBegin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestampFinish"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"pendingTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"txid_rawtx"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blockHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"extraData"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sendAgain"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"relatedOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509acf79e8081994d37cfe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"relatedIssueRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"flows"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refundAddress"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"requiredCond"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"passed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.passed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-success"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.passed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-failure"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf6"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf7"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attempt-failed"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-success"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afafa"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attempt-failed"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaf8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-failure"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afafc"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afafd"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.retry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"back"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afafe"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.retry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afafb"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attempt-failed"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaff"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f50a55f32406319967afb3b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-success"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f50a50532406319967afb38"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-03T07:27:15.253Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-03T08:12:40.606Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f509ad332406319967afaef"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>查询safe类型钱包的充值订单bizFlow流程的具体信息</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>GET http://jadepool.example/api/v2/orders/:orderId/bizflow</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>充值订单号</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>钱包ID</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>类别</td>
+</tr>
+<tr>
+<td>currentFlow</td>
+<td>string</td>
+<td>当前bizFlow的位置</td>
+</tr>
+<tr>
+<td>lastFlow</td>
+<td>string</td>
+<td>上次bizFlow的位置</td>
+</tr>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>数据库_id</td>
+</tr>
+<tr>
+<td>chainKey</td>
+<td>string</td>
+<td>区块链的主key</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>币种名</td>
+</tr>
+<tr>
+<td>related</td>
+<td>string</td>
+<td>充值订单对应数据库的_id</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>审核数据记录</td>
+</tr>
+<tr>
+<td>order</td>
+<td>string</td>
+<td>审核后，汇总或退款的订单</td>
+</tr>
+<tr>
+<td>flows</td>
+<td>list</td>
+<td>整个flow流程</td>
+</tr>
+<tr>
+<td>attempts</td>
+<td>list</td>
+<td>订单失败后重新创建的记录</td>
+</tr>
+<tr>
+<td>finished</td>
+<td>boolean</td>
+<td>flow结束标识位</td>
+</tr>
+</tbody></table>
+<h3 id='88dddff86a'>处理订单附加流程</h3>
+<blockquote>
+<p>Request &quot;处理订单附加流程&quot; API returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crypto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-alphabet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"encode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1596181686010</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"z9TDQ24FAlrZo98a/yZYCKHo62mgRyZVPk+gT2sutHw="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OjBb+3DJXW2HWPu8voa13C9g7ekx4i1mEEeZUw4NsRM="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-safe-deposit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentFlow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastFlow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908542"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chainKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbe8d22d60853a07213d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"targets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"0x3aacbda920ee8f2785a7fc1f08d1fc48b792e717"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"passed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flows"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908544"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908545"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refundAddress"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"requiredCond"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"passed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908546"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.passed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-success"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908547"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.passed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-failure"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908543"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908549"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c90854a"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attempt-failed"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908548"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-success"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c90854c"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c90854d"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.state"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attempt-failed"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c90854b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aml-failure"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c90854f"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908550"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.retry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"back"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908551"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.retry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c90854e"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attempt-failed"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"dataAccepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908552"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31T07:44:49.189Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31T07:48:06.004Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f23cbf160d4c3853c908542"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>处理safe类型钱包的充值订单</p>
+
+<p><em>HTTP Request</em></p>
+
+<p><code>PATCH http://jadepool.example/api/v2/orders/:orderId/bizflow</code></p>
+
+<p><em>Query Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>充值订单号</td>
+</tr>
+</tbody></table>
+
+<p><em>Main Parameters</em></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.passed</td>
+<td>yes</td>
+<td>boolean</td>
+<td>订单bizFlow在start状态时传入</td>
+</tr>
+<tr>
+<td>data.refundAddress</td>
+<td>no</td>
+<td>string</td>
+<td>订单bizFlow在start状态时传入，passed=false时必传</td>
+</tr>
+<tr>
+<td>data.retry</td>
+<td>no</td>
+<td>boolean</td>
+<td>订单bizFlow在attempt-failed状态时传入</td>
+</tr>
+</tbody></table>
+
+<p><em>Response Result</em></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>钱包ID</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>类别</td>
+</tr>
+<tr>
+<td>currentFlow</td>
+<td>string</td>
+<td>当前bizFlow的位置</td>
+</tr>
+<tr>
+<td>lastFlow</td>
+<td>string</td>
+<td>上次bizFlow的位置</td>
+</tr>
+<tr>
+<td>_id</td>
+<td>string</td>
+<td>数据库_id</td>
+</tr>
+<tr>
+<td>chainKey</td>
+<td>string</td>
+<td>区块链的主key</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>币种名</td>
+</tr>
+<tr>
+<td>related</td>
+<td>string</td>
+<td>充值订单对应数据库的_id</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>审核数据记录</td>
+</tr>
+<tr>
+<td>order</td>
+<td>string</td>
+<td>审核后，汇总或退款的订单</td>
+</tr>
+<tr>
+<td>flows</td>
+<td>list</td>
+<td>整个flow流程</td>
+</tr>
+<tr>
+<td>attempts</td>
+<td>list</td>
+<td>订单失败后重新创建的记录</td>
+</tr>
+<tr>
+<td>finished</td>
+<td>boolean</td>
+<td>flow结束标识位</td>
 </tr>
 </tbody></table>
 <h2 id='wallet'>Wallet</h2><h3 id='fetch-wallet-status'>Fetch Wallet Status</h3>
@@ -4347,7 +4925,7 @@ All main parameters in POST API should be wraped in "data" object
 <td>holding订单记录</td>
 </tr>
 </tbody></table>
-<h3 id='a35b9b2919'>查询订单附加流程</h3>
+<h3 id='a35b9b2919-2'>查询订单附加流程</h3>
 <blockquote>
 <p>Request &quot;查询订单附加流程&quot; API returns JSON structured like this:</p>
 </blockquote>
@@ -4649,7 +5227,7 @@ All main parameters in POST API should be wraped in "data" object
 <td>flow结束标识位</td>
 </tr>
 </tbody></table>
-<h3 id='88dddff86a'>处理订单附加流程</h3>
+<h3 id='88dddff86a-2'>处理订单附加流程</h3>
 <blockquote>
 <p>Request &quot;处理订单附加流程&quot; API returns JSON structured like this:</p>
 </blockquote>
