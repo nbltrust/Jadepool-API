@@ -11374,7 +11374,7 @@ All main parameters in POST API should be wraped in "data" object
 
 <p><em>HTTP Request</em></p>
 
-<p><code>GET http://{ip}/api/v2/s/utilities/snapshot_addresses?snapshot={snapshotID}&amp;page={page}&amp;limit={limit}</code></p>
+<p><code>GET http://{ip}/api/v2/s/utilities/snapshot_addresses?snapshot={snapshotID}&amp;timestamp={timestamp}&amp;page={page}&amp;limit={limit}</code></p>
 
 <p><em>Main Parameters</em></p>
 
@@ -11388,21 +11388,27 @@ All main parameters in POST API should be wraped in "data" object
 </thead><tbody>
 <tr>
 <td>snapshotID</td>
-<td>yes</td>
-<td>number</td>
+<td>no</td>
+<td>string</td>
 <td>快照对象的ID，在回调信息中获得，参考<a href="##Snapshot%20Completes">Snapshot Completes</a></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>no</td>
+<td>string</td>
+<td>查询该时间之前最近的快照，snapshotID和timestamp必须至少传一个</td>
 </tr>
 <tr>
 <td>page</td>
 <td>no</td>
 <td>number</td>
-<td>查询页数</td>
+<td>查询页数，默认0</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>no</td>
 <td>number</td>
-<td>每页查询数量</td>
+<td>每页查询数量，默认20</td>
 </tr>
 </tbody></table>
 
@@ -11428,7 +11434,7 @@ All main parameters in POST API should be wraped in "data" object
 <tr>
 <td>addresses[n].addressType</td>
 <td>string</td>
-<td>地址类型（deposit：充值地址）</td>
+<td>地址类型（deposit：充值地址；hot：热主地址；cold：冷地址）</td>
 </tr>
 <tr>
 <td>addresses[n].block</td>
