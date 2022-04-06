@@ -7272,7 +7272,7 @@ All main parameters in POST API should be wraped in "data" object
 <tr>
 <td>cancelState</td>
 <td>string</td>
-<td>&quot;&quot;：没收到过cancel请求，Received&quot;：请求已收到，&quot;Success&quot;：订单已取消成功，&quot;Failure&quot;：无法取消订单，取消失败</td>
+<td>&quot;&quot;：没收到过cancel请求，&quot;received&quot;：请求已收到，&quot;success&quot;：订单已取消成功，&quot;failure&quot;：无法取消订单，取消失败</td>
 </tr>
 </tbody></table>
 <h3 id='a35b9b2919'>查询订单附加流程</h3>
@@ -9187,8 +9187,7 @@ All main parameters in POST API should be wraped in "data" object
 
 <p><em>判断订单是否被成功取消</em></p>
 
-<p>请求成功后，前置系统需使用“<a href="https://nbltrust.github.io/jadepool-hub-api-docs/#92d59b6aad">查询订单详情</a>”接口，轮询申请取消的订单，查询订单的“cancelState”字段。
-设置回调地址</p>
+<p>请求成功后，前置系统需使用“<a href="https://nbltrust.github.io/jadepool-hub-api-docs/#92d59b6aad">查询订单详情</a>”接口，轮询申请取消的订单，查询订单的“cancelState”字段。</p>
 
 <table><thead>
 <tr>
@@ -9197,15 +9196,15 @@ All main parameters in POST API should be wraped in "data" object
 </tr>
 </thead><tbody>
 <tr>
-<td>Received</td>
+<td>&quot;received&quot;</td>
 <td>请求已收到</td>
 </tr>
 <tr>
-<td>Success</td>
+<td>&quot;success&quot;</td>
 <td>订单已取消成功</td>
 </tr>
 <tr>
-<td>Failure</td>
+<td>&quot;failure&quot;</td>
 <td>无法取消订单，取消失败</td>
 </tr>
 </tbody></table>
