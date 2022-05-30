@@ -7274,6 +7274,11 @@ All main parameters in POST API should be wraped in "data" object
 <td>string</td>
 <td>&quot;&quot;：没收到过cancel请求，&quot;received&quot;：请求已收到，&quot;success&quot;：订单已取消成功，&quot;failure&quot;：无法取消订单，取消失败</td>
 </tr>
+<tr>
+<td>contractCointype</td>
+<td>string</td>
+<td>授权订单授权的ERC20代币</td>
+</tr>
 </tbody></table>
 <h3 id='a35b9b2919'>查询订单附加流程</h3>
 <blockquote>
@@ -7770,7 +7775,7 @@ All main parameters in POST API should be wraped in "data" object
 <td>data.refundAddress</td>
 <td>no</td>
 <td>string</td>
-<td>订单bizFlow在start状态时传入，passed=false时必传</td>
+<td>订单bizFlow在start状态时传入，passed=false时必传；passed=true时选传，不传即默认同钱包热主地址</td>
 </tr>
 <tr>
 <td>data.retry</td>
@@ -8907,6 +8912,12 @@ All main parameters in POST API should be wraped in "data" object
 <td>no</td>
 <td>string</td>
 <td>退款金额，不填默认全退</td>
+</tr>
+<tr>
+<td>data.passed</td>
+<td>no</td>
+<td>boolean</td>
+<td>AML结果</td>
 </tr>
 </tbody></table>
 
