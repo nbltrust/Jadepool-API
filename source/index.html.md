@@ -7020,6 +7020,10 @@ All timestamps are in millisecond.
       "data":{  
          "timestampBegin":1557286074480,
          "timestampFinish":0,
+         "timestampBlock": 1557287074480,
+         "timestampHandle": 1557286074480,
+         "isExecutedFailed": false,
+         "isMined": true,
          "nonce":932,
          "type":"Ethereum",
          "hash":"0x662c73a8361acee47a267f580a55da9d7bbc720bb070bfd25baf765f79c2f019",
